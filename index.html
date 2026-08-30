@@ -1,5 +1,5 @@
 
-<!-- © FNW Advisory & Partners — PUV Score LST v2.0.0 20.0.2Standalone Production Build -->
+<!-- © FNW Advisory & Partners — PUV Score LST v20.02.19 Standalone Production Build -->
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -19,6 +19,7 @@
   --card-border: #222222;
   --text-main: #ffffff;
   --text-muted: #888888;
+  --font-scale: 1.30;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { 
@@ -30,7 +31,7 @@ body {
   flex-direction: column; 
   align-items: center; 
   justify-content: center;
-  font-size: 15px;
+  font-size: calc(15px * var(--font-scale, 1.15));
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -211,8 +212,11 @@ input::placeholder { color: #777; font-size: 0.92rem; }
                     placeholder="Digite sua Cidade - Estado (o sistema autocompletará)" 
                     oninput="filtrarCidadesIBGE(this.value)" 
                     onfocus="filtrarCidadesIBGE(this.value)" 
+                    onclick="filtrarCidadesIBGE(this.value)"
+                    onkeyup="filtrarCidadesIBGE(this.value)"
+                    class="w-full"
                   />
-                  <div id="lead-ibge-dropdown" class="hidden absolute left-0 right-0 top-full mt-1 bg-neutral-900 border border-emerald-500/40 rounded-xl shadow-2xl z-50 max-h-56 overflow-y-auto divide-y divide-neutral-800"></div>
+                  <div id="lead-ibge-dropdown" class="hidden absolute left-0 right-0 top-full mt-1.5 bg-[#181818] border border-cyan-500/50 rounded-2xl shadow-2xl z-[9999] max-h-60 overflow-y-auto divide-y divide-neutral-800 p-1"></div>
                 </div>
                 <p class="text-xs text-neutral-400 mt-1">💡 Conforme você digita, o sistema autocompleta a cidade com a UF oficial correspondente.</p>
               </div>
@@ -824,7 +828,8 @@ const schema = {
   "niche": "Procedimento Estético Masculino & Método Porsch",
   "icp": "Homens 25-65 anos buscando aumento de volume e confiança",
   "customPitch": "Olá! Tudo bem?\n\nEstive analisando a captação e o posicionamento da *Alpha Clinic estética avançada Ltda* e reparei que vocês recebem um volume alto de curiosos e pessoas sem perfil de compra no WhatsApp, o que consome horas preciosas da equipe comercial.\n\nNós desenvolvemos um *Diagnóstico Interativo de Qualificação (PUV Score LST)* estruturado especificamente para *AUMENTE SEU \"AMIGÃO\" EM ATÉ 7CM*.\n\n👉 *Como funciona na prática:*\n• O interessado responde perguntas estratégicas sobre *Autopercepção, Impacto na Vida Íntima, Tentativas Anteriores* em menos de 3 minutos no Link da Bio.\n• O algoritmo calcula um Score oficial (0 a 100) com travas anti-curiosos e direciona para *Aumente Seu Amigão Em Até 7cm*.\n• Sua equipe recebe o lead *já filtrado, mastigado e com intenção clara de compra* no WhatsApp.\n\nGravei uma demonstração prática de 2 minutos para você testar como fica no seu negócio. Posso te mandar o link aqui?",
-  "videoEmbedUrl": "https://www.youtube.com/shorts/TlKLGzRO2rU"
+  "videoEmbedUrl": "https://www.youtube.com/shorts/TlKLGzRO2rU",
+  "fontScale": "1.30"
 };
 let currentStep = 0;
 let userAnswers = [];
@@ -945,7 +950,7 @@ function generateEducationalContentForNiche(sch) {
   if (!sch) sch = schema || {};
   const title = (sch.title || '').toLowerCase();
   const niche = (sch.niche || '').toLowerCase();
-  const comp = sch.companyName || (sch.title ? sch.title.split('—')[0].replace(/diagn[oó]stico\s*(?:lst)?/gi, '').trim() : '') || 'Nossa Empresa';
+  const comp = sch.companyName || (sch.title ? sch.title.split('—')[0].replace(/diagn[oó]sticos*(?:lst)?/gi, '').trim() : '') || 'Nossa Empresa';
   const offerA = sch.routeA_name || (comp + ' VIP');
   const offerB = sch.routeB_name || 'Atendimento de Cortesia';
   const videoUrl = sch.videoEmbedUrl || '';
@@ -1039,13 +1044,58 @@ function renderStep() {
 
   const box = document.getElementById('options-box');
   box.innerHTML = (q.options || []).map((opt, i) => {
-    return '<div onclick="selectOpt(' + i + ', ' + (opt.score || 0) + ', ' + (!!opt.disqualify) + ', ' + (opt.cap || 100) + ')" class="option-card p-3.5 flex justify-between items-center text-xs">' +
-      '<span class="text-neutral-200">' + escapeHTML(opt.label || opt.text || opt.txt || '') + '</span>' +
+    return '<div onclick="selectOpt(' + i + ', ' + (opt.score || 0) + ', ' + (!!opt.disqualify) + ', ' + (opt.cap || 100) + ')" class="option-card p-4 sm:p-4.5 flex justify-between items-center text-sm sm:text-base font-medium">' +
+      '<span class="text-neutral-100 leading-snug">' + escapeHTML(opt.label || opt.text || opt.txt || '') + '</span>' +
     '</div>';
   }).join('');
 
   document.getElementById('btn-back').style.visibility = currentStep === 0 ? 'hidden' : 'visible';
   document.getElementById('btn-next').disabled = userAnswers[currentStep] === undefined;
+}
+
+function checkFatalDisqualification(answers) {
+  if (!answers || !schema || !schema.questions) return false;
+  for (let i = 0; i < answers.length; i++) {
+    const ans = answers[i];
+    if (!ans) continue;
+    const q = schema.questions[i];
+    if (!q || !q.options) continue;
+    const opt = q.options[ans.optIndex !== undefined ? ans.optIndex : ans.idx];
+    if (!opt) continue;
+    if (opt.hardDisqualify === true) return true;
+    if (opt.disqualify || (opt.score !== undefined && Number(opt.score) <= 2)) {
+      const lbl = String(opt.label || opt.text || opt.txt || '').toLowerCase();
+      if (lbl.includes('curiosidade') || lbl.includes('não estou em condições') || lbl.includes('sem condições') || lbl.includes('não pretendo investir')) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+function handleFatalDisqualification() {
+  const desqualUrl = schema.urlDesqualificado || 'https://alphaclinicc.com/descarte';
+  const qBox = document.getElementById('screen-quiz');
+  if (qBox) {
+    qBox.innerHTML = 
+      '<div class="text-center py-10 space-y-4">' +
+        '<div class="w-16 h-16 rounded-2xl bg-rose-500/10 text-rose-400 flex items-center justify-center mx-auto text-3xl border border-rose-500/20">📍</div>' +
+        '<h3 class="text-base sm:text-lg font-bold text-white">Agradecemos o seu interesse!</h3>' +
+        '<p class="text-xs sm:text-sm text-neutral-300 max-w-xs mx-auto leading-relaxed">' +
+          'Identificamos que no momento seu perfil não atende aos critérios para o procedimento presencial. Redirecionando para a página informativa...' +
+        '</p>' +
+        '<div class="pt-2">' +
+          '<a href="' + desqualUrl + '" class="inline-block px-6 py-3.5 bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-xs sm:text-sm rounded-xl border border-neutral-700 transition">' +
+            'Acessar Página Informativa →' +
+          '</a>' +
+        '</div>' +
+      '</div>';
+  }
+  setTimeout(() => {
+    try {
+      window.location.href = desqualUrl;
+    } catch(e) {}
+  }, 2500);
 }
 
 function selectOpt(idx, score, disqualify, cap) {
@@ -1054,6 +1104,10 @@ function selectOpt(idx, score, disqualify, cap) {
     currentStep++;
     renderStep();
   } else {
+    if (checkFatalDisqualification(userAnswers)) {
+      handleFatalDisqualification();
+      return;
+    }
     document.getElementById('screen-quiz').classList.add('hidden');
     document.getElementById('screen-lead').classList.remove('hidden');
   }
@@ -1070,6 +1124,13 @@ function nextStep() {
   if (currentStep < schema.questions.length - 1) {
     currentStep++;
     renderStep();
+  } else {
+    if (checkFatalDisqualification(userAnswers)) {
+      handleFatalDisqualification();
+      return;
+    }
+    document.getElementById('screen-quiz').classList.add('hidden');
+    document.getElementById('screen-lead').classList.remove('hidden');
   }
 }
 
@@ -1304,8 +1365,17 @@ var LISTA_GLOBAL_CIDADES_IBGE = [];
 })();
 
 function buscarCidadesIBGE(query, limit) {
-  if (!query || !query.trim()) return [];
   limit = limit || 8;
+  if (!query || !query.trim()) {
+    var topSuggestions = ['Curitiba - PR', 'São Paulo - SP', 'Florianópolis - SC', 'Porto Alegre - RS', 'Londrina - PR', 'Maringá - PR', 'Cascavel - PR', 'Joinville - SC'];
+    var popList = [];
+    for (var k = 0; k < topSuggestions.length; k++) {
+      var found = LISTA_GLOBAL_CIDADES_IBGE.find(function(it) { return it.label === topSuggestions[k]; });
+      if (found) popList.push(found);
+    }
+    return popList.slice(0, limit);
+  }
+
   var cleanQ = query.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim();
   var matched = [];
   for (var i = 0; i < LISTA_GLOBAL_CIDADES_IBGE.length; i++) {
@@ -1328,32 +1398,47 @@ function buscarCidadesIBGE(query, limit) {
 function filtrarCidadesIBGE(query) {
   var dropdown = document.getElementById('lead-ibge-dropdown');
   if (!dropdown) return;
-  if (!query || query.trim().length < 1) {
-    dropdown.classList.add('hidden');
-    return;
-  }
+  
+  var isSuggest = !query || !query.trim();
   var matches = buscarCidadesIBGE(query, 8);
   if (!matches.length) {
     dropdown.innerHTML = '<div class="p-3 text-xs text-neutral-400 text-center">Nenhuma cidade encontrada na busca rápida.<br><span class="text-[10px] text-neutral-300">Você pode digitar sua cidade e UF livremente.</span></div>';
     dropdown.classList.remove('hidden');
+    dropdown.style.display = 'block';
     return;
   }
+  
   dropdown.innerHTML = '';
+  if (isSuggest) {
+    var header = document.createElement('div');
+    header.className = 'px-3 py-1.5 text-[10px] font-bold text-neutral-400 uppercase tracking-wider bg-neutral-900/80 border-b border-neutral-800';
+    header.textContent = '⚡ Cidades Mais Frequentes:';
+    dropdown.appendChild(header);
+  }
+  
   matches.forEach(function(item) {
     var row = document.createElement('div');
-    row.className = 'p-2.5 hover:bg-neutral-800 cursor-pointer flex items-center justify-between text-xs text-white transition';
-    row.innerHTML = '<div class="flex items-center gap-2"><span class="text-emerald-400 font-bold">📍 ' + item.label + '</span></div><span class="text-[10px] text-neutral-400 font-mono">' + item.estado + '</span>';
+    row.className = 'p-2.5 sm:p-3 hover:bg-neutral-800 active:bg-neutral-700 cursor-pointer flex items-center justify-between text-xs sm:text-sm text-white transition rounded-xl';
+    row.innerHTML = '<div class="flex items-center gap-2"><span class="text-cyan-400 font-bold">📍 ' + escapeHTML(item.label) + '</span></div><span class="text-[11px] text-neutral-400 font-mono">' + escapeHTML(item.estado) + '</span>';
+    row.onmousedown = function(e) { if (e && e.preventDefault) e.preventDefault(); selecionarCidadeIBGE(item.label); };
     row.onclick = function() { selecionarCidadeIBGE(item.label); };
     dropdown.appendChild(row);
   });
+  
   dropdown.classList.remove('hidden');
+  dropdown.style.display = 'block';
 }
 
 function selecionarCidadeIBGE(val) {
   var inp = document.getElementById('lead-ibge-location');
-  if (inp) inp.value = val;
+  if (inp) {
+    inp.value = val;
+  }
   var dropdown = document.getElementById('lead-ibge-dropdown');
-  if (dropdown) dropdown.classList.add('hidden');
+  if (dropdown) {
+    dropdown.classList.add('hidden');
+    dropdown.style.display = 'none';
+  }
 }
 
 document.addEventListener('click', function(e) {
@@ -1361,6 +1446,7 @@ document.addEventListener('click', function(e) {
   var inp = document.getElementById('lead-ibge-location');
   if (wrap && !wrap.contains(e.target) && e.target !== inp) {
     wrap.classList.add('hidden');
+    wrap.style.display = 'none';
   }
 });
 
@@ -1512,11 +1598,20 @@ function generateFinalResult(e) {
     }
     requestAnimationFrame(step);
 
+    const isCuritiba = scoreResult.isCuritiba;
+    const desqualUrl = schema.urlDesqualificado || 'https://alphaclinicc.com/descarte';
+
     const statusEl = document.getElementById('result-status-badge');
-    statusEl.className = isQual 
-      ? 'p-3 rounded-xl text-center font-black uppercase text-xs bg-emerald-500/15 text-emerald-400 border border-emerald-500/30' 
-      : 'p-3 rounded-xl text-center font-black uppercase text-xs bg-rose-500/15 text-rose-400 border border-rose-500/30';
-    statusEl.textContent = isQual ? '⚡ PERFIL QUALIFICADO & APROVADO' : '🚨 ATENÇÃO: NECESSITA ALINHAMENTO PRÉVIO';
+    if (isCuritiba && isQual) {
+      statusEl.className = 'p-3.5 rounded-xl text-center font-black uppercase text-xs sm:text-sm bg-emerald-500/15 text-emerald-400 border border-emerald-500/30';
+      statusEl.textContent = '⚡ PERFIL QUALIFICADO & APROVADO';
+    } else if (isCuritiba && !isQual) {
+      statusEl.className = 'p-3.5 rounded-xl text-center font-black uppercase text-xs sm:text-sm bg-amber-500/15 text-amber-300 border border-amber-500/30';
+      statusEl.textContent = '💡 NECESSITA ALINHAMENTO PRÉVIO & ORIENTAÇÃO';
+    } else {
+      statusEl.className = 'p-3.5 rounded-xl text-center font-black uppercase text-xs sm:text-sm bg-rose-500/15 text-rose-400 border border-rose-500/30';
+      statusEl.textContent = '📍 ATENDIMENTO EXCLUSIVO EM CURITIBA - PR';
+    }
 
     const raioXBox = document.getElementById('raio-x-container');
     if (raioXBox) {
@@ -1558,8 +1653,8 @@ function generateFinalResult(e) {
     });
 
     // 2. Coleta e formata os dados de identificação e perfil do lead
-    const statusLabel = isQual ? "⚡ PERFIL QUALIFICADO & APROVADO" : "💡 ALINHAMENTO PRÉVIO NECESSÁRIO";
-    const routeOffer = isQual ? (schema.routeA_name || "Atendimento Prioritário VIP") : (schema.routeB_name || "Protocolo de Alinhamento");
+    const statusLabel = (isCuritiba && isQual) ? "⚡ PERFIL QUALIFICADO & APROVADO" : (isCuritiba ? "💡 ALINHAMENTO PRÉVIO NECESSÁRIO" : "📍 OUTRA PRAÇA - FORA DE CURITIBA");
+    const routeOffer = (isCuritiba && isQual) ? (schema.routeA_name || "Atendimento Prioritário VIP") : (isCuritiba ? (schema.routeB_name || "Protocolo de Alinhamento & Vídeo") : "Banco Estratégico (Outra Praça)");
 
     let leadDataText = "👤 *Nome:* " + name + "\n📱 *WhatsApp:* " + phone;
     if (email) leadDataText += "\n📧 *E-mail:* " + email;
@@ -1587,32 +1682,55 @@ function generateFinalResult(e) {
     }
 
     if (ctaBox) {
-      if (isQual) {
+      if (isCuritiba && isQual) {
+        // CASO 1: QUALIFICADO VIP (CURITIBA + SCORE >= 65) -> WHATSAPP TINTIM
         ctaBox.className = "p-5 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 space-y-3 text-left";
         ctaBox.innerHTML = 
-          '<h4 class="font-bold text-white text-sm">✦ Próximo Passo: ' + escapeHTML(routeOffer) + '</h4>' +
-          '<p class="text-xs text-neutral-300">Seu perfil foi aprovado para o protocolo de atendimento prioritário.</p>' +
-          '<a href="' + qualUrl + '" target="_blank" class="block w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs uppercase tracking-wider rounded-xl transition text-center shadow-lg">' +
+          '<h4 class="font-bold text-white text-sm sm:text-base">✦ Próximo Passo: ' + escapeHTML(routeOffer) + '</h4>' +
+          '<p class="text-xs sm:text-sm text-neutral-300">Seu perfil foi aprovado para o protocolo de atendimento prioritário em Curitiba.</p>' +
+          '<a href="' + qualUrl + '" target="_blank" class="block w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm uppercase tracking-wider rounded-xl transition text-center shadow-lg">' +
             '💬 Falar com Especialista no WhatsApp →' +
           '</a>';
 
-        // Auto-Redirect para WhatsApp Tintim: espera o score animar + 2.0s para o lead absorver o resultado
+        // Auto-Redirect para WhatsApp Tintim
         setTimeout(() => {
           try {
             window.location.href = qualUrl;
           } catch(e) {}
         }, 3400);
-      } else {
+
+      } else if (isCuritiba && !isQual) {
+        // CASO 2: CURITIBA, MAS NÃO QUALIFICOU NO QUIZ (SCORE < 65 OU DÚVIDAS) -> CONTEÚDO EDUCATIVO & VÍDEO (ROTA B)
         ctaBox.className = "p-5 rounded-2xl bg-amber-950/20 border border-amber-500/30 space-y-3 text-left";
         ctaBox.innerHTML = 
-          '<h4 class="font-bold text-white text-sm">💡 Parecer: ' + escapeHTML(routeOffer) + '</h4>' +
-          '<p class="text-xs text-neutral-300">Identificamos a necessidade de alinhamento prévio ou planejamento antes da liberação do protocolo.</p>' +
-          '<button type="button" onclick="openEducationalModal()" class="block w-full py-3.5 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white font-black text-xs uppercase tracking-wider rounded-xl transition text-center shadow-lg cursor-pointer">' +
-            '💡 Entender Detalhes & Conteúdo Educativo →' +
+          '<h4 class="font-bold text-white text-sm sm:text-base">💡 Parecer: ' + escapeHTML(routeOffer) + '</h4>' +
+          '<p class="text-xs sm:text-sm text-neutral-300">Identificamos a necessidade de alinhamento prévio ou esclarecimento de dúvidas antes do agendamento.</p>' +
+          '<button type="button" onclick="openEducationalModal()" class="block w-full py-4 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white font-black text-sm uppercase tracking-wider rounded-xl transition text-center shadow-lg cursor-pointer">' +
+            '💡 Assistir Vídeo Explicativo & Conteúdo Educativo →' +
           '</button>' +
-          '<button type="button" onclick="resetQuiz()" class="block w-full py-2.5 bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white text-xs font-semibold rounded-xl border border-neutral-700 text-center transition cursor-pointer">' +
+          '<button type="button" onclick="resetQuiz()" class="block w-full py-3 bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white text-xs sm:text-sm font-semibold rounded-xl border border-neutral-700 text-center transition cursor-pointer">' +
             '🔄 Refazer Diagnóstico' +
           '</button>';
+
+      } else {
+        // CASO 3: FORA DE CURITIBA (OUTRA PRAÇA) -> PÁGINA DE DESCARTE / BANCO ESTRATÉGICO
+        ctaBox.className = "p-5 rounded-2xl bg-rose-950/20 border border-rose-500/30 space-y-3 text-left";
+        ctaBox.innerHTML = 
+          '<h4 class="font-bold text-white text-sm sm:text-base">📍 Atendimento Presencial Exclusivo em Curitiba - PR</h4>' +
+          '<p class="text-xs sm:text-sm text-neutral-300">Identificamos que sua localização atual é <strong>' + escapeHTML(locDisplay) + '</strong>. Nossos atendimentos e procedimentos ocorrem presencialmente na unidade de <strong>Curitiba - PR</strong>. Seu cadastro foi registrado para quando expandirmos para a sua região.</p>' +
+          '<a href="' + desqualUrl + '" class="block w-full py-4 bg-gradient-to-r from-neutral-800 to-neutral-700 hover:from-neutral-700 hover:to-neutral-600 text-white font-black text-sm uppercase tracking-wider rounded-xl transition text-center shadow-lg border border-neutral-600">' +
+            '🌐 Acessar Página Informativa da Clínica →' +
+          '</a>' +
+          '<button type="button" onclick="resetQuiz()" class="block w-full py-3 bg-neutral-900 hover:bg-neutral-800 text-neutral-400 hover:text-white text-xs sm:text-sm font-semibold rounded-xl border border-neutral-800 text-center transition cursor-pointer">' +
+            '🔄 Refazer com Outro Endereço' +
+          '</button>';
+
+        // Auto-Redirect para URL de descarte
+        setTimeout(() => {
+          try {
+            window.location.href = desqualUrl;
+          } catch(e) {}
+        }, 3500);
       }
     }
   }, 1800);
