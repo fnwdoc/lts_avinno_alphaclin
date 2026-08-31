@@ -1,5 +1,5 @@
 
-<!-- © FNW Advisory & Partners — PUV Score LST v2.02.23 Standalone Production Build -->
+<!-- © FNW Advisory & Partners — PUV Score LST v2.20.24 Standalone Production Build -->
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -323,10 +323,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Rodapé Institucional do Cliente & LGPD -->
   <footer class="mt-6 pt-4 border-t border-neutral-800 text-center text-[10px] text-neutral-400 space-y-1">
     <div class="font-semibold text-neutral-300">
-      Alpha Clinic estética avançada Ltda • CNPJ: 59.191.705/0001-86
+      59.191.705/0001-86 • CNPJ: República Argentina 1336 sala 325, vila Izabel, Curitiba 80620010
     </div>
     <div class="text-neutral-500">
-      República Argentina 1336 sala 325, vila Izabel, Curitiba 80620010
+      AUMENTE SEU &quot;AMIGÃO&quot; EM ATÉ 7CM
     </div>
     <div class="pt-1">
       <button type="button" onclick="openPrivacyModal()" class="text-cyan-400 hover:text-cyan-300 underline font-medium cursor-pointer bg-transparent border-0">
@@ -358,9 +358,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- 1. Identificação do Controlador -->
       <div class="p-3.5 bg-[#181818] rounded-xl border border-neutral-800 space-y-1 text-xs">
         <span class="font-bold text-white uppercase tracking-wider text-[11px] block text-cyan-400">1. Identificação do Controlador dos Dados</span>
-        <p><strong class="text-white">Razão Social:</strong> <span class="text-white font-medium">Alpha Clinic estética avançada Ltda</span></p>
-        <p><strong class="text-white">CNPJ:</strong> <span class="font-mono text-white">59.191.705/0001-86</span></p>
-        <p><strong class="text-white">Endereço:</strong> <span class="text-white">República Argentina 1336 sala 325, vila Izabel, Curitiba 80620010</span></p>
+        <p><strong class="text-white">Razão Social:</strong> <span class="text-white font-medium">59.191.705/0001-86</span></p>
+        <p><strong class="text-white">CNPJ:</strong> <span class="font-mono text-white">República Argentina 1336 sala 325, vila Izabel, Curitiba 80620010</span></p>
+        <p><strong class="text-white">Endereço:</strong> <span class="text-white">AUMENTE SEU &quot;AMIGÃO&quot; EM ATÉ 7CM</span></p>
         <p><strong class="text-white">Canal de Atendimento / Encarregado (DPO):</strong> <span class="text-cyan-300 font-mono">alphaclinicestetica@gmail.com</span></p>
       </div>
 
@@ -796,9 +796,9 @@ const schema = {
     }
   ],
   "selectedPremiseKey": "segura",
-  "companyName": "Alpha Clinic estética avançada Ltda",
-  "cnpj": "59.191.705/0001-86",
-  "address": "República Argentina 1336 sala 325, vila Izabel, Curitiba 80620010",
+  "companyName": "59.191.705/0001-86",
+  "cnpj": "República Argentina 1336 sala 325, vila Izabel, Curitiba 80620010",
+  "address": "AUMENTE SEU \"AMIGÃO\" EM ATÉ 7CM",
   "email": "alphaclinicestetica@gmail.com",
   "urlQualificado": "https://tintim.link/whatsapp/50204acc-acf9-4b1e-91be-0fb68b4d4f67/05b14e0e-0419-469b-8c15-3a11c745bd3d",
   "urlDesqualificado": "https://alphaclinicc.com/procedimento-homem",
@@ -870,7 +870,9 @@ const schema = {
   "gtmEnabled": true,
   "gtmId": "GTM-NN9T3KQ7",
   "customPitch": "Olá! Tudo bem?\n\nEstive analisando a captação e o posicionamento da *Alpha Clinic estética avançada Ltda* e reparei que vocês recebem um volume alto de curiosos e pessoas sem perfil de compra no WhatsApp, o que consome horas preciosas da equipe comercial.\n\nNós desenvolvemos um *Diagnóstico Interativo de Qualificação (PUV Score LST)* estruturado especificamente para *AUMENTE SEU \"AMIGÃO\" EM ATÉ 7CM*.\n\n👉 *Como funciona na prática:*\n• O interessado responde perguntas estratégicas sobre *Autopercepção, Impacto Íntimo, Tentativas Anteriores* em menos de 3 minutos no Link da Bio.\n• O algoritmo calcula um Score oficial (0 a 100) com travas anti-curiosos e direciona para *Aumente Seu Amigo Em Até 7 cm*.\n• Sua equipe recebe o lead *já filtrado, mastigado e com intenção clara de compra* no WhatsApp.\n\nGravei uma demonstração prática de 2 minutos para você testar como fica no seu negócio. Posso te mandar o link aqui?",
-  "videoEmbedUrl": "nenhum"
+  "videoEmbedUrl": "nenhum",
+  "qualificationEventEnabled": true,
+  "qualificationEventName": "Avalie seu perfil em menos de 3 minutos e descubra se é candidato ao procedimento homologado pelo Método Porsch com retorno à rotina no mesmo dia."
 };
 let currentStep = 0;
 let userAnswers = [];
@@ -1637,8 +1639,11 @@ function generateFinalResult(e) {
       route: scoreResult.isCuritiba ? (isQual ? 'ROTA_A_QUALIFICADO' : 'ROTA_B_ALINHAMENTO') : 'DESCARTE_OUTRA_PRACA'
     });
 
-    if (scoreResult.isCuritiba && isQual) {
-      pushLSTDataLayer('lead_qualificado', {
+    const isQualEventActive = schema.qualificationEventEnabled !== false;
+    const qualEventName = (schema.qualificationEventName || 'lead_qualificado').trim();
+
+    if (scoreResult.isCuritiba && isQual && isQualEventActive && qualEventName) {
+      pushLSTDataLayer(qualEventName, {
         score: finalScore,
         nome: name,
         whatsapp: phone,
