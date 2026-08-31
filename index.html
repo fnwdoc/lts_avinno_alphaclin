@@ -1,5 +1,5 @@
 
-<!-- © FNW Advisory & Partners — PUV Score LST v20.02.22 Standalone Production Build -->
+<!-- © FNW Advisory & Partners — PUV Score LST v2.02.23 Standalone Production Build -->
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -869,11 +869,19 @@ const schema = {
   "fontScale": "1.30",
   "gtmEnabled": true,
   "gtmId": "GTM-NN9T3KQ7",
-  "customPitch": "Olá! Tudo bem?\n\nEstive analisando a captação e o posicionamento da *Alpha Clinic estética avançada Ltda* e reparei que vocês recebem um volume alto de curiosos e pessoas sem perfil de compra no WhatsApp, o que consome horas preciosas da equipe comercial.\n\nNós desenvolvemos um *Diagnóstico Interativo de Qualificação (PUV Score LST)* estruturado especificamente para *AUMENTE SEU \"AMIGÃO\" EM ATÉ 7CM *.\n\n👉 *Como funciona na prática:*\n• O interessado responde perguntas estratégicas sobre *Autopercepção, Impacto Íntimo, Tentativas Anteriores* em menos de 3 minutos no Link da Bio.\n• O algoritmo calcula um Score oficial (0 a 100) com travas anti-curiosos e direciona para *AlphaClinic Curitiba VIP*.\n• Sua equipe recebe o lead *já filtrado, mastigado e com intenção clara de compra* no WhatsApp.\n\nGravei uma demonstração prática de 2 minutos para você testar como fica no seu negócio. Posso te mandar o link aqui?",
+  "customPitch": "Olá! Tudo bem?\n\nEstive analisando a captação e o posicionamento da *Alpha Clinic estética avançada Ltda* e reparei que vocês recebem um volume alto de curiosos e pessoas sem perfil de compra no WhatsApp, o que consome horas preciosas da equipe comercial.\n\nNós desenvolvemos um *Diagnóstico Interativo de Qualificação (PUV Score LST)* estruturado especificamente para *AUMENTE SEU \"AMIGÃO\" EM ATÉ 7CM*.\n\n👉 *Como funciona na prática:*\n• O interessado responde perguntas estratégicas sobre *Autopercepção, Impacto Íntimo, Tentativas Anteriores* em menos de 3 minutos no Link da Bio.\n• O algoritmo calcula um Score oficial (0 a 100) com travas anti-curiosos e direciona para *Aumente Seu Amigo Em Até 7 cm*.\n• Sua equipe recebe o lead *já filtrado, mastigado e com intenção clara de compra* no WhatsApp.\n\nGravei uma demonstração prática de 2 minutos para você testar como fica no seu negócio. Posso te mandar o link aqui?",
   "videoEmbedUrl": "nenhum"
 };
 let currentStep = 0;
 let userAnswers = [];
+
+function pushLSTDataLayer(eventName, eventData) {
+  try {
+    window.dataLayer = window.dataLayer || [];
+    var payload = Object.assign({ event: eventName }, eventData || {});
+    window.dataLayer.push(payload);
+  } catch(e) {}
+}
 
 function escapeHTML(str) {
   if (str === null || str === undefined) return '';
@@ -1070,6 +1078,7 @@ function renderEducationalModalContent() {
 function startQuiz() {
   currentStep = 0;
   userAnswers = [];
+  pushLSTDataLayer('quiz_start');
   document.getElementById('screen-intro').classList.add('hidden');
   document.getElementById('screen-quiz').classList.remove('hidden');
   renderStep();
@@ -1078,6 +1087,13 @@ function startQuiz() {
 function renderStep() {
   const q = schema.questions[currentStep];
   const pct = Math.round(((currentStep + 1) / schema.questions.length) * 100);
+
+  if (currentStep > 0) {
+    const stepNum = currentStep + 1;
+    const stepTag = 'quiz_stp' + (stepNum < 10 ? '0' + stepNum : '' + stepNum);
+    pushLSTDataLayer(stepTag, { step: stepNum });
+  }
+
   document.getElementById('pilar-name').textContent = 'Pilar: ' + (q.pillar || 'Geral');
   document.getElementById('quiz-pct').textContent = pct + '%';
   document.getElementById('quiz-bar').style.width = pct + '%';
@@ -1116,6 +1132,7 @@ function checkFatalDisqualification(answers) {
 
 function handleFatalDisqualification() {
   const desqualUrl = schema.urlDesqualificado || 'https://alphaclinicc.com/descarte';
+  pushLSTDataLayer('descarte_curioso_early_exit');
   const qBox = document.getElementById('screen-quiz');
   if (qBox) {
     qBox.innerHTML = 
@@ -1151,6 +1168,7 @@ function selectOpt(idx, score, disqualify, cap) {
     }
     document.getElementById('screen-quiz').classList.add('hidden');
     document.getElementById('screen-lead').classList.remove('hidden');
+    pushLSTDataLayer('formulario_aberto');
   }
 }
 
@@ -1172,6 +1190,7 @@ function nextStep() {
     }
     document.getElementById('screen-quiz').classList.add('hidden');
     document.getElementById('screen-lead').classList.remove('hidden');
+    pushLSTDataLayer('formulario_aberto');
   }
 }
 
@@ -1611,6 +1630,22 @@ function generateFinalResult(e) {
     document.getElementById('screen-loading').classList.add('hidden');
     document.getElementById('screen-result').classList.remove('hidden');
 
+    pushLSTDataLayer('resultado_gerado', {
+      score: finalScore,
+      isQualified: isQual,
+      isCuritiba: scoreResult.isCuritiba,
+      route: scoreResult.isCuritiba ? (isQual ? 'ROTA_A_QUALIFICADO' : 'ROTA_B_ALINHAMENTO') : 'DESCARTE_OUTRA_PRACA'
+    });
+
+    if (scoreResult.isCuritiba && isQual) {
+      pushLSTDataLayer('lead_qualificado', {
+        score: finalScore,
+        nome: name,
+        whatsapp: phone,
+        cidade: locDisplay
+      });
+    }
+
     const arc = document.getElementById('score-arc');
     const num = document.getElementById('score-num');
     const CIRC = 440;
@@ -1729,7 +1764,7 @@ function generateFinalResult(e) {
         ctaBox.innerHTML = 
           '<h4 class="font-bold text-white text-sm sm:text-base">✦ Próximo Passo: ' + escapeHTML(routeOffer) + '</h4>' +
           '<p class="text-xs sm:text-sm text-neutral-300">Seu perfil foi aprovado para o protocolo de atendimento prioritário em Curitiba.</p>' +
-          '<a href="' + qualUrl + '" target="_blank" class="block w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm uppercase tracking-wider rounded-xl transition text-center shadow-lg">' +
+          '<a href="' + qualUrl + '" target="_blank" onclick="pushLSTDataLayer(&apos;whatsapp_click&apos;)" class="block w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm uppercase tracking-wider rounded-xl transition text-center shadow-lg">' +
             '💬 Falar com Especialista no WhatsApp →' +
           '</a>';
 
@@ -1746,7 +1781,7 @@ function generateFinalResult(e) {
         ctaBox.innerHTML = 
           '<h4 class="font-bold text-white text-sm sm:text-base">💡 Parecer: ' + escapeHTML(routeOffer) + '</h4>' +
           '<p class="text-xs sm:text-sm text-neutral-300">Identificamos a necessidade de alinhamento prévio ou esclarecimento de dúvidas antes do agendamento.</p>' +
-          '<button type="button" onclick="openEducationalModal()" class="block w-full py-4 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white font-black text-sm uppercase tracking-wider rounded-xl transition text-center shadow-lg cursor-pointer">' +
+          '<button type="button" onclick="pushLSTDataLayer(&apos;video_modal_open&apos;); openEducationalModal();" class="block w-full py-4 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white font-black text-sm uppercase tracking-wider rounded-xl transition text-center shadow-lg cursor-pointer">' +
             '💡 Assistir Vídeo Explicativo & Conteúdo Educativo →' +
           '</button>' +
           '<button type="button" onclick="resetQuiz()" class="block w-full py-3 bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white text-xs sm:text-sm font-semibold rounded-xl border border-neutral-700 text-center transition cursor-pointer">' +
