@@ -1,19 +1,26 @@
 
-<!-- © FNW Advisory & Partners — PUV Score LST v20.02.19 Standalone Production Build -->
+<!-- © FNW Advisory & Partners — PUV Score LST v20.02.22 Standalone Production Build -->
 <!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AUMENTE SEU &quot;AMIGÃO&quot; EM ATÉ 7CM</title>
-<meta name="description" content="Faça o diagnóstico gratuito e descubra se nosso procedimento é indicado para você">
+<meta name="description" content="Avalie seu perfil em menos de 3 minutos e descubra se é candidato ao procedimento homologado pelo Método Porsch com retorno à rotina no mesmo dia.">
 <meta name="robots" content="index, follow">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NN9T3KQ7');</script>
+<!-- End Google Tag Manager -->
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 @import "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap";
 :root {
-  --primary: #00c853;
-  --primary-hover: #00c853dd;
+  --primary: #0070F3;
+  --primary-hover: #0070F3dd;
   --bg-dark: #0a0a0a;
   --card-bg: #111111;
   --card-border: #222222;
@@ -66,6 +73,10 @@ input::placeholder { color: #777; font-size: 0.92rem; }
 </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NN9T3KQ7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div class="w-full max-w-lg">
   <div class="card-main rounded-[2rem] overflow-hidden bg-[#111] border border-neutral-800">
     
@@ -90,12 +101,12 @@ input::placeholder { color: #777; font-size: 0.92rem; }
 
       <!-- Parágrafo 1: Contexto / Lead do Método -->
       <p class="text-sm sm:text-base text-neutral-200 leading-relaxed font-medium">
-        Muitos homens vivem com insatisfação sem nunca buscar uma solução, ou buscam e encontram promessas sem respaldo.
+        Avalie seu perfil em menos de 3 minutos e descubra se é candidato ao procedimento homologado pelo Método Porsch com retorno à rotina no mesmo dia.
       </p>
 
       <!-- Parágrafo 2: A PREMISSA SELECIONADA / Apoio -->
       <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-        Faça o diagnóstico gratuito e descubra se nosso procedimento é indicado para você
+        Descubra em menos de 3 minutos se o que você sente em relação ao seu tamanho tem solução real — e se o procedimento da AlphaClinic é o caminho certo para você.
       </p>
 
       <!-- Badges de Autoridade Contextuais do Case -->
@@ -108,7 +119,7 @@ input::placeholder { color: #777; font-size: 0.92rem; }
         
           <div class="flex items-center gap-3 p-3.5 bg-[#181818] rounded-2xl border border-neutral-800 text-xs sm:text-sm text-neutral-200">
             <span class="text-base shrink-0">⚡</span>
-            <span class="font-bold">Resultado em menos de 3 minutos</span>
+            <span class="font-bold">Resultado em 3 min</span>
           </div>
         
           <div class="flex items-center gap-3 p-3.5 bg-[#181818] rounded-2xl border border-neutral-800 text-xs sm:text-sm text-neutral-200">
@@ -120,7 +131,7 @@ input::placeholder { color: #777; font-size: 0.92rem; }
 
       <!-- Botão CTA Principal -->
       <button onclick="startQuiz()" class="w-full py-4 btn-action text-sm sm:text-base font-black rounded-2xl shadow-xl tracking-wider uppercase mt-2">
-        INICIAR DIAGNÓSTICO GRATUITO ›
+        INICIAR DIAGNÓSTICO DE CORTESIA ›
       </button>
     </div>
 
@@ -238,6 +249,23 @@ input::placeholder { color: #777; font-size: 0.92rem; }
                 </div>
               </div>
             
+              <div id="box-travel" class="hidden">
+                <label class="block text-xs font-black uppercase tracking-wider text-neutral-400 mb-1">Você teria disponibilidade para vir a Curitiba? </label>
+                <select id="lead-travel" onchange="handleSelectChange('travel', this.value)" >
+                  <option disabled selected value="">Selecione sua disponibilidade</option>
+                  <option value="30-39">Sim, sem problema — consigo organizar voo e hospedagem</option><option value="25-29">Sim, com algum planejamento — viável em 30-60 dias</option><option value="40-49">Talvez — dependeria de data e custo</option><option value="50+">Não tenho como no momento</option>
+                </select>
+                
+                  <div id="age-warning" class="hidden p-2.5 rounded-lg text-rose-400 text-xs mt-1.5 font-semibold" style="background: rgba(255, 64, 96, 0.08); border: 1px solid rgba(255, 64, 96, 0.25);">
+                    ⚠️ O procedimento é indicado apenas para maiores de 25 anos.
+                  </div>
+                
+                <div id="outro-box-travel" class="hidden mt-2 p-2.5 rounded-lg border space-y-1" style="background: rgba(168, 85, 247, 0.08); border-color: rgba(168, 85, 247, 0.3);">
+                  <label class="block text-xs font-bold uppercase text-purple-300">Por favor, especifique:</label>
+                  <input type="text" id="lead-travel-outro" placeholder="Digite sua resposta personalizada..." style="background: rgba(0,0,0,0.4);" />
+                </div>
+              </div>
+            
 
         <button type="submit" class="w-full py-4 btn-action text-sm sm:text-base font-black rounded-xl shadow-lg mt-2 cursor-pointer">
           VER MEU DIAGNÓSTICO →
@@ -269,7 +297,7 @@ input::placeholder { color: #777; font-size: 0.92rem; }
         <div class="relative inline-flex items-center justify-center">
           <svg class="w-40 h-40" style="transform: rotate(-90deg);">
             <circle cx="80" cy="80" r="70" fill="none" stroke="#222" stroke-width="9" />
-            <circle id="score-arc" cx="80" cy="80" r="70" fill="none" stroke="#00c853" stroke-width="9" stroke-dasharray="440" stroke-dashoffset="440" stroke-linecap="round" class="transition-all duration-1000" />
+            <circle id="score-arc" cx="80" cy="80" r="70" fill="none" stroke="#0070F3" stroke-width="9" stroke-dasharray="440" stroke-dashoffset="440" stroke-linecap="round" class="transition-all duration-1000" />
           </svg>
           <div class="absolute inset-0 flex flex-col items-center justify-center">
             <span id="score-num" class="text-4xl sm:text-5xl font-black text-white font-mono">0</span>
@@ -437,22 +465,17 @@ const schema = {
   "tagline": "AUMENTE SEU \"AMIGÃO\" EM ATÉ 7CM",
   "categoryTag": "DIAGNÓSTICO LST",
   "title": "AUMENTE SEU \"AMIGÃO\" EM ATÉ 7CM",
-  "subtitle": "Faça o diagnóstico gratuito e descubra se nosso procedimento é indicado para você",
-  "introP1": "Muitos homens vivem com insatisfação sem nunca buscar uma solução, ou buscam e encontram promessas sem respaldo.",
-  "introP2": "Este diagnóstico avalia o seu perfil em menos de 3 minutos e indica se você é um candidato ao procedimento homologado pelo Método Porsch da AlphaClinic. Você pode ganhar até 7cm de comprimento ou espessura e voltar à sua rotina no mesmo dia.",
-  "companyName": "Alpha Clinic estética avançada Ltda",
-  "cnpj": "59.191.705/0001-86",
-  "address": "República Argentina 1336 sala 325, vila Izabel, Curitiba 80620010",
-  "email": "alphaclinicestetica@gmail.com",
+  "subtitle": "Avalie seu perfil em menos de 3 minutos e descubra se é candidato ao procedimento homologado pelo Método Porsch com retorno à rotina no mesmo dia.",
+  "introP1": "Avalie seu perfil em menos de 3 minutos e descubra se é candidato ao procedimento homologado pelo Método Porsch com retorno à rotina no mesmo dia.",
+  "introP2": "Descubra em menos de 3 minutos se o que você sente em relação ao seu tamanho tem solução real — e se o procedimento da AlphaClinic é o caminho certo para você. Diagnóstico de cortesia e sigiloso.",
   "sheetsUrl": "https://script.google.com/macros/s/AKfycbzF21kOTrDpr2T0fdTMVW_aJs1M4EcMX6PS4PBaVfywJkW8gR1q1fA_5NW5_OlZMnUy9Q/exec",
-  "sheetsUrlAlpha": "https://script.google.com/macros/s/AKfycbzF21kOTrDpr2T0fdTMVW_aJs1M4EcMX6PS4PBaVfywJkW8gR1q1fA_5NW5_OlZMnUy9Q/exec",
   "tintimUrl": "https://tintim.link/whatsapp/50204acc-acf9-4b1e-91be-0fb68b4d4f67/05b14e0e-0419-469b-8c15-3a11c745bd3d",
   "adminPass": "alpha2026",
-  "primaryColor": "#00c853",
+  "primaryColor": "#0070F3",
   "premises": {
-    "segura": "Faça o diagnóstico gratuito e descubra se nosso procedimento é indicado para você",
-    "desafiadora": "Muitos homens vivem com insatisfação sem nunca buscar uma solução, ou buscam e encontram promessas sem respaldo.",
-    "provocadora": "Este diagnóstico avalia o seu perfil em menos de 3 minutos e indica se você é um candidato ao procedimento homologado pelo Método Porsch da AlphaClinic. Você pode ganhar até 7cm de comprimento ou espessura e voltar à sua rotina no mesmo dia."
+    "segura": "Descubra em menos de 3 minutos se o que você sente em relação ao seu tamanho tem solução real — e se o procedimento da AlphaClinic é o caminho certo para você.",
+    "desafiadora": "Muitos homens vivem com insatisfação íntima diária sem saber que existe solução clínica segura no mesmo dia.",
+    "provocadora": "Entenda por que soluções caseiras não funcionam e veja o parecer médico exato para sua anatomia."
   },
   "badges": [
     {
@@ -461,14 +484,14 @@ const schema = {
     },
     {
       "icon": "⚡",
-      "text": "Resultado em menos de 3 minutos"
+      "text": "Resultado em 3 min"
     },
     {
       "icon": "✅",
       "text": "+650 homens transformados em Curitiba"
     }
   ],
-  "ctaText": "INICIAR DIAGNÓSTICO GRATUITO ›",
+  "ctaText": "INICIAR DIAGNÓSTICO DE CORTESIA ›",
   "pillars": [
     {
       "id": "autopercepcao",
@@ -478,7 +501,7 @@ const schema = {
     },
     {
       "id": "impacto",
-      "name": "Impacto na Vida Íntima",
+      "name": "Impacto Íntimo",
       "weight": 0.15,
       "icon": "🔥"
     },
@@ -496,7 +519,7 @@ const schema = {
     },
     {
       "id": "decisao",
-      "name": "Decisão",
+      "name": "Momento de Decisão",
       "weight": 0.15,
       "icon": "⚡"
     },
@@ -508,13 +531,13 @@ const schema = {
     },
     {
       "id": "budget",
-      "name": "Investimento & Planejamento",
+      "name": "Investimento & Trava",
       "weight": 0.1,
       "icon": "💰"
     },
     {
       "id": "localizacao",
-      "name": "Localização",
+      "name": "Localização & Bônus",
       "weight": 0.1,
       "icon": "📍"
     }
@@ -527,7 +550,7 @@ const schema = {
       "options": [
         {
           "id": "opt_1_1",
-          "label": "Muito insatisfeito — isso afeta minha autoestima e vida íntima diariamente.",
+          "label": "Muito insatisfeito — afeta minha autoestima e vida íntima diariamente.",
           "score": 20,
           "disqualify": false
         },
@@ -539,7 +562,7 @@ const schema = {
         },
         {
           "id": "opt_1_3",
-          "label": "Um pouco incomodado — não é urgente mas já passou pela minha cabeça.",
+          "label": "Um pouco incomodado — não é urgente mas já passou pela cabeça.",
           "score": 8,
           "disqualify": false
         },
@@ -616,7 +639,7 @@ const schema = {
     {
       "id": "q4",
       "pillar": "clinico",
-      "title": "Você tem alguma condição de saúde relevante que deva ser avaliada antes de procedimentos estéticos?",
+      "title": "Você tem alguma condição de saúde relevante que deva ser avaliada antes de procedimentos?",
       "options": [
         {
           "id": "opt_4_1",
@@ -709,7 +732,7 @@ const schema = {
     {
       "id": "q7",
       "pillar": "budget",
-      "title": "O procedimento fica a partir de R$ 4.300 e depende da anatomia, que define as possibilidades de aplicação para cada indivíduo. Como você se posiciona em relação a esse investimento?",
+      "title": "O procedimento fica a partir de R$ 4.300. Como você se posiciona em relação a esse investimento?",
       "options": [
         {
           "id": "opt_7_1",
@@ -733,7 +756,7 @@ const schema = {
           "cap": 51.5
         },
         {
-          "id": "opt_1787889877702_4",
+          "id": "opt_1788187033963_4",
           "label": "Apenas pesquisando opções de cortesia / sem orçamento previsto",
           "score": 0,
           "disqualify": true
@@ -747,7 +770,7 @@ const schema = {
       "options": [
         {
           "id": "opt_8_1",
-          "label": "Sim, moro em Curitiba ou região — sem problema.",
+          "label": "Sim, moro em Curitiba ou região — sem problema (+25% Bônus).",
           "score": 20,
           "disqualify": false
         },
@@ -773,6 +796,13 @@ const schema = {
     }
   ],
   "selectedPremiseKey": "segura",
+  "companyName": "Alpha Clinic estética avançada Ltda",
+  "cnpj": "59.191.705/0001-86",
+  "address": "República Argentina 1336 sala 325, vila Izabel, Curitiba 80620010",
+  "email": "alphaclinicestetica@gmail.com",
+  "urlQualificado": "https://tintim.link/whatsapp/50204acc-acf9-4b1e-91be-0fb68b4d4f67/05b14e0e-0419-469b-8c15-3a11c745bd3d",
+  "urlDesqualificado": "https://alphaclinicc.com/procedimento-homem",
+  "ticketMedio": "R$ 4.300 a R$ 7.200",
   "leadFormFields": [
     {
       "id": "name",
@@ -816,20 +846,31 @@ const schema = {
         "50 anos ou mais",
         "Menor de 25 anos"
       ]
+    },
+    {
+      "id": "travel",
+      "label": "Você teria disponibilidade para vir a Curitiba?",
+      "placeholder": "Selecione sua disponibilidade",
+      "type": "select",
+      "required": false,
+      "options": [
+        "Sim, sem problema — consigo organizar voo e hospedagem",
+        "Sim, com algum planejamento — viável em 30-60 dias",
+        "Talvez — dependeria de data e custo",
+        "Não tenho como no momento"
+      ]
     }
   ],
-  "urlQualificado": "https://tintim.link/whatsapp/50204acc-acf9-4b1e-91be-0fb68b4d4f67/05b14e0e-0419-469b-8c15-3a11c745bd3d",
-  "urlDesqualificado": "https://alphaclinicc.com/descarte",
-  "ticketMedio": "R$ 4.300 a R$ 7.200",
-  "whatsappOficial": "554187609808",
-  "routeA_name": "Aumente Seu Amigão Em Até 7cm",
-  "routeB_name": "Avaliação de Cortesia & Conteúdo Educativo",
-  "enableIbgeLocation": true,
   "niche": "Procedimento Estético Masculino & Método Porsch",
   "icp": "Homens 25-65 anos buscando aumento de volume e confiança",
-  "customPitch": "Olá! Tudo bem?\n\nEstive analisando a captação e o posicionamento da *Alpha Clinic estética avançada Ltda* e reparei que vocês recebem um volume alto de curiosos e pessoas sem perfil de compra no WhatsApp, o que consome horas preciosas da equipe comercial.\n\nNós desenvolvemos um *Diagnóstico Interativo de Qualificação (PUV Score LST)* estruturado especificamente para *AUMENTE SEU \"AMIGÃO\" EM ATÉ 7CM*.\n\n👉 *Como funciona na prática:*\n• O interessado responde perguntas estratégicas sobre *Autopercepção, Impacto na Vida Íntima, Tentativas Anteriores* em menos de 3 minutos no Link da Bio.\n• O algoritmo calcula um Score oficial (0 a 100) com travas anti-curiosos e direciona para *Aumente Seu Amigão Em Até 7cm*.\n• Sua equipe recebe o lead *já filtrado, mastigado e com intenção clara de compra* no WhatsApp.\n\nGravei uma demonstração prática de 2 minutos para você testar como fica no seu negócio. Posso te mandar o link aqui?",
-  "videoEmbedUrl": "https://www.youtube.com/shorts/TlKLGzRO2rU",
-  "fontScale": "1.30"
+  "whatsappOficial": "5548999129069",
+  "routeA_name": "Aumente Seu Amigo Em Até 7 cm",
+  "routeB_name": "Avaliação de Cortesia & Conteúdo Educativo",
+  "fontScale": "1.30",
+  "gtmEnabled": true,
+  "gtmId": "GTM-NN9T3KQ7",
+  "customPitch": "Olá! Tudo bem?\n\nEstive analisando a captação e o posicionamento da *Alpha Clinic estética avançada Ltda* e reparei que vocês recebem um volume alto de curiosos e pessoas sem perfil de compra no WhatsApp, o que consome horas preciosas da equipe comercial.\n\nNós desenvolvemos um *Diagnóstico Interativo de Qualificação (PUV Score LST)* estruturado especificamente para *AUMENTE SEU \"AMIGÃO\" EM ATÉ 7CM *.\n\n👉 *Como funciona na prática:*\n• O interessado responde perguntas estratégicas sobre *Autopercepção, Impacto Íntimo, Tentativas Anteriores* em menos de 3 minutos no Link da Bio.\n• O algoritmo calcula um Score oficial (0 a 100) com travas anti-curiosos e direciona para *AlphaClinic Curitiba VIP*.\n• Sua equipe recebe o lead *já filtrado, mastigado e com intenção clara de compra* no WhatsApp.\n\nGravei uma demonstração prática de 2 minutos para você testar como fica no seu negócio. Posso te mandar o link aqui?",
+  "videoEmbedUrl": "nenhum"
 };
 let currentStep = 0;
 let userAnswers = [];
@@ -1672,7 +1713,7 @@ function generateFinalResult(e) {
 
     const waMsg = encodeURIComponent(fullWaMessage);
     
-    let qualUrl = schema.urlQualificado || ("https://api.whatsapp.com/send?phone=" + encodeURIComponent("554187609808") + "&text=" + waMsg);
+    let qualUrl = schema.urlQualificado || ("https://api.whatsapp.com/send?phone=" + encodeURIComponent("5548999129069") + "&text=" + waMsg);
     if (qualUrl.includes('tintim.link')) {
       const sep = qualUrl.includes('?') ? '&' : '?';
       qualUrl = qualUrl + sep + "message=" + waMsg;
