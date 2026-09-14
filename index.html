@@ -1,1811 +1,1639 @@
 
-<!-- © FNW Advisory & Partners — PUV Score LST v20.2.27 Standalone Production Build -->
+<!-- © LST Qualifier — Qualificador Inteligente LST (FNW Ecosystem) -->
 <!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AUMENTE SEU &quot;AMIGÃO&quot; EM ATÉ 7 CM</title>
-<meta name="description" content="Faça o diagnóstico gratuito e descubra se nosso procedimento é indicado para você">
-<meta name="robots" content="index, follow">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=ai-legible&utm_source=comment&utm_medium=referral&utm_id=5cc79dd9-23a0-46cc-b183-fc0ac6da7e33
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="hosting-provider" content="Netlify">
+<meta name="netlify-deploy" content="https://netlify.new/?utm_campaign=ai-legible&amp;utm_source=meta&amp;utm_medium=referral&amp;utm_id=5cc79dd9-23a0-46cc-b183-fc0ac6da7e33">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>LST Qualifier — Qualificação Inteligente</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NN9T3KQ7');</script>
-<!-- End Google Tag Manager -->
-<script src="https://cdn.tailwindcss.com"></script>
+
 <style>
 @import "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap";
+
+/* ==========================================
+   CSS VARIABLES: MOBILE DEFAULT BREAKPOINT
+   ========================================== */
 :root {
-  --primary: #00c853;
-  --primary-hover: #00c853dd;
-  --bg-dark: #0a0a0a;
-  --card-bg: #111111;
-  --card-border: #222222;
-  --text-main: #ffffff;
-  --text-muted: #888888;
-  --font-scale: 1.15;
+  --plug-black: #000000;
+  --plug-card-bg: #111111;
+  --plug-header-bg: #0a0a0a;
+  --plug-bullets-bg: #1a1a1a;
+  --plug-options-bg: #161616;
+  --plug-gold: #0070F3;
+  --plug-gold-hover: #0070F3;
+  --plug-text-main: #ffffff;
+  --plug-text-sub: #a3a3a3;
+  --plug-btn-bg: #0070F3;
+  --plug-btn-text: #ffffff;
+  
+  /* Mobile Spacing & Typography */
+  --pad-top: 42px;
+  --pad-side: 16px;
+  --pad-bottom: 24px;
+  --elem-gap: 10px;
+
+  --fs-headline: 16px;
+  --fs-subtext: 10px;
+  --fs-bullets: 12px;
+  --fs-question: 16px;
+  --fs-options: 13px;
+  --fs-btn: 14px;
+  --fs-footer: 10px;
 }
+
+/* ==========================================
+   TABLET BREAKPOINT (641px a 1024px)
+   ========================================== */
+@media (min-width: 641px) and (max-width: 1024px) {
+  :root {
+    --pad-top: 32px;
+    --pad-side: 28px;
+    --pad-bottom: 28px;
+    --elem-gap: 14px;
+
+    --fs-headline: 22px;
+    --fs-subtext: 14px;
+    --fs-bullets: 13px;
+    --fs-question: 18px;
+    --fs-options: 14px;
+    --fs-btn: 15px;
+    --fs-footer: 11px;
+  }
+}
+
+/* ==========================================
+   DESKTOP BREAKPOINT (>= 1025px)
+   ========================================== */
+@media (min-width: 1025px) {
+  :root {
+    --pad-top: 40px;
+    --pad-side: 36px;
+    --pad-bottom: 36px;
+    --elem-gap: 16px;
+
+    --fs-headline: 26px;
+    --fs-subtext: 16px;
+    --fs-bullets: 15px;
+    --fs-question: 21px;
+    --fs-options: 15px;
+    --fs-btn: 16px;
+    --fs-footer: 11px;
+  }
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { 
-  background: var(--bg-dark); 
-  color: var(--text-main); 
-  min-height: 100vh; 
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center;
-  font-size: calc(15px * var(--font-scale, 1.15));
-  line-height: 1.5;
+html, body {
+  width: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--plug-black);
+  color: var(--plug-text-main);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+  display: block;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
-.card-main { box-shadow: 0 32px 80px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.08); }
-.btn-action {
-  text-transform: uppercase; letter-spacing: .06em; cursor: pointer;
-  background: linear-gradient(135deg, var(--primary) 0%, #3291ff 100%);
-  border: none; border-radius: 16px; font-weight: 900; transition: all .3s; color: #ffffff !important;
-  font-size: 0.95rem; padding: 1.1rem 1.5rem; min-height: 52px;
+
+.card-main {
+  background: var(--plug-card-bg) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 100vh;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
-.btn-action:hover:not(:disabled) { filter: brightness(1.12); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,112,243,0.35); }
-.btn-action:disabled { cursor: not-allowed; opacity: .5; }
+
+@media (min-width: 641px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 16px;
+  }
+  .card-main {
+    max-width: 580px !important;
+    min-height: auto;
+    margin: 0 auto !important;
+    border-radius: 28px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+}
+
+/* Tipografia Fluida & Legibilidade */
+.headline-text {
+  font-size: var(--fs-headline) !important;
+  line-height: 1.3;
+  color: var(--plug-text-main) !important;
+  word-break: break-word;
+}
+.subtext-body {
+  font-size: var(--fs-subtext) !important;
+  line-height: 1.6;
+  color: var(--plug-text-sub) !important;
+}
+.bullet-card {
+  font-size: var(--fs-bullets) !important;
+  background: var(--plug-bullets-bg) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  color: var(--plug-text-main) !important;
+  line-height: 1.4;
+  min-height: 48px;
+}
+.question-title {
+  font-size: var(--fs-question) !important;
+  line-height: 1.38;
+  color: var(--plug-text-main) !important;
+  word-break: break-word;
+}
 .option-card {
-  cursor: pointer; color: #e5e5e5; background: #161616; border: 1.5px solid #2a2a2a; border-radius: 16px; font-weight: 500; transition: all .2s;
-  min-height: 52px; padding: 0.95rem 1.15rem; font-size: 0.95rem; line-height: 1.4; display: flex; align-items: center; justify-content: space-between;
+  font-size: var(--fs-options) !important;
+  background: var(--plug-options-bg) !important;
+  border: 1.5px solid rgba(255,255,255,0.08) !important;
+  color: var(--plug-text-sub) !important;
+  padding: 13px 15px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.18s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 1.45;
+  min-height: 52px;
+  user-select: none;
 }
-.option-card:hover { color: #fff; background: rgba(0,112,243,0.12); border-color: var(--primary); transform: translateX(4px); }
-.progress-bar { background: linear-gradient(90deg, var(--primary), #3291ff); transition: width .5s cubic-bezier(.4,0,.2,1); }
+.option-card:hover {
+  color: var(--plug-text-main) !important;
+  background: rgba(0, 112, 243, 0.08) !important;
+  border-color: var(--plug-gold) !important;
+}
+.option-card:active {
+  transform: scale(0.985);
+}
+.option-selected {
+  color: var(--plug-text-main) !important;
+  background: rgba(0, 112, 243, 0.16) !important;
+  border-color: var(--plug-gold) !important;
+}
+.btn-action {
+  font-size: var(--fs-btn) !important;
+  background: var(--plug-btn-bg) !important;
+  color: var(--plug-btn-text) !important;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  cursor: pointer;
+  border: none;
+  border-radius: 14px;
+  font-weight: 900;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all .25s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+.btn-action:hover:not(:disabled) {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+}
+.btn-action:active:not(:disabled) {
+  transform: scale(0.985);
+}
+.btn-action:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none;
+}
+.footer-company {
+  font-size: var(--fs-footer) !important;
+  line-height: 1.5;
+}
+
+/* Safe Area e Padding do Cabeçalho para nunca sobrepor o Notch */
+.header-brand {
+  background: var(--plug-header-bg) !important;
+  padding-top: max(var(--pad-top), env(safe-area-inset-top, 14px)) !important;
+  padding-left: max(var(--pad-side), env(safe-area-inset-left, 16px)) !important;
+  padding-right: max(var(--pad-side), env(safe-area-inset-right, 16px)) !important;
+  padding-bottom: 14px !important;
+}
+
+.headline-box {
+  background: var(--plug-header-bg) !important;
+  padding-top: calc(var(--pad-top) * 0.5) !important;
+  padding-left: max(var(--pad-side), env(safe-area-inset-left, 16px)) !important;
+  padding-right: max(var(--pad-side), env(safe-area-inset-right, 16px)) !important;
+  padding-bottom: calc(var(--pad-top) * 0.4) !important;
+}
+
+.screen-container {
+  padding-top: calc(var(--pad-top) * 0.5);
+  padding-left: max(var(--pad-side), env(safe-area-inset-left, 16px));
+  padding-right: max(var(--pad-side), env(safe-area-inset-right, 16px));
+  padding-bottom: max(var(--pad-bottom), env(safe-area-inset-bottom, 20px));
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-bar { background: linear-gradient(90deg, var(--plug-gold), #79b8ff); transition: width .7s cubic-bezier(.4,0,.2,1); }
+
+/* Inputs e Selects otimizados para Touch e iOS */
 input, select {
-  color: #fff; background: #161616; border: 1.5px solid #2a2a2a; border-radius: 14px; outline: none; width: 100%; padding: 1rem 1.15rem; font-family: inherit; font-size: 16px; line-height: 1.4;
+  color: var(--plug-text-main);
+  background: var(--plug-options-bg);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  outline: none;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-size: 16px !important; /* Evita zoom automático no iOS Safari */
+  min-height: 48px;
+  box-sizing: border-box;
+  transition: border-color .2s;
+  -webkit-appearance: none;
 }
-input:focus, select:focus { border-color: var(--primary); }
-input::placeholder { color: #777; font-size: 0.92rem; }
+select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a3a3a3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.1em;
+  padding-right: 2.5rem;
+}
+input:focus, select:focus {
+  border-color: var(--plug-gold);
+}
+
+@keyframes fadeUp { 0% { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.fade-up { animation: .4s both fadeUp; }
+
+/* Modais & Drawers Mobile Bottom-Sheet */
 .modal-overlay {
-  position: fixed; inset: 0; z-index: 9999;
-  background-color: rgba(0, 0, 0, 0.88);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  display: none; align-items: center; justify-content: center; padding: 1rem;
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
-.modal-overlay.active { display: flex !important; }
-@keyframes spin { to { transform: rotate(360deg); } }
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+.modal-box {
+  background: var(--plug-card-bg);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  width: 95%;
+  max-width: 540px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+#drawer-educativo {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+#drawer-educativo.open { opacity: 1; pointer-events: auto; }
+#drawer-content {
+  background: var(--plug-card-bg);
+  border-left: 1px solid rgba(255,255,255,0.1);
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  overflow-y: auto;
+  padding: 2rem 1.5rem;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+#drawer-educativo.open #drawer-content { transform: translateX(0); }
+
+@media (max-width: 640px) {
+  #drawer-educativo {
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  #drawer-content {
+    max-width: 100%;
+    max-height: 88vh;
+    height: auto;
+    border-radius: 24px 24px 0 0;
+    border-left: none;
+    border-top: 1.5px solid rgba(255,255,255,0.12);
+    transform: translateY(100%);
+    padding: 1.25rem 1.25rem max(24px, env(safe-area-inset-bottom, 20px));
+  }
+  #drawer-educativo.open #drawer-content { transform: translateY(0); }
+}
 </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6">
+<body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NN9T3KQ7"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NN9T3KQ7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<div class="w-full max-w-lg">
-  <div class="card-main rounded-[2rem] overflow-hidden bg-[#111] border border-neutral-800">
+
+<div class="card-main">
+  
+  <!-- CABEÇALHO DA MARCA / LOGO COM PADDING DINÂMICO & NOTCH SAFE AREA -->
+  <div class="header-brand flex justify-between items-center gap-3" style="border-bottom:1px solid rgba(255,255,255,0.06)">
     
-    <!-- Screen 1: Intro (Exata Composição Canônica FNW) -->
-    <div id="screen-intro" class="p-6 sm:p-8 space-y-6">
+        <div class="flex items-center justify-start text-left min-w-0 flex-1">
+          <img src="data:image/png+xml;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAABOCAMAAACt6NuiAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAwFBMVEXz9vjv8vTw8/Xv8/Xw8/Xv8vTw8/Xw8/Xw8vXw8/Xw8/Xw8/Xw8/Xw8/Xw8/Xw8/Xw8/Tw8/Xw8/Xw8/Xw8/Xw8/Xw8vXw8/Xw8/Xw8/Xw8/Tw8/Xw8/Xw8/Xw8/Xw8/Xw8/Xv8vTw8/Xw8/Xw8/Xw8/Xv8/Xv8vTw8/Xv8vTw8/Xw8/Xw8/Xw8/Xw8vTv8vTw8/Xv8/Tw8/Tw8/Xw8/Xw8/Xv8vXw8/Xw8/Xv8/Xw8/Xw8/Xw8vXw8vTw8/X////Rf4MYAAAAPnRSTlMBNhC4wRVX8f53JtLfkGVUCOCM9WetvqmCh5xGoTPvzuxkQftzy3ZDUiHylrAR2TLIMWKGp+q6dUTclyEiEe7sv2cAAAABYktHRD8+YzB1AAAAB3RJTUUH6QYZDysUODhjdgAAC6JJREFUeNrtm1tD4sgSx/8tVKfTgTFpA8Z0BIaAopN1BnZ0R3dOff+PdR5yIeEmsD4cz6aeDITuzi9V1XVpgVZaaaWVVlpppZVWWmmllVZaeUeEaBkcKxedLrUUjhTpKLelcJxoj7mnWw5HSV8xq/6ZoOWnNWAS8sul9k983oCZOTjPx5sr+TmtKRwMr010Ew+MpRM2uFgxM6vBOSpCHg8+I6p+z0lyQLfXIy8Zh0f+0E6YmZmvvp4xq3U4+HzebuqptHI7vkmZZ0fqRlflsHh+hmoZZhV+NlZh0LAjGii+O+6X907BilP3HCtk/mwx2mLC3K2bg+6xe6pmsfdwcoAWKObHz+XiqcvsyI1wIDo21QlKWOrbqRNnbsD8yVz8t5R5+EfT3z+Zo/1OpVqOPW3e7z/0gLnh4v1ZnHU6nU5yVxknRUmn0xkY00+u3SUA2H7W6XQ61zcawCq/GPxZG0U2/SBZY4z5qgGCjgadTqeT9dfKIYoRjMhH/lmOtIqzTta39Rsgnne42fhoWLpSLc5OC9FmBquUOW3MrYfMPBa1kWjqMXeJSAweAxcAdKyYgyKebVwUueq4dqXdeWKJtMyyJARIBszpTd1RUuQwOyEVg6m4nPx26LhU3jD6QgBcxdsbuDwaFty1ap3kfvxrgYcnZn5phhOPfPVla4YuANCQHQMADx5zXH9bcTNXrflB6Tlu/vC6mzviG+an5qbid5izMndT7FSRgOgUN5Y3+F1mHm75seOfW3uVap20sy0Hfm7Ez8v6x7cTft6IiGWaw8LqkScCADLmv+p7amM7ShQPy4WIHr9QFdVFALAq0NcdEXPpcL91FQe/yqFLlYmZ++WLOTe1y+VyHT6YU6zQBbAMmJs1Cz3hYGNfXZSw6LVwGAPmynj9eTMq1H2vcp+UqZHd8C1SbegyYJjLlUfTsVKeKA104wZ7dbpr3pDrSrVOSBEpK3WEX/UGLNoHq1SiQ7CkdRUnhQGnfF3bud0CVucALBKvrApt3II1Y+bJOTkH6aldWEGAHVXhw1sjrFjkYndZ5+XLBQCEijn9eiQsHRyhWRGJScHf7/Ljouab7DGw8MXhK3c3LMN8RoKmV4n37Fylzug1uxNJ5eMnv+p5QZqmaZo633bBStz1ZpodCauvOPj+DqzbGZAVTPXzjkd7FxZMWjj5LVgx89bq3lWq1VNamR6rYDCpLgZ+PS9gZk77Fzsj4cJiB9x08QdgXU545GITFjVhhQIIC7dkH9mj02FRR+UOZQtWcjos23W4IT9urso/H8uHsL2CVbxzcFkarLxiVn+9B8u7tCsz9rJFRXjYL+QtqMPSMQG6xxObc5n/cTos6DnzkPZp1klmGAZNVOxI6lYXT7px02N/94uIF7Vki7sX78Caa621rj4fMN9RIXpch7UKc3tVWR4lzM/QLGAasEpot896PgXWbLTBiocEWelaHgjYoNSriz17IdWD2pE4ymehBmuPz7r5G3lE8vwdkOlZZgjAdTh1t2HdMbPz6wS9KrGox8DzAkexY4GLrPLxPQ0sDttgzQqLUCv+IFhLt4xmVAQI5ywHDwDRFU8WW7AWV8xH1xjyR8v3vdhqot8iCpKN6sMb5OQdVv6gliFkDUfQhEUnwgqnlSccE+ipETrkozVh0R5YlDF7YhOWDrbSs0P74CDXICebVk+XD3+zThHNe3oFMf5d01VVz+T1pK4NMzoJlm+oyoEcC8Sqtj0DsoC1zu4o3AML4pVVt78By+/yrr6f/M9uI8xDBme2VWD4e50iFtiu9rKCiTfrFl1/DWudUFDyPqyLGiw7q1WOfgLaq2f3uoQ1rxypvdkHCzZY19qqG2aKOd3Mm/3dldKLfNfbmUuuqw/v6RVo2MivMuYiQQYgRqyqR5YvxeONm2Nltdy5lkhfXC9qvZCRBaTDPyolDnWRSFe64WemSKTLt1fbvEOnglUm0tsxNADo3TX4qbO/70XzY1nBDi+aNZWa25Qp87zIpIU3LIoqzaRT95h/Vib9XGlAuFYj4eQBchioofVzi8u/fGNOy6dznaiIXorg5XZcmyhWg3V4M8xVf+YwO4sNc9udWkfMzFsllBLBpMZKJQcC3eu4iXnMXO7xwmNm1V0QkegHqlOU63hem1N3VFmtA3SmmJ0ZAb4MqlaCHijmx/4DsOw/j7rGdeNvAgDIdZh5FAsikgOHXeAhSZmdPBp9US+6lmXksHRyVd4AJIrZa766PWqR5RXRPQzWKeJBvYII+tvD5t0hOzPGGGPcUK5cY8wKJF1jjDGzaoHL0BhjTCQJgFhfWNcYk5ta8elNKAAI6Rozy7N5klExwUqGkTHmHvpLPsJK5yOH03WeKQHUbwCgfyjmYc3HU/J1f+9qf6tvHT4cZKW76sXf7Jh8nsMleuCwGld1bJHswfF3cLgxURa20kPNfIoVO40J3EdmZnX9STqIvhsodrpyqR+0TbzwYHNitK/Ct85x9j/2wypz0jQNTKnsS5lMilLO0LWfRLnCrDdygp7nDSOBs2DJXs232z3AdVEQXIiNCmFeJvw0/UMSdmGF/uO9tteeTLLSq4SA5fj1336+7ZCDb9SvxFwp8y+HVYQOuxrui0Kv1IAA4amzz7f9/0i0r4dT6VVCwHKuuFF2OUemSdfc31v3J+36rlqBOdTF05F/6rQPd9lHveR96U7JShU2mGfb/+zo1eoxBuC7a99XthOpvwBABABxfICHe0aPTzoftcsU+d/mWSz7VLDqUL1DPf9HgZNwYgDQa1huMV7+UfiuBvhJerp22w+DtbtEc9mIr+RjFcfvOD5I+qBswio+ICJAetO8G0jkA1PvUlOpX8Ud8IlqL+hWvvY0oLUGSBPoIU95NKiYyaffBAC/i5+RphzWBZF/3rIbtfOiwLe27AdTJNAqdy/bzYuGlnuHZEhNWHltDvJyGWnfDeztf4CFq22scRlIQdCZpwEIs7TZEmIYirh2KIS+pSFgng0wfbHx9dJ9I1C/5/66j2MChBG2s4DOXG1CAOGbEH3HArfDmUjqZavZwWVndDj/U6/GaiIt3LEqc5wCjayqD2o7lD9FszIb9/Pyl4DQWLwSADEUQJRAvwoAiCYa+P5Dwv95ielAY7YuI0qIIANEYAB9SbHFr4kFrGOA6URCDyWQRBDXGtIjhL1p4edETIh/0LHL3nvm8ctWw2Irx1mfb7v685/5rPu8MdzNpoQC1tt4JaX7dlHACica6HsE+KUOlOsIZ9Z2JwIwc8KUcockATGSgA5m6D+tfyZfieZZ3WfFTx+Qq944vENUTRVr59u2jmyR2Cm0x8HnGeR0PEmogDUsTnrUYXWrqrO2cVlU9b8+EK0eY0AEFhYAfXcdCYjJIoc17K5XZV5JB29rWPp+sAuW3rn6A8nKVpOVmZ1GL3XdvODAbU5pr3fKr727IbQG9E3QL2Blwx2wCkDLgfktS1hCACAvuIU/7OvvQJRZMWnAKpRQv/W1fSIdxCUsPTA62gHLNztXbw7ooO1ulNu511Sg316tvJzpc80wzxQiQQIIX7Do/Q3AnSwAEHRvDcvkOxj6gUZYmmFeSTUqAsLgjiAmK4iGGUYjC4BwMxGQPfKHYyriLPOk8e3pY0pGv6PXxsGQWGxFdrWvvdlZuO7SngBgPaF/asgb2MD6gJ6PLWkLHbgXAP50BKC7mfaXGlEgqP+a27TI/cKd8jR0EAEi+IIvE5ewcEJAjAwoy7SvBdxn4bvBlOTTChexiny4r4KSnvigApuWiffsXF05k9dsttz+fpDWxPH6Up86se0niZFWmliTtb8kwZ9FCwJ0aGYLAlZ9SdAmCQkgGVoNULgSD2GoASyjWBIgTJLMvud9HXlj9cLYBzeJNIWJWYJWA7kEKJwJPYsExGxhrQkJFIbiIQw/rhpJWlh7v6TDZauyUCX0/2IdlJJLtHK0Y8za/1g+mtVq1UJopZVWWmmllVZaaaWVVlpp5YPlv8JI7NzN55iEAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDI1LTA2LTI1VDE1OjQzOjIwKzAwOjAw7UdKaQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyNS0wNi0yNVQxNTo0MzoyMCswMDowMJwa8tUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC" alt="LST Qualifier" class="brand-logo" style="max-height:52px; max-width:260px; height:auto; object-fit:contain;">
+        </div>
       
-      <!-- Top Header Row -->
-      <div class="flex items-center justify-between gap-2 pb-2 border-b border-neutral-800">
-        <span class="text-xs font-black uppercase text-cyan-400 tracking-wider flex items-center gap-1">
-          <span>✦</span>
-          <span>AUMENTE SEU &quot;AMIGÃO&quot; EM ATÉ 7CM</span>
-        </span>
-        <span class="text-[10px] font-mono font-bold bg-neutral-900 text-neutral-400 border border-neutral-800 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-          DIAGNÓSTICO LST
-        </span>
-      </div>
-
-      <!-- Main Headline H1 -->
-      <h1 class="text-xl sm:text-2xl font-black text-white leading-tight uppercase tracking-tight">
-        AUMENTE SEU &quot;AMIGÃO&quot; EM ATÉ 7 CM
-      </h1>
-
-      <!-- Parágrafo 1: Contexto / Lead do Método -->
-      <p class="text-sm sm:text-base text-neutral-200 leading-relaxed font-medium">
-        Muitos homens vivem com insatisfação sem nunca buscar uma solução, ou buscam e encontram promessas sem respaldo.
-      </p>
-
-      <!-- Parágrafo 2: A PREMISSA SELECIONADA / Apoio -->
-      <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-        Faça o diagnóstico gratuito e descubra se nosso procedimento é indicado para você
-      </p>
-
-      <!-- Badges de Autoridade Contextuais do Case -->
-      <div class="space-y-2.5 pt-1">
-        
-          <div class="flex items-center gap-3 p-3.5 bg-[#181818] rounded-2xl border border-neutral-800 text-xs sm:text-sm text-neutral-200">
-            <span class="text-base shrink-0">🔒</span>
-            <span class="font-bold">100% sigiloso</span>
-          </div>
-        
-          <div class="flex items-center gap-3 p-3.5 bg-[#181818] rounded-2xl border border-neutral-800 text-xs sm:text-sm text-neutral-200">
-            <span class="text-base shrink-0">⚡</span>
-            <span class="font-bold">Resultado em menos de 3 minutos</span>
-          </div>
-        
-          <div class="flex items-center gap-3 p-3.5 bg-[#181818] rounded-2xl border border-neutral-800 text-xs sm:text-sm text-neutral-200">
-            <span class="text-base shrink-0">✅</span>
-            <span class="font-bold">+650 homens transformados em Curitiba</span>
-          </div>
-        
-      </div>
-
-      <!-- Botão CTA Principal -->
-      <button onclick="startQuiz()" class="w-full py-4 btn-action text-sm sm:text-base font-black rounded-2xl shadow-xl tracking-wider uppercase mt-2">
-        INICIAR DIAGNÓSTICO GRATUITO ›
-      </button>
-    </div>
-
-    <!-- Screen 2: Quiz Multi-step -->
-    <div id="screen-quiz" class="hidden p-6 space-y-5">
-      <div>
-        <div class="flex justify-between items-end mb-2">
-          <span id="pilar-name" class="text-xs font-black uppercase tracking-widest text-cyan-400">Pilar</span>
-          <span id="quiz-pct" class="text-xs font-mono font-bold text-cyan-400">0%</span>
-        </div>
-        <div class="w-full h-1.5 bg-neutral-800 rounded-full overflow-hidden">
-          <div id="quiz-bar" class="progress-bar h-full rounded-full" style="width: 0%"></div>
-        </div>
-      </div>
-
-      <h3 id="question-title" class="text-base sm:text-lg font-bold text-white leading-snug"></h3>
-      <div id="options-box" class="space-y-2.5"></div>
-
-      <div class="flex justify-between items-center pt-2">
-        <button id="btn-back" onclick="prevStep()" class="text-xs sm:text-sm text-neutral-400 hover:text-white font-semibold flex items-center gap-1">
-          ← Voltar
-        </button>
-        <button id="btn-next" onclick="nextStep()" disabled class="px-6 py-2.5 btn-action text-xs sm:text-sm font-bold rounded-xl">
-          Próxima →
-        </button>
-      </div>
-    </div>
-
-    <!-- Screen 3: Lead Form (Completo & Canônico) -->
-    <div id="screen-lead" class="hidden p-6 space-y-4 text-center">
-      <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto text-2xl" style="background: rgba(0, 200, 83, 0.1); border: 1px solid rgba(0, 200, 83, 0.2);">
-        🔒
-      </div>
-      <div>
-        <h2 class="text-lg sm:text-xl font-black text-white uppercase tracking-tight">Diagnóstico Processado</h2>
-        <p class="text-xs sm:text-sm text-neutral-400 mt-1">Informe seus dados para receber o resultado completo. O atendimento é 100% sigiloso.</p>
-      </div>
-
-      <!-- Autofill Bar -->
-      <div id="autofill-bar" class="p-2.5 rounded-xl border flex items-center justify-between gap-2" style="background: rgba(0, 200, 83, 0.06); border-color: rgba(0, 200, 83, 0.2); display: none;">
-        <span class="text-xs font-bold text-emerald-400">⚡ Preenchimento salvo</span>
-        <div class="flex gap-1.5">
-          <button type="button" onclick="autofill()" class="px-2.5 py-1 bg-emerald-500 text-black text-xs font-black rounded-lg cursor-pointer">Usar</button>
-          <button type="button" onclick="clearSaved()" class="px-2 py-1 bg-neutral-800 text-neutral-400 text-xs rounded-lg border border-neutral-700 cursor-pointer">✕</button>
-        </div>
-      </div>
-
-      <form onsubmit="generateFinalResult(event)" class="space-y-3 text-left pt-1">
-        
-            <div>
-              <label class="block text-xs font-black uppercase tracking-wider text-neutral-400 mb-1">Seu Nome *</label>
-              <input 
-                type="text" 
-                id="lead-name" 
-                required 
-                placeholder="Como prefere ser chamado" 
-              />
-            </div>
-          
-            <div>
-              <label class="block text-xs font-black uppercase tracking-wider text-neutral-400 mb-1">WhatsApp com DDD *</label>
-              <input 
-                type="tel" 
-                id="lead-phone" 
-                required 
-                placeholder="(41) 99999-9999" 
-              />
-            </div>
-          
-            <div>
-              <label class="block text-xs font-black uppercase tracking-wider text-neutral-400 mb-1">E-mail de Contato *</label>
-              <input 
-                type="email" 
-                id="lead-email" 
-                required 
-                placeholder="seu@email.com" 
-              />
-            </div>
-          
-              <div id="box-ibge_location" class="space-y-1 relative">
-                <label class="block text-xs font-black uppercase tracking-wider text-neutral-400 mb-1">Sua Cidade &amp; Estado (UF) *</label>
-                <div class="relative">
-                  <input 
-                    type="text" 
-                    id="lead-ibge-location" 
-                    name="cidade_uf"
-                    required 
-                    autocomplete="off"
-                    placeholder="Digite sua Cidade - Estado (o sistema autocompletará)" 
-                    oninput="filtrarCidadesIBGE(this.value)" 
-                    onfocus="filtrarCidadesIBGE(this.value)" 
-                    onclick="filtrarCidadesIBGE(this.value)"
-                    onkeyup="filtrarCidadesIBGE(this.value)"
-                    class="w-full"
-                  />
-                  <div id="lead-ibge-dropdown" class="hidden absolute left-0 right-0 top-full mt-1.5 bg-[#181818] border border-cyan-500/50 rounded-2xl shadow-2xl z-[9999] max-h-60 overflow-y-auto divide-y divide-neutral-800 p-1"></div>
-                </div>
-                <p class="text-xs text-neutral-400 mt-1">💡 Conforme você digita, o sistema autocompleta a cidade com a UF oficial correspondente.</p>
-              </div>
-            
-              <div id="box-age" class="">
-                <label class="block text-xs font-black uppercase tracking-wider text-neutral-400 mb-1">Faixa Etária *</label>
-                <select id="lead-age" onchange="handleSelectChange('age', this.value)" required>
-                  <option disabled selected value="">Selecione sua faixa etária</option>
-                  <option value="30-39">30 – 39 anos</option><option value="25-29">25 – 29 anos</option><option value="40-49">40 – 49 anos</option><option value="50+">50 anos ou mais</option><option value="menor24">Menor de 25 anos</option>
-                </select>
-                
-                  <div id="age-warning" class="hidden p-2.5 rounded-lg text-rose-400 text-xs mt-1.5 font-semibold" style="background: rgba(255, 64, 96, 0.08); border: 1px solid rgba(255, 64, 96, 0.25);">
-                    ⚠️ O procedimento é indicado apenas para maiores de 25 anos.
-                  </div>
-                
-                <div id="outro-box-age" class="hidden mt-2 p-2.5 rounded-lg border space-y-1" style="background: rgba(168, 85, 247, 0.08); border-color: rgba(168, 85, 247, 0.3);">
-                  <label class="block text-xs font-bold uppercase text-purple-300">Por favor, especifique:</label>
-                  <input type="text" id="lead-age-outro" placeholder="Digite sua resposta personalizada..." style="background: rgba(0,0,0,0.4);" />
-                </div>
-              </div>
-            
-
-        <button type="submit" class="w-full py-4 btn-action text-sm sm:text-base font-black rounded-xl shadow-lg mt-2 cursor-pointer">
-          VER MEU DIAGNÓSTICO →
-        </button>
-      </form>
-    </div>
-
-    <!-- Screen 4: Loading Screen (Sequência Clínica Dinâmica) -->
-    <div id="screen-loading" class="hidden text-center py-14 px-6 space-y-5">
-      <div class="relative w-16 h-16 mx-auto">
-        <div style="border:4px solid #222; border-top-color:var(--primary); border-radius:50%; width:64px; height:64px; animation:.9s linear infinite spin"></div>
-        <div class="absolute inset-0 flex items-center justify-center text-sm font-black text-emerald-400">⚡</div>
-      </div>
-      <div class="space-y-1.5 max-w-xs mx-auto">
-        <div id="loading-phase-text" class="text-sm font-bold text-white transition-all duration-300">Analisando suas respostas...</div>
-        <p class="text-xs text-neutral-400">Cruzando seu perfil com os parâmetros clínicos da operação</p>
-      </div>
-      <div class="w-52 bg-neutral-800 h-1.5 rounded-full overflow-hidden mx-auto">
-        <div id="loading-progress-bar" class="progress-bar h-full w-1/4 transition-all duration-500"></div>
-      </div>
-    </div>
-
-    <!-- Screen 5: Result & Raio-X -->
-    <div id="screen-result" class="hidden p-6 space-y-6">
-      <div class="text-center space-y-4">
-        <p class="text-xs font-black uppercase tracking-widest text-neutral-400">Índice de Qualificação Oficial</p>
-        
-        <!-- Animated Score Wheel -->
-        <div class="relative inline-flex items-center justify-center">
-          <svg class="w-40 h-40" style="transform: rotate(-90deg);">
-            <circle cx="80" cy="80" r="70" fill="none" stroke="#222" stroke-width="9" />
-            <circle id="score-arc" cx="80" cy="80" r="70" fill="none" stroke="#00c853" stroke-width="9" stroke-dasharray="440" stroke-dashoffset="440" stroke-linecap="round" class="transition-all duration-1000" />
-          </svg>
-          <div class="absolute inset-0 flex flex-col items-center justify-center">
-            <span id="score-num" class="text-4xl sm:text-5xl font-black text-white font-mono">0</span>
-            <span class="text-[10px] font-bold uppercase tracking-wider text-neutral-500">Score / 100</span>
-          </div>
-        </div>
-
-        <div id="result-status-badge" class="p-3.5 rounded-xl text-center font-black uppercase text-xs sm:text-sm"></div>
-      </div>
-
-      <!-- Detailed Raio-X breakdown -->
-      <div class="p-5 rounded-2xl bg-neutral-900 border border-neutral-800 space-y-3">
-        <h4 class="text-xs font-black uppercase tracking-widest text-cyan-400 border-b border-neutral-800 pb-2">Raio-X Detalhado</h4>
-        <div id="raio-x-container" class="space-y-2.5 text-left"></div>
-      </div>
-
-      <!-- Dual CTA Box -->
-      <div id="cta-box" class="p-5 rounded-2xl border space-y-3 text-left"></div>
-    </div>
-
+    
   </div>
 
-  <!-- Rodapé Institucional do Cliente & LGPD -->
-  <footer class="mt-6 pt-4 border-t border-neutral-800 text-center text-[10px] text-neutral-400 space-y-1">
-    <div class="font-semibold text-neutral-300">
-      Alpha Clinic estética avançada Ltda • CNPJ: 59.191.705/0001-86
+  <!-- HEADLINE PRINCIPAL COM ESPAÇAMENTO RESPONSIVO -->
+  <div class="headline-box relative overflow-hidden">
+    <h1 class="headline-text uppercase tracking-tight font-black">AUMENTE SEU &quot;AMIGÃO&quot; EM ATÉ 7 CM</h1>
+  </div>
+
+  <div class="fade-up screen-container" id="screen-intro">
+    <p class="subtext-body mb-2">Muitos homens vivem com insatisfação sem nunca buscar uma solução, ou buscam e encontram promessas sem respaldo.</p>
+    <p class="subtext-body mb-5">Este diagnóstico avalia o seu perfil em menos de 3 minutos e indica se você é um candidato ao procedimento homologado pelo Método Porsch da AlphaClinic. Você pode ganhar até 7cm de comprimento ou espessura e voltar à sua rotina no mesmo dia.</p>
+    
+    <!-- BULLETS DE INSTIGAÇÃO -->
+    <div class="flex flex-col mb-6" style="gap:var(--elem-gap);" id="preview-bullets-box">
+      
+    <div class="bullet-card flex items-center gap-3.5 p-3.5 rounded-2xl">
+      <span style="flex-shrink:0;font-size:1.25em">🔒</span>
+      <span style="font-weight:600">100% sigiloso</span>
     </div>
-    <div class="text-neutral-500">
-      República Argentina 1336 sala 325, vila Izabel, Curitiba 80620010
+  
+    <div class="bullet-card flex items-center gap-3.5 p-3.5 rounded-2xl">
+      <span style="flex-shrink:0;font-size:1.25em">⚡</span>
+      <span style="font-weight:600">Resultado em menos de 3 minutos</span>
     </div>
-    <div class="pt-1">
-      <button type="button" onclick="openPrivacyModal()" class="text-cyan-400 hover:text-cyan-300 underline font-medium cursor-pointer bg-transparent border-0">
-        Política de Privacidade & Proteção de Dados (LGPD)
-      </button>
+  
+    <div class="bullet-card flex items-center gap-3.5 p-3.5 rounded-2xl">
+      <span style="flex-shrink:0;font-size:1.25em">✅</span>
+      <span style="font-weight:600">+650 homens transformados em Curitiba</span>
     </div>
-  </footer>
+  
+    </div>
+    
+    <button class="w-full py-4 btn-action shadow-xl flex items-center justify-center gap-2" id="btn-iniciar" onclick="startQuiz()">INICIAR DIAGNÓSTICO CORTESIA</button>
+    
+    <!-- DADOS CADASTRAIS DA EMPRESA (RODAPÉ) -->
+    
+    <div class="footer-company mt-6 pt-4 border-t border-neutral-800/80 text-center space-y-1" style="color:#a3a3a3;">
+      <div style="font-weight:700;color:#ffffff;">Alpha Clinic estética avançada Ltda • CNPJ: 59.191.705/0001-86</div>
+      <div>Estética Avançada Masculina • República Argentina 1336 sala 325, vila Izabel, Curitiba - PR, 80620-010</div>
+      <div class="flex items-center justify-center gap-2 text-[9px] mt-1.5" style="color:#a3a3a3;">
+        <span>© 2026 LST Qualifier.</span>
+        <span>•</span>
+        <button onclick="openPrivacyModal()" class="underline hover:opacity-80" style="background:none;border:none;color:inherit;cursor:pointer;">Privacidade & LGPD</button>
+      </div>
+    </div>
+  
+  </div>
+
+  <div class="hidden screen-container" id="screen-quiz">
+    <div class="mb-7">
+      <div class="flex justify-between items-end mb-2">
+        <span class="text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg" id="pilar-name" style="color:var(--plug-gold);background:rgba(0, 112, 243, 0.1)">Pilar</span>
+        <span class="text-sm font-bold" id="quiz-percent" style="color:var(--plug-gold);opacity:.6">0%</span>
+      </div>
+      <div class="w-full h-1.5 rounded-full" style="background:rgba(255,255,255,0.08)">
+        <div class="progress-bar h-full rounded-full" id="quiz-progress-bar" style="width:0%"></div>
+      </div>
+    </div>
+    <h3 class="question-title font-bold mb-7" id="question-text"></h3>
+    <div class="flex flex-col" style="gap:var(--elem-gap);" id="options-container"></div>
+    <div class="mt-8 flex items-center justify-between">
+      <button class="text-sm font-bold uppercase tracking-wider invisible flex items-center gap-2" style="color:var(--plug-text-sub);cursor:pointer;background:0 0;border:none" id="btn-prev" onclick="prevQuestion()">Voltar</button>
+      <button class="px-10 py-3.5 btn-action text-sm" disabled id="btn-next" onclick="nextQuestion()">PRÓXIMA →</button>
+    </div>
+  </div>
+
+  <div class="hidden screen-container text-center" id="screen-lead">
+    <h2 class="text-xl font-black uppercase tracking-tight mb-2" style="color:var(--plug-text-main)">Diagnóstico Concluído</h2>
+    <p class="subtext-body mb-5">Informe seus dados para liberar seu Score completo.</p>
+    <form class="flex flex-col gap-4 text-left" id="lead-form" onsubmit="generateResult(event)">
+      <div><label class="block text-[10px] font-black uppercase mb-1" style="color:var(--plug-text-sub)">Seu Nome Completo <span style="color:#f43f5e">*</span></label><input placeholder="Ex: João Silva" id="input-nome" required></div>
+      <div><label class="block text-[10px] font-black uppercase mb-1" style="color:var(--plug-text-sub)">WhatsApp com DDD <span style="color:#f43f5e">*</span></label><input placeholder="11 99999-9999" id="input-whatsapp" type="tel" required></div>
+      <div style="position:relative;">
+        <label class="block text-[10px] font-black uppercase mb-1 flex items-center justify-between" style="color:var(--plug-text-sub)">
+          <span>Cidade - Estado (IBGE) <span style="color:#f43f5e">*</span></span>
+          <span style="font-size:9px;color:var(--plug-gold);font-weight:bold;">📍 Busca IBGE</span>
+        </label>
+        <input placeholder="Digite para buscar sua cidade (ex: Curitiba - PR)" id="input-localizacao" autocomplete="off" required oninput="filterIbgeCities(this.value)" onfocus="filterIbgeCities(this.value)">
+        <div id="ibge-city-dropdown" style="position:absolute;left:0;right:0;top:100%;margin-top:4px;background:#0c1017;border:1px solid rgba(255,255,255,0.15);border-radius:12px;max-height:190px;overflow-y:auto;z-index:99;box-shadow:0 10px 25px rgba(0,0,0,0.8);display:none;font-size:12px;text-align:left;"></div>
+      </div>
+      <div>
+        <label class="block text-[10px] font-black uppercase mb-1" style="color:var(--plug-text-sub)">E-mail <span style="color:#f43f5e">*</span></label>
+        <input placeholder="ex. joãosilva@gmail.com" id="input-custom-bottom_field_1788478709823" data-custom-label="E-mail" class="custom-lead-input" required>
+      </div>
+      <div>
+        <label class="block text-[10px] font-black uppercase mb-1" style="color:var(--plug-text-sub)">Faixa Etária <span style="color:#f43f5e">*</span></label>
+        <select id="input-custom-bottom_field_1788478786001" data-custom-label="Faixa Etária" class="custom-lead-input" required onchange="handleSelectOtherToggle(this, 'w-outro-input-custom-bottom_field_1788478786001')">
+          <option value="" disabled selected>Seleciona sua faixa etária</option>
+          <option value="Menor de 25 anos" data-score="0" data-knockout="true" data-is-other="false">Menor de 25 anos</option><option value="25 – 29 anos" data-score="10" data-knockout="false" data-is-other="false">25 – 29 anos</option><option value="30 – 39 anos" data-score="5" data-knockout="false" data-is-other="false">30 – 39 anos</option><option value="40 – 49 anos" data-score="5" data-knockout="false" data-is-other="false">40 – 49 anos</option><option value="50 anos ou mais" data-score="5" data-knockout="false" data-is-other="false">50 anos ou mais</option>
+        </select>
+      </div>
+      <div id="w-outro-input-custom-bottom_field_1788478786001" style="display:none;margin-top:6px;">
+        <label class="block text-[10px] font-black uppercase mb-1" style="color:var(--plug-text-sub)">Especifique (Faixa Etária)</label>
+        <input id="input-custom-bottom_field_1788478786001-outro" placeholder="Especifique sua resposta..." class="custom-lead-input-outro">
+      </div>
+      <button class="w-full py-4 btn-action mt-2 shadow-xl">VER MEU RESULTADO →</button>
+    </form>
+    
+    <div class="mt-4 text-[9px] text-center" style="color:var(--plug-text-sub)">
+      <span>Ao avançar, você concorda com nossos </span>
+      <button onclick="openPrivacyModal()" class="underline hover:opacity-80" style="background:none;border:none;color:inherit;cursor:pointer;">Termos de Privacidade (LGPD)</button>.
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:3.5rem 2rem;display:none" id="screen-loading">
+    <div style="border:3px solid rgba(255,255,255,0.1);border-top-color:var(--plug-gold);border-radius:50%;width:52px;height:52px;margin:0 auto 1.5rem;animation:.9s linear infinite spin"></div>
+    <p style="color:var(--plug-gold);font-size:.8rem;font-weight:900;text-transform:uppercase">Calculando Índice de Qualificação...</p>
+  </div>
+
+  <div class="hidden screen-container" id="screen-result">
+    <div class="text-center mb-5">
+      <p class="text-[10px] font-black uppercase tracking-widest mb-2" style="color:var(--plug-text-sub)">Índice de Qualificação</p>
+      <div class="text-5xl font-black mb-1" id="score-value" style="color:var(--plug-gold)">0</div>
+      <span class="text-[10px] font-bold tracking-wider" style="color:var(--plug-text-sub)">Score / 100</span>
+    </div>
+
+    <!-- BADGE DE STATUS DO TIER -->
+    <div class="mb-4 p-3.5 rounded-2xl text-center font-black uppercase text-xs tracking-wider border border-neutral-800 shadow-sm transition-all" id="result-status"></div>
+    
+    <!-- CARD DE DIAGNÓSTICO EMPÁTICO & CONSEQUÊNCIA -->
+    <div id="result-card-box" class="rounded-2xl p-6 mb-6 transition-all duration-300 border text-left space-y-3">
+      <h4 class="font-black text-base" id="result-card-title" style="color:var(--plug-text-main)">Diagnóstico Comercial</h4>
+      <p class="text-xs leading-relaxed" id="result-card-desc" style="color:var(--plug-text-sub)">Avaliando os pilares do seu negócio...</p>
+      <a class="btn-action flex items-center justify-center w-full py-4 rounded-xl font-black text-xs uppercase tracking-wider text-center cursor-pointer transition shadow-lg mt-3" id="result-cta-btn" href="#">CONTINUAR ›</a>
+    </div>
+  </div>
 </div>
 
-<!-- Modal Standalone de Política de Privacidade & LGPD (Canônica e Completa) -->
-<div id="modal-privacy" class="modal-overlay fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4" onclick="if(event.target===this)closePrivacyModal()">
-  <div class="bg-[#111111] w-full max-w-2xl rounded-2xl border border-neutral-800 overflow-hidden shadow-2xl flex flex-col max-h-[90vh]" onclick="event.stopPropagation()">
-    
-    <!-- Modal Header -->
-    <div class="px-6 py-4 bg-[#161616] border-b border-neutral-800 flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm border border-emerald-500/30">🔒</div>
-        <div>
-          <h3 class="text-sm font-bold text-white">Política de Privacidade & Proteção de Dados (LGPD)</h3>
-          <p class="text-[11px] text-neutral-400">Transparência e conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018)</p>
-        </div>
+<!-- MODAL POLÍTICA DE PRIVACIDADE & LGPD -->
+<div id="modal-privacidade" class="modal-overlay" onclick="if(event.target===this)closePrivacyModal()">
+  <div class="modal-box space-y-4 text-left" style="background:var(--plug-card-bg); color:var(--plug-text-main); border:1px solid rgba(128,128,128,0.2);">
+    <div class="flex justify-between items-center pb-3 border-b" style="border-color:rgba(128,128,128,0.15);">
+      <div>
+        <h3 class="text-sm font-black uppercase tracking-wide" style="color:var(--plug-text-main);">Política de Privacidade & Proteção de Dados (LGPD)</h3>
+        <p class="text-[10px]" style="color:var(--plug-text-sub);">Transparência e conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018)</p>
       </div>
-      <button type="button" onclick="closePrivacyModal()" class="text-neutral-400 hover:text-white text-lg cursor-pointer bg-transparent border-0 px-2 py-1">✕</button>
+      <button onclick="closePrivacyModal()" class="hover:opacity-80 text-lg cursor-pointer" style="color:var(--plug-text-sub); background:none; border:none;">✕</button>
     </div>
 
-    <!-- Modal Content (Scrollable) -->
-    <div class="p-6 space-y-4 overflow-y-auto text-xs text-neutral-300 leading-relaxed font-sans">
-      
-      <!-- 1. Identificação do Controlador -->
-      <div class="p-3.5 bg-[#181818] rounded-xl border border-neutral-800 space-y-1 text-xs">
-        <span class="font-bold text-white uppercase tracking-wider text-[11px] block text-cyan-400">1. Identificação do Controlador dos Dados</span>
-        <p><strong class="text-white">Razão Social:</strong> <span class="text-white font-medium">Alpha Clinic estética avançada Ltda</span></p>
-        <p><strong class="text-white">CNPJ:</strong> <span class="font-mono text-white">59.191.705/0001-86</span></p>
-        <p><strong class="text-white">Endereço:</strong> <span class="text-white">República Argentina 1336 sala 325, vila Izabel, Curitiba 80620010</span></p>
-        <p><strong class="text-white">Canal de Atendimento / Encarregado (DPO):</strong> <span class="text-cyan-300 font-mono">alphaclinicestetica@gmail.com</span></p>
+    <div class="space-y-4 text-xs leading-relaxed text-neutral-300 max-h-[60vh] overflow-y-auto pr-2">
+      <div>
+        <h4 class="font-bold text-white mb-1">1. Identificação do Controlador dos Dados</h4>
+        <p><strong class="text-neutral-200">Razão Social:</strong> Alpha Clinic estética avançada Ltda</p>
+        <p><strong class="text-neutral-200">CNPJ:</strong> 59.191.705/0001-86</p>
+        <p><strong class="text-neutral-200">Endereço:</strong> República Argentina 1336 sala 325, vila Izabel, Curitiba - PR, 80620-010</p>
+        <p><strong class="text-neutral-200">Canal de Atendimento / Encarregado (DPO):</strong> alphaclinicestetica@gmail.com</p>
       </div>
 
-      <!-- 2. Objeto e Finalidade -->
-      <div class="space-y-1.5">
-        <h4 class="font-bold text-white text-xs">2. Objetivo do Diagnóstico Interativo</h4>
-        <p>
-          Este aplicativo de qualificação e diagnóstico interativo (<span class="text-cyan-300 font-medium">AUMENTE SEU &quot;AMIGÃO&quot; EM ATÉ 7 CM</span>) tem como objetivo exclusivo avaliar preliminarmente o perfil, momento e elegibilidade do titular interessado para receber atendimento consultivo personalizado.
-        </p>
+      <div>
+        <h4 class="font-bold text-white mb-1">2. Objetivo do Diagnóstico Interativo</h4>
+        <p>Este aplicativo de qualificação e diagnóstico interativo (Diagnóstico LST — LST Qualifier) tem como objetivo exclusivo avaliar preliminarmente o perfil, momento e elegibilidade do titular interessado para receber atendimento consultivo personalizado.</p>
       </div>
 
-      <!-- 3. Dados Coletados -->
-      <div class="space-y-1.5">
-        <h4 class="font-bold text-white text-xs">3. Dados Pessoais Coletados</h4>
+      <div>
+        <h4 class="font-bold text-white mb-1">3. Dados Pessoais Coletados</h4>
         <p>São coletados estritamente os dados necessários para o cálculo do Score de elegibilidade e contato:</p>
-        <ul class="list-disc list-inside space-y-1 pl-1 text-neutral-300">
-          <li><strong class="text-white">Dados de Identificação e Contato:</strong> Nome completo e número de WhatsApp/telefone.</li>
-          <li><strong class="text-white">Respostas de Qualificação:</strong> Informações sobre faixa de investimento, momento de decisão, objetivos e necessidades informadas no questionário.</li>
-          <li><strong class="text-white">Dados Técnicos:</strong> Horário de submissão, pontuação calculada e parâmetros de origem de campanha (UTMs).</li>
+        <ul class="list-disc list-inside mt-1 space-y-0.5 text-neutral-400">
+          <li><strong>Dados de Identificação e Contato:</strong> Nome completo e número de WhatsApp/telefone.</li>
+          <li><strong>Respostas de Qualificação:</strong> Informações sobre faixa de investimento, momento de decisão, objetivos e queixas informadas no questionário.</li>
+          <li><strong>Dados Técnicos:</strong> Horário de submissão, pontuação calculada e parâmetros de origem de campanha (UTMs).</li>
         </ul>
       </div>
 
-      <!-- 4. Base Legal e Tratamento -->
-      <div class="space-y-1.5">
-        <h4 class="font-bold text-white text-xs">4. Base Legal e Consentimento (Art. 7º LGPD)</h4>
-        <p>
-          O tratamento dos dados é realizado com base no consentimento livre e inequívoco do titular (Art. 7º, I) e na execução de procedimentos preliminares relacionados a contrato a pedido do titular (Art. 7º, V da Lei Federal nº 13.709/2018).
-        </p>
+      <div>
+        <h4 class="font-bold text-white mb-1">4. Base Legal e Consentimento (Art. 7º LGPD)</h4>
+        <p>O tratamento dos dados é realizado com base no consentimento livre e inequívoco do titular (Art. 7º, I) e na execução de procedimentos preliminares relacionados a contrato a pedido do titular (Art. 7º, V da Lei 13.709/2018).</p>
       </div>
 
-      <!-- 5. Sigilo e Compartilhamento -->
-      <div class="space-y-1.5">
-        <h4 class="font-bold text-white text-xs">5. Sigilo e Não Compartilhamento</h4>
-        <p>
-          Os dados fornecidos são tratados com <strong>sigilo absoluto</strong> e utilizados unicamente pela equipe autorizada do Controlador para fins de retorno consultivo via WhatsApp. Os dados <strong>nunca são comercializados, alugados ou compartilhados com terceiros não autorizados</strong>.
-        </p>
+      <div>
+        <h4 class="font-bold text-white mb-1">5. Sigilo e Não Compartilhamento</h4>
+        <p>Os dados fornecidos são tratados com sigilo absoluto e utilizados unicamente pela equipe autorizada do Controlador para fins de retorno consultivo via WhatsApp. Os dados nunca são comercializados, alugados ou compartilhados com terceiros não autorizados.</p>
       </div>
 
-      <!-- 6. Armazenamento e Segurança -->
-      <div class="space-y-1.5">
-        <h4 class="font-bold text-white text-xs">6. Armazenamento e Segurança dos Dados</h4>
-        <p>
-          Adotamos medidas técnicas e organizacionais adequadas para proteger os dados pessoais contra acessos não autorizados, destruição, perda, alteração ou qualquer forma de tratamento inadequado ou ilícito.
-        </p>
+      <div>
+        <h4 class="font-bold text-white mb-1">6. Direitos do Titular (Art. 18 LGPD)</h4>
+        <p>Você pode, a qualquer momento e sem custos, solicitar a confirmação da existência de tratamento, o acesso aos seus dados, a correção de dados incompletos ou a eliminação dos dados tratados mediante envio de mensagem para o e-mail ou WhatsApp oficial do Controlador.</p>
       </div>
 
-      <!-- 7. Direitos do Titular -->
-      <div class="space-y-1.5">
-        <h4 class="font-bold text-white text-xs">7. Direitos do Titular (Art. 18 LGPD)</h4>
-        <p>
-          Você pode, a qualquer momento e sem custos, solicitar a confirmação da existência de tratamento, o acesso aos seus dados, a correção de dados incompletos ou a eliminação dos dados tratados mediante envio de mensagem para o e-mail (<span class="text-cyan-300">alphaclinicestetica@gmail.com</span>) ou WhatsApp oficial do Controlador.
-        </p>
+      <div>
+        <h4 class="font-bold text-white mb-1">7. Segurança da Informação, Cookies e Rastreamento</h4>
+        <p>Os dados são armazenados em ambiente seguro com protocolo de criptografia HTTPS/SSL. O aplicativo pode utilizar identificadores técnicos e tags de mensuração (como Meta Pixel e Google Analytics/GTM) estritamente para avaliação de tráfego e eficácia de comunicação, respeitando o sigilo do titular.</p>
       </div>
 
+      <div class="pt-2 text-[10px] text-neutral-500 text-center">
+        Em conformidade com a Lei Federal nº 13.709/2018 (LGPD).
+      </div>
     </div>
 
-    <!-- Modal Footer -->
-    <div class="px-6 py-3 bg-[#161616] border-t border-neutral-800 flex items-center justify-between text-xs">
-      <span class="text-neutral-400 text-[11px]">Em conformidade com a Lei Federal nº 13.709/2018 (LGPD).</span>
-      <button type="button" onclick="closePrivacyModal()" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-5 py-2 rounded-lg transition shadow-md cursor-pointer border-0">
-        Entendido & Fechar
-      </button>
+    <div class="border-t border-neutral-800 pt-3 flex justify-end">
+      <button onclick="closePrivacyModal()" class="w-full py-2.5 btn-action !text-xs font-black">Entendido & Fechar</button>
     </div>
-
   </div>
 </div>
 
-<!-- Modal Educativo & Vídeo Contextual (Canônico) -->
-<div id="modal-educational-drawer" class="modal-overlay fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4" onclick="if(event.target===this)closeModal('modal-educational-drawer')">
-  <div class="bg-[#111111] w-full max-w-lg rounded-2xl border border-cyan-500/40 p-6 space-y-4 shadow-2xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
-    <div class="flex items-center justify-between border-b border-neutral-800 pb-3 shrink-0">
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 font-bold flex items-center justify-center text-sm border border-cyan-500/30">
-          💡
+<!-- DRAWER CONSULTIVO / EDUCATIVO MOBILE BOTTOM-SHEET -->
+<div id="drawer-educativo" onclick="if(event.target===this)closeDrawer()">
+  <div id="drawer-content" class="flex flex-col justify-between space-y-4" style="background:var(--plug-card-bg); color:var(--plug-text-main);">
+    <div class="space-y-4">
+      <!-- Barra Puxador para Mobile -->
+      <div class="w-10 h-1 rounded-full mx-auto sm:hidden" style="background:rgba(128,128,128,0.3);"></div>
+      <div class="flex justify-between items-center pb-3 border-b" style="border-color:rgba(128,128,128,0.15);">
+        <div class="flex items-center gap-2">
+          <span class="text-base">📖</span>
+          <h3 class="text-xs font-black uppercase tracking-wider" style="color:var(--plug-text-main); font-weight:800;">CONTEÚDO EDUCATIVO</h3>
         </div>
-        <div>
-          <h3 id="edu-modal-title" class="text-xs font-bold text-white uppercase tracking-wider">Conteúdo Educativo & Apresentação</h3>
-          <p id="edu-modal-subtitle" class="text-[10px] text-neutral-400">Entenda os detalhes antes de decidir</p>
-        </div>
+        <button onclick="closeDrawer()" class="hover:opacity-80 text-lg p-1 transition cursor-pointer" style="color:var(--plug-text-sub); background:none; border:none;" title="Fechar">✕</button>
       </div>
-      <button type="button" onclick="closeModal('modal-educational-drawer')" class="text-neutral-400 hover:text-white text-base cursor-pointer bg-transparent border-0">✕</button>
+
+      
+
+      <div class="p-3.5 rounded-xl text-xs leading-relaxed" style="background:rgba(var(--theme-c1-rgb, 59, 130, 246), 0.08); border: 1px solid rgba(var(--theme-c1-rgb, 59, 130, 246), 0.25); color:var(--plug-text-main);">
+        Entenda o procedimento clínico confidencial antes de agendar sua avaliação presencial.
+      </div>
+
+      <div class="space-y-2.5">
+        <div class="text-[10px] font-black uppercase tracking-wider flex items-center gap-1.5" style="color:var(--plug-gold);">
+          <span>⚠️</span> 3 Pilares Críticos & Recomendações
+        </div>
+        
+    <div class="drawer-point-item p-3.5 rounded-xl border space-y-1.5 text-left" style="background:var(--plug-bullets-bg); border-color:rgba(128,128,128,0.18);">
+      <div class="flex items-center gap-2">
+        <span class="text-base">�</span>
+        <span class="text-xs font-bold" style="color:var(--plug-text-main); font-weight:700;">O que é o procedimento?</span>
+      </div>
+      <p class="text-[11px] leading-relaxed" style="color:var(--plug-text-sub);">O procedimento com ácido hialurônico de alta densidade é minimamente invasivo, realizado em consultório médico com anestesia local, sem cortes e sem necessidade de repouso longo.</p>
+    </div>
+  
+    <div class="drawer-point-item p-3.5 rounded-xl border space-y-1.5 text-left" style="background:var(--plug-bullets-bg); border-color:rgba(128,128,128,0.18);">
+      <div class="flex items-center gap-2">
+        <span class="text-base">�</span>
+        <span class="text-xs font-bold" style="color:var(--plug-text-main); font-weight:700;">Para quem é indicado?</span>
+      </div>
+      <p class="text-[11px] leading-relaxed" style="color:var(--plug-text-sub);">Homens acima de 25 anos em boa saúde que buscam ganho de espessura e comprimento com resultado natural e imediato no mesmo dia.</p>
+    </div>
+  
+    <div class="drawer-point-item p-3.5 rounded-xl border space-y-1.5 text-left" style="background:var(--plug-bullets-bg); border-color:rgba(128,128,128,0.18);">
+      <div class="flex items-center gap-2">
+        <span class="text-base">�</span>
+        <span class="text-xs font-bold" style="color:var(--plug-text-main); font-weight:700;">Como funciona o atendimento na prática?</span>
+      </div>
+      <p class="text-[11px] leading-relaxed" style="color:var(--plug-text-sub);">1. Avaliação médica presencial ou confidencial -> 2. Definição do protocolo anatômico ideal -> 3. Procedimento com liberação no mesmo dia.</p>
+    </div>
+  
+      </div>
+
+      <div class="p-3.5 rounded-xl text-xs leading-relaxed" style="background:var(--plug-options-bg); border: 1px solid rgba(128,128,128,0.18);">
+        <div class="font-bold mb-1 flex items-center gap-1.5 text-[11px] uppercase tracking-wide" style="color:var(--plug-text-main);">
+          <span>🚀</span> Próximo Passo Recomendado
+        </div>
+        <div style="color:var(--plug-text-sub);">Nosso protocolo médico preza pela segurança e resultados realistas. Casos fora da faixa ou com dúvidas de agenda passam por orientação prévia com a equipe.</div>
+      </div>
     </div>
 
-    <div class="flex-1 overflow-y-auto space-y-4 text-xs pr-1">
-      <div id="edu-modal-video-container" class="rounded-xl overflow-hidden border border-neutral-800 bg-black aspect-video relative flex items-center justify-center"></div>
-      <div id="edu-modal-faq-blocks" class="space-y-2.5"></div>
-    </div>
-
-    <div class="pt-3 border-t border-neutral-800 flex items-center justify-between shrink-0 gap-2">
-      <button type="button" onclick="closeModal('modal-educational-drawer'); resetQuiz();" class="bg-neutral-900 hover:bg-neutral-800 text-cyan-400 font-bold text-xs px-4 py-2.5 rounded-xl border border-neutral-700 transition cursor-pointer flex items-center gap-1.5">
-        <span>🔄 Refazer Diagnóstico</span>
-      </button>
-      <button type="button" onclick="closeModal('modal-educational-drawer')" class="bg-neutral-800 hover:bg-neutral-750 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition cursor-pointer border-0">
-        Fechar
-      </button>
-    </div>
+    <button onclick="closeDrawer()" class="w-full py-3 text-xs font-black uppercase tracking-wider rounded-xl transition mt-4 cursor-pointer shadow-md hover:brightness-110" style="background:var(--plug-btn-bg); color:var(--plug-btn-text);">Entendido & Fechar</button>
   </div>
 </div>
 
 <script>
-const schema = {
-  "tagline": "AUMENTE SEU \"AMIGÃO\" EM ATÉ 7CM",
-  "categoryTag": "DIAGNÓSTICO LST",
-  "title": "AUMENTE SEU \"AMIGÃO\" EM ATÉ 7 CM",
-  "subtitle": "Faça o diagnóstico gratuito e descubra se nosso procedimento é indicado para você",
-  "introP1": "Muitos homens vivem com insatisfação sem nunca buscar uma solução, ou buscam e encontram promessas sem respaldo.",
-  "introP2": "Este diagnóstico avalia o seu perfil em menos de 3 minutos e indica se você é um candidato ao procedimento homologado pelo Método Porsch da AlphaClinic. Você pode ganhar até 7cm de comprimento ou espessura e voltar à sua rotina no mesmo dia.",
-  "companyName": "Alpha Clinic estética avançada Ltda",
-  "cnpj": "59.191.705/0001-86",
-  "address": "República Argentina 1336 sala 325, vila Izabel, Curitiba 80620010",
-  "email": "alphaclinicestetica@gmail.com",
-  "sheetsUrl": "https://script.google.com/macros/s/AKfycbzF21kOTrDpr2T0fdTMVW_aJs1M4EcMX6PS4PBaVfywJkW8gR1q1fA_5NW5_OlZMnUy9Q/exec",
-  "sheetsUrlAlpha": "https://script.google.com/macros/s/AKfycbzF21kOTrDpr2T0fdTMVW_aJs1M4EcMX6PS4PBaVfywJkW8gR1q1fA_5NW5_OlZMnUy9Q/exec",
-  "tintimUrl": "https://tintim.link/whatsapp/50204acc-acf9-4b1e-91be-0fb68b4d4f67/05b14e0e-0419-469b-8c15-3a11c745bd3d",
-  "adminPass": "alpha2026",
-  "videoEmbedUrl": "none",
-  "primaryColor": "#00c853",
-  "gtmEnabled": true,
-  "gtmId": "GTM-NN9T3KQ7",
-  "cadastroEventEnabled": true,
-  "cadastroEventName": "cadastro",
-  "qualificationEventEnabled": true,
-  "qualificationEventName": "lead_qualificado",
-  "premises": {
-    "segura": "Faça o diagnóstico gratuito e descubra se nosso procedimento é indicado para você",
-    "desafiadora": "Muitos homens vivem com insatisfação sem nunca buscar uma solução, ou buscam e encontram promessas sem respaldo.",
-    "provocadora": "Este diagnóstico avalia o seu perfil em menos de 3 minutos e indica se você é um candidato ao procedimento homologado pelo Método Porsch da AlphaClinic. Você pode ganhar até 7cm de comprimento ou espessura e voltar à sua rotina no mesmo dia."
+const questions = [
+  {
+    "pilar": "Autopercepção",
+    "question": "Como você se sente em relação ao tamanho do seu \"Amigão\"?",
+    "options": [
+      {
+        "txt": "Muito insatisfeito — isso afeta minha autoestima e vida íntima diariamente.",
+        "score": 20
+      },
+      {
+        "txt": "Insatisfeito — penso nisso com frequência mas ainda funciono normalmente.",
+        "score": 15
+      },
+      {
+        "txt": "Um pouco incomodado — não é urgente mas já passou pela minha cabeça.",
+        "score": 8
+      },
+      {
+        "txt": "Satisfeito — estou aqui por curiosidade apenas.",
+        "score": 0
+      }
+    ]
   },
-  "badges": [
-    {
-      "icon": "🔒",
-      "text": "100% sigiloso"
-    },
-    {
-      "icon": "⚡",
-      "text": "Resultado em menos de 3 minutos"
-    },
-    {
-      "icon": "✅",
-      "text": "+650 homens transformados em Curitiba"
-    }
-  ],
-  "ctaText": "INICIAR DIAGNÓSTICO GRATUITO ›",
-  "pillars": [
-    {
-      "id": "autopercepcao",
-      "name": "Autopercepção",
-      "weight": 0.15,
-      "icon": "👤"
-    },
-    {
-      "id": "impacto",
-      "name": "Impacto na Vida Íntima",
-      "weight": 0.15,
-      "icon": "🔥"
-    },
-    {
-      "id": "tentativas",
-      "name": "Tentativas Anteriores",
-      "weight": 0.15,
-      "icon": "🔄"
-    },
-    {
-      "id": "clinico",
-      "name": "Perfil Clínico",
-      "weight": 0,
-      "icon": "🩺"
-    },
-    {
-      "id": "decisao",
-      "name": "Decisão",
-      "weight": 0.25,
-      "icon": "⚡"
-    },
-    {
-      "id": "expectativa",
-      "name": "Expectativa",
-      "weight": 0,
-      "icon": "🎯"
-    },
-    {
-      "id": "budget",
-      "name": "Investimento & Planejamento",
-      "weight": 0.3,
-      "icon": "💰"
-    },
-    {
-      "id": "localizacao",
-      "name": "Localização",
-      "weight": 0,
-      "icon": "📍"
-    }
-  ],
-  "questions": [
-    {
-      "id": "q1",
-      "pillar": "autopercepcao",
-      "title": "Como  você se sente em relação ao  tamanho do seu \"Amigão\"?",
-      "options": [
-        {
-          "id": "opt_1_1",
-          "label": "Muito insatisfeito — isso afeta minha autoestima e vida íntima diariamente.",
-          "score": 20,
-          "disqualify": false
-        },
-        {
-          "id": "opt_1_2",
-          "label": "Insatisfeito — penso nisso com frequência mas ainda funciono normalmente.",
-          "score": 15,
-          "disqualify": false
-        },
-        {
-          "id": "opt_1_3",
-          "label": "Um pouco incomodado — não é urgente mas já passou pela minha cabeça.",
-          "score": 8,
-          "disqualify": false
-        },
-        {
-          "id": "opt_1_4",
-          "label": "Satisfeito — estou aqui por curiosidade apenas.",
-          "score": 0,
-          "disqualify": false,
-          "hardDisqualify": true
-        }
-      ]
-    },
-    {
-      "id": "q2",
-      "pillar": "impacto",
-      "title": "Esse incômodo já afetou sua vida íntima ou seus relacionamentos?",
-      "options": [
-        {
-          "id": "opt_2_1",
-          "label": "Sim, diretamente — evito situações íntimas por conta disso.",
-          "score": 20,
-          "disqualify": false
-        },
-        {
-          "id": "opt_2_2",
-          "label": "Às vezes — gera insegurança em momentos íntimos.",
-          "score": 14,
-          "disqualify": false
-        },
-        {
-          "id": "opt_2_3",
-          "label": "Raramente — mas já me gerou desconforto em algum momento.",
-          "score": 7,
-          "disqualify": false
-        },
-        {
-          "id": "opt_2_4",
-          "label": "Não — minha vida íntima está bem.",
-          "score": 0,
-          "disqualify": false
-        }
-      ]
-    },
-    {
-      "id": "q3",
-      "pillar": "tentativas",
-      "title": "Você já tentou alguma solução antes (pílulas, equipamentos, exercícios)?",
-      "options": [
-        {
-          "id": "opt_3_1",
-          "label": "Sim, várias — nenhuma funcionou de verdade.",
-          "score": 20,
-          "disqualify": false
-        },
-        {
-          "id": "opt_3_2",
-          "label": "Sim, algumas — tive resultados mínimos ou nulos.",
-          "score": 15,
-          "disqualify": false
-        },
-        {
-          "id": "opt_3_3",
-          "label": "Pesquisei mas nunca tomei ação.",
-          "score": 10,
-          "disqualify": false
-        },
-        {
-          "id": "opt_3_4",
-          "label": "Não, esta é minha primeira pesquisa séria.",
-          "score": 0,
-          "disqualify": false
-        }
-      ]
-    },
-    {
-      "id": "q4",
-      "pillar": "clinico",
-      "title": "Você tem alguma condição de saúde relevante que deva ser avaliada antes de procedimentos estéticos?",
-      "options": [
-        {
-          "id": "opt_4_1",
-          "label": "Não tenho nenhuma condição de saúde relevante.",
-          "score": 20,
-          "disqualify": false
-        },
-        {
-          "id": "opt_4_2",
-          "label": "Tenho mas está controlada com acompanhamento médico.",
-          "score": 14,
-          "disqualify": false
-        },
-        {
-          "id": "opt_4_3",
-          "label": "Tenho e não estou acompanhado atualmente.",
-          "score": 5,
-          "disqualify": false
-        },
-        {
-          "id": "opt_4_4",
-          "label": "Não sei / prefiro não informar.",
-          "score": 0,
-          "disqualify": false
-        }
-      ]
-    },
-    {
-      "id": "q5",
-      "pillar": "decisao",
-      "title": "Se você descobrir que é um candidato ideal, qual seria seu próximo passo?",
-      "options": [
-        {
-          "id": "opt_5_1",
-          "label": "Agendaria uma avaliação imediatamente.",
-          "score": 20,
-          "disqualify": false
-        },
-        {
-          "id": "opt_5_2",
-          "label": "Consideraria seriamente — precisaria de mais informações.",
-          "score": 14,
-          "disqualify": false
-        },
-        {
-          "id": "opt_5_3",
-          "label": "Pensaria por mais um tempo antes de decidir.",
-          "score": 7,
-          "disqualify": false
-        },
-        {
-          "id": "opt_5_4",
-          "label": "Apenas pesquisando, não tenho interesse agora",
-          "score": 0,
-          "disqualify": true
-        }
-      ]
-    },
-    {
-      "id": "q6",
-      "pillar": "expectativa",
-      "title": "O que você busca principalmente com o procedimento?",
-      "options": [
-        {
-          "id": "opt_6_1",
-          "label": "Autoestima e confiança — quero me sentir melhor comigo mesmo.",
-          "score": 20,
-          "disqualify": false
-        },
-        {
-          "id": "opt_6_2",
-          "label": "Melhora na vida íntima — quero mais satisfação e desempenho.",
-          "score": 18,
-          "disqualify": false
-        },
-        {
-          "id": "opt_6_3",
-          "label": "Resultado estético — quero uma mudança visível.",
-          "score": 15,
-          "disqualify": false
-        },
-        {
-          "id": "opt_6_4",
-          "label": "Curiosidade — quero entender as possibilidades.",
-          "score": 0,
-          "disqualify": false
-        }
-      ]
-    },
-    {
-      "id": "q7",
-      "pillar": "budget",
-      "title": "O procedimento fica a partir de R$ 4.300 e depende da anatomia, que define as possibilidades de aplicação para cada indivíduo. Como você se posiciona em relação a esse investimento?",
-      "options": [
-        {
-          "id": "opt_7_1",
-          "label": "Consigo fazer o investimento entre 30 e 60 dias.",
-          "score": 20,
-          "cap": 100,
-          "disqualify": false
-        },
-        {
-          "id": "opt_7_2",
-          "label": " Não estou em condições no momento. ",
-          "score": 14,
-          "cap": 95,
-          "disqualify": true
-        },
-        {
-          "id": "opt_7_3",
-          "label": "Estou preparado para investir no meu bem-estar.",
-          "score": 35,
-          "disqualify": false,
-          "hardDisqualify": true,
-          "cap": 51.5
-        },
-        {
-          "id": "opt_1788452105163_4",
-          "label": "Apenas pesquisando opções de cortesia / sem orçamento previsto",
-          "score": 0,
-          "disqualify": false
-        }
-      ]
-    }
-  ],
-  "selectedPremiseKey": "segura",
-  "niche": "Procedimento Estético Masculino & Método Porsch",
-  "icp": "Homens 25-65 anos buscando aumento de volume e confiança",
-  "ticketMedio": "R$ 4.300 a R$ 7.200",
-  "whatsappOficial": "5548999129069",
-  "routeA_name": "Aumente Seu Amigão em até 7cm",
-  "routeB_name": "Avaliação de Cortesia & Conteúdo Educativo",
-  "fontScale": "1.15",
-  "leadFormFields": [
-    {
-      "id": "name",
-      "label": "Seu Nome",
-      "placeholder": "Como prefere ser chamado",
-      "type": "text",
-      "required": true
-    },
-    {
-      "id": "phone",
-      "label": "WhatsApp com DDD",
-      "placeholder": "(41) 99999-9999",
-      "type": "tel",
-      "required": true
-    },
-    {
-      "id": "email",
-      "label": "E-mail de Contato",
-      "placeholder": "seu@email.com",
-      "type": "email",
-      "required": true
-    },
-    {
-      "id": "ibge_location",
-      "label": "Sua Cidade & Estado (UF)",
-      "placeholder": "Digite sua Cidade - Estado (o sistema autocompletará)",
-      "type": "ibge_location",
-      "required": true,
-      "enabled": true
-    },
-    {
-      "id": "age",
-      "label": "Faixa Etária",
-      "placeholder": "Selecione sua faixa etária",
-      "type": "select",
-      "required": true,
-      "options": [
-        "30 – 39 anos",
-        "25 – 29 anos",
-        "40 – 49 anos",
-        "50 anos ou mais",
-        "Menor de 25 anos"
-      ]
-    }
-  ],
-  "customPitch": "Olá! Tudo bem?\n\nEstive analisando a captação e o posicionamento da *Alpha Clinic estética avançada Ltda* e reparei que vocês recebem um volume alto de curiosos e pessoas sem perfil de compra no WhatsApp, o que consome horas preciosas da equipe comercial.\n\nNós desenvolvemos um *Diagnóstico Interativo de Qualificação (PUV Score LST)* estruturado especificamente para *AUMENTE SEU \"AMIGÃO\" EM ATÉ 7CM — MÉTODO PORSCH*.\n\n👉 *Como funciona na prática:*\n• O interessado responde perguntas estratégicas sobre *Autopercepção, Impacto na Vida Íntima, Tentativas Anteriores* em menos de 3 minutos no Link da Bio.\n• O algoritmo calcula um Score oficial (0 a 100) com travas anti-curiosos e direciona para *AlphaClinic Curitiba VIP*.\n• Sua equipe recebe o lead *já filtrado, mastigado e com intenção clara de compra* no WhatsApp.\n\nGravei uma demonstração prática de 2 minutos para você testar como fica no seu negócio. Posso te mandar o link aqui?",
-  "urlQualificado": "https://tintim.link/whatsapp/50204acc-acf9-4b1e-91be-0fb68b4d4f67/05b14e0e-0419-469b-8c15-3a11c745bd3d",
-  "urlDesqualificado": "https://alphaclinicc.com/descarte"
+  {
+    "pilar": "Impacto na Vida Íntima",
+    "question": "Esse incômodo já afetou sua vida íntima ou seus relacionamentos?",
+    "options": [
+      {
+        "txt": "Sim, diretamente — evito situações íntimas por conta disso.",
+        "score": 20
+      },
+      {
+        "txt": "Às vezes — gera insegurança em momentos íntimos.",
+        "score": 14
+      },
+      {
+        "txt": "Raramente — mas já me gerou desconforto em algum momento.",
+        "score": 7
+      },
+      {
+        "txt": "Não — minha vida íntima está bem.",
+        "score": 0
+      }
+    ]
+  },
+  {
+    "pilar": "Tentativas Anteriores",
+    "question": "Você já tentou alguma solução antes (pílulas, equipamentos, exercícios)?",
+    "options": [
+      {
+        "txt": "Sim, várias — nenhuma funcionou de verdade.",
+        "score": 20
+      },
+      {
+        "txt": "Sim, algumas — tive resultados mínimos ou nulos.",
+        "score": 15
+      },
+      {
+        "txt": "Pesquisei mas nunca tomei ação.",
+        "score": 10
+      },
+      {
+        "txt": "Não, esta é minha primeira pesquisa séria.",
+        "score": 0
+      }
+    ]
+  },
+  {
+    "pilar": "Perfil Clínico",
+    "question": "Você tem alguma condição de saúde relevante que deva ser avaliada antes de procedimentos estéticos?",
+    "options": [
+      {
+        "txt": "Não tenho nenhuma condição de saúde relevante.",
+        "score": 20
+      },
+      {
+        "txt": "Tenho mas está controlada com acompanhamento médico.",
+        "score": 14
+      },
+      {
+        "txt": "Tenho e não estou acompanhado atualmente.",
+        "score": 5
+      },
+      {
+        "txt": "Não sei / prefiro não informar.",
+        "score": 0
+      }
+    ]
+  },
+  {
+    "pilar": "Decisão",
+    "question": "Se você descobrir que é um candidato ideal, qual seria seu próximo passo?",
+    "options": [
+      {
+        "txt": "Agendaria uma avaliação imediatamente.",
+        "score": 20
+      },
+      {
+        "txt": "Consideraria seriamente — precisaria de mais informações.",
+        "score": 14
+      },
+      {
+        "txt": "Pensaria por mais um tempo antes de decidir.",
+        "score": 7
+      },
+      {
+        "txt": "Apenas pesquisando, não tenho interesse agora",
+        "score": 0
+      }
+    ],
+    "weight": 1.5
+  },
+  {
+    "pilar": "Expectativa",
+    "question": "O que você busca principalmente com o procedimento?",
+    "options": [
+      {
+        "txt": "Autoestima e confiança — quero me sentir melhor comigo mesmo.",
+        "score": 20
+      },
+      {
+        "txt": "Melhora na vida íntima — quero mais satisfação e desempenho.",
+        "score": 18
+      },
+      {
+        "txt": "Resultado estético — quero uma mudança visível.",
+        "score": 15
+      },
+      {
+        "txt": "Curiosidade — quero entender as possibilidades.",
+        "score": 0
+      }
+    ]
+  },
+  {
+    "pilar": "Investimento & Planejamento",
+    "question": "O procedimento fica a partir de R$ 4.300 e depende da anatomia, que define as possibilidades de aplicação para cada indivíduo. Como você se posiciona em relação a esse investimento?",
+    "options": [
+      {
+        "txt": "Estou preparado para investir no meu bem-estar.",
+        "score": 35
+      },
+      {
+        "txt": "Consigo fazer o investimento entre 30 e 60 dias.",
+        "score": 20
+      },
+      {
+        "txt": "Não estou em condições no momento.",
+        "score": 14
+      },
+      {
+        "txt": "Apenas pesquisando opções de cortesia / sem orçamento previsto",
+        "score": 0
+      }
+    ],
+    "weight": 2
+  }
+];
+const minScore = 65;
+const targetWhatsapp = "554187609808";
+const webhookEndpoints = ["https://script.google.com/macros/s/AKfycbxcXEnGOkdDxALTXYMXk_5sRKRgEuYsh-1jDeppz6HIMTZlIlUmahEAfIBdwzNwZp2j/exec","https://script.google.com/macros/s/AKfycbyzfttLI4M7qNYRIo4ibcEf7I_BRn8fyaWTzLiupxPemuQ6zhMNo2l-yGXPurHBd9Ig7w/exec"];
+const webhookEndpoint = webhookEndpoints[0] || "";
+const scoreTiers = {"low":{"min":0,"max":39,"badge":"� FORA DE CRITÉRIO / OUTRA PRAÇA","badgeColor":"#94a3b8","cardBg":"rgba(148, 163, 184, 0.05)","borderColor":"rgba(148, 163, 184, 0.2)","title":"Critérios de Elegibilidade","desc":"Identificamos que no momento seu perfil não atende aos critérios prévios para agendamento direto na unidade de Curitiba.","btnText":"� VER DIRETRIZES & ORIENTAÇÕES ›","action":"drawer"},"mid":{"min":40,"max":64,"badge":"� NECESSITA ALINHAMENTO PRÉVIO","badgeColor":"#f59e0b","cardBg":"rgba(245, 158, 11, 0.06)","borderColor":"rgba(245, 158, 11, 0.25)","title":"Protocolo de Orientação & Conteúdo Educativo","desc":"Seu perfil possui interesse, porém indicamos o esclarecimento prévio de dúvidas e alinhamento do protocolo clínico antes da consulta presencial.","btnText":"� ASSISTIR VÍDEO EXPLICATIVO & ORIENTAÇÕES ›","action":"drawer"},"high":{"min":65,"max":84,"badge":"⚡ CANDIDATO RECOMENDADO (CURITIBA)","badgeColor":"#00c853","cardBg":"rgba(0, 200, 83, 0.08)","borderColor":"rgba(0, 200, 83, 0.3)","title":"Qualificação Clínica Aprovada","desc":"Parabéns! Suas respostas atendem aos parâmetros de elegibilidade do Método Porsch. Sua vaga de atendimento exclusivo em Curitiba foi liberada.","btnText":"� FALAR COM ESPECIALISTA NO WHATSAPP ›","action":"whatsapp"},"elite":{"min":85,"max":100,"badge":"� CANDIDATO VIP & ALTA PRIORIDADE","badgeColor":"#10b981","cardBg":"rgba(16, 185, 129, 0.08)","borderColor":"rgba(16, 185, 129, 0.35)","title":"Atendimento Prioritário VIP Liberado","desc":"Perfil de máxima prontidão e compatibilidade total com o protocolo da AlphaClinic. Seu contato foi encaminhado com prioridade máxima na agenda da clínica.","btnText":"� INICIAR ATENDIMENTO VIP NO WHATSAPP ›","action":"whatsapp"}};
+const destConfig = {
+  type: "whatsapp",
+  customUrl: "",
+  autoOpen: true,
+  autoOpenDelay: 5,
+  forwardUtms: true
 };
-let currentStep = 0;
-let userAnswers = [];
 
-function pushLSTDataLayer(eventName, eventData) {
-  try {
-    window.dataLayer = window.dataLayer || [];
-    var payload = Object.assign({ event: eventName }, eventData || {});
-    window.dataLayer.push(payload);
-  } catch(e) {}
-}
+let currentStep = 0, userScores = [];
 
-function escapeHTML(str) {
-  if (str === null || str === undefined) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
+// ==========================================
+// BASE OFICIAL DE MUNICÍPIOS & ESTADOS (IBGE)
+// ==========================================
+const IBGE_CITIES = ["Curitiba - PR","São Paulo - SP","Rio de Janeiro - RJ","Belo Horizonte - MG","Porto Alegre - RS","Florianópolis - SC","Brasília - DF","Salvador - BA","Fortaleza - CE","Recife - PE","Goiânia - GO","Campinas - SP","Joinville - SC","Londrina - PR","Maringá - PR","Caxias do Sul - RS","São José dos Campos - SP","Ribeirão Preto - SP","Sorocaba - SP","Santos - SP","Vitória - ES","Vila Velha - ES","Cuiabá - MT","Campo Grande - MS","Manaus - AM","Belém - PA","Natal - RN","João Pessoa - PB","Maceió - AL","Teresina - PI","São Luís - MA","Aracaju - SE","Porto Velho - RO","Palmas - TO","Macapá - AP","Boa Vista - RR","Rio Branco - AC","Blumenau - SC","Balneário Camboriú - SC","Itajaí - SC","Cascavel - PR","Foz do Iguaçu - PR","Ponta Grossa - PR","Pelotas - RS","Santa Maria - RS","Passo Fundo - RS","Uberlândia - MG","Juiz de Fora - MG","Montes Claros - MG","Uberaba - MG","Niterói - RJ","São Gonçalo - RJ","Duque de Caxias - RJ","Petrópolis - RJ","Volta Redonda - RJ","Guarulhos - SP","São Bernardo do Campo - SP","Santo André - SP","Osasco - SP","Jundiaí - SP","Piracicaba - SP","Bauru - SP","Franca - SP","São José do Rio Preto - SP","Feira de Santana - BA","Vitória da Conquista - BA","Itabuna - BA","Ilhéus - BA","Caruaru - PE","Petrolina - PE","Campina Grande - PB","Mossoró - RN","Sobral - CE","Juazeiro do Norte - CE","Anápolis - GO","Rio Verde - GO","Rondonópolis - MT","Sinop - MT","Dourados - MS","Três Lagoas - MS","Santarém - PA","Marabá - PA","Imperatriz - MA","Araguaína - TO","Ji-Paraná - RO"];
+const geoRule = {"mode":"whitelist","bonusScore":15,"knockoutOutside":true,"knockoutMessage":"Atendimento restrito à nossa região de cobertura.","targetLocations":[{"name":"Curitiba - PR","type":"city","score":15}]};
 
-function openPrivacyModal() {
-  const m = document.getElementById('modal-privacy') || document.getElementById('modal-privacy-policy');
-  if (m) {
-    m.classList.remove('hidden');
-    m.classList.add('active', 'flex');
-    m.style.display = 'flex';
+function filterIbgeCities(val) {
+  var dropdown = document.getElementById('ibge-city-dropdown');
+  if (!dropdown) return;
+  val = (val || '').trim().toLowerCase();
+  if (val.length < 2) {
+    dropdown.style.display = 'none';
+    dropdown.innerHTML = '';
+    return;
   }
-}
-function closePrivacyModal() {
-  const m = document.getElementById('modal-privacy') || document.getElementById('modal-privacy-policy');
-  if (m) {
-    m.classList.add('hidden');
-    m.classList.remove('active', 'flex');
-    m.style.display = 'none';
+  var matches = IBGE_CITIES.filter(function(c) {
+    return c.toLowerCase().indexOf(val) >= 0;
+  }).slice(0, 8);
+
+  if (!matches.length) {
+    dropdown.innerHTML = '<div style="padding:10px;color:#94a3b8;font-style:italic;">Nenhum município encontrado</div>';
+    dropdown.style.display = 'block';
+    return;
   }
-}
-function openPrivacyPolicyModal() { openPrivacyModal(); }
-function closePrivacyPolicyModal() { closePrivacyModal(); }
-function openModal(id) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.classList.remove('hidden');
-    el.classList.add('active', 'flex');
-    el.style.display = 'flex';
-  }
-}
-function closeModal(id) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.classList.add('hidden');
-    el.classList.remove('active', 'flex');
-    el.style.display = 'none';
-  }
+  dropdown.innerHTML = matches.map(function(c) {
+    var isTarget = false;
+    if (geoRule && geoRule.mode === 'whitelist' && geoRule.targetLocations) {
+      isTarget = geoRule.targetLocations.some(function(tl) {
+        var tn = (typeof tl === 'string' ? tl : (tl.name || '')).toLowerCase();
+        return c.toLowerCase().indexOf(tn) >= 0 || (tn.length === 2 && c.toLowerCase().endsWith('- ' + tn));
+      });
+    }
+    var targetTag = isTarget ? '<span style="font-size:9px;color:#38bdf8;font-weight:bold;margin-left:6px;background:rgba(14,165,233,0.2);padding:2px 6px;border-radius:6px;">🎯 Área Alvo</span>' : '';
+    return '<div onclick="selectIbgeCity(\'' + c.replace(/'/g, "\\'") + '\')" style="padding:9px 12px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.06);color:#f1f5f9;display:flex;justify-content:space-between;align-items:center;" onmouseover="this.style.background=\'rgba(0,112,243,0.2)\'" onmouseout="this.style.background=\'transparent\'"><span>📍 ' + c + targetTag + '</span><span style="font-size:9px;color:#64748b;font-weight:bold;">IBGE</span></div>';
+  }).join('');
+  dropdown.style.display = 'block';
 }
 
-function formatUniversalVideoEmbed(raw) {
-  if (!raw || typeof raw !== 'string') return '';
-  raw = raw.trim();
-  if (!raw) return '';
+function selectIbgeCity(cityName) {
+  var input = document.getElementById('input-localizacao');
+  if (input) input.value = cityName;
+  var dropdown = document.getElementById('ibge-city-dropdown');
+  if (dropdown) dropdown.style.display = 'none';
+}
 
-  if (raw.indexOf('<iframe') !== -1 && raw.indexOf('src=') !== -1) {
-    var parts = raw.split('src=');
-    if (parts.length > 1) {
-      var quoteChar = parts[1].charAt(0);
-      if (quoteChar === '"' || quoteChar === "'") {
-        raw = parts[1].substring(1).split(quoteChar)[0];
+document.addEventListener('click', function(e) {
+  var dropdown = document.getElementById('ibge-city-dropdown');
+  var input = document.getElementById('input-localizacao');
+  if (dropdown && e.target !== input && !dropdown.contains(e.target)) {
+    dropdown.style.display = 'none';
+  }
+});
+
+// ==========================================
+// FORMATADOR UNIVERSAL DO RAIO-X PARA WHATSAPP
+// ==========================================
+function buildWhatsAppDiagnosticMessage(score, customInfo, customAnswers) {
+  var totalScore = typeof score === 'number' ? score : 85;
+  var statusTexto = totalScore >= 85 ? '🏆 ALTA PRIORIDADE (SCORE ELITE)' : (totalScore >= minScore ? '⚡ QUALIFICADO' : (totalScore >= 40 ? '⚖️ EM ANÁLISE / AJUSTE FINO' : '⛔ REPROVADO / EDUCATIVO'));
+  
+  var info = customInfo || {};
+  var nome = info.nome || (document.getElementById('input-nome')?.value || '').trim() || 'Lead Interessado';
+  var empresa = info.empresa || (document.getElementById('input-empresa')?.value || '').trim() || 'Empresa';
+  var whatsapp = info.whatsapp || (document.getElementById('input-whatsapp')?.value || '').trim() || '';
+  var email = info.email || (document.getElementById('input-email')?.value || '').trim() || '';
+  var localizacao = info.localizacao || (document.getElementById('input-localizacao')?.value || '').trim() || '';
+  var segmento = info.segmento || (document.getElementById('input-segmento')?.value || '').trim() || '';
+  var faturamento = info.faturamento || (document.getElementById('input-faturamento')?.value || '').trim() || '';
+  var instagram = info.instagram || (document.getElementById('input-instagram')?.value || '').trim() || '';
+  var site = info.site || (document.getElementById('input-site')?.value || '').trim() || '';
+
+  var header = "� *NOVO LEAD QUALIFICADO — RAIO-X LST*";
+  var includeLeadInfo = true;
+  var includeScore = true;
+  var includeQuestions = true;
+  var questionsTitle = "� *DIAGNÓSTICO COMPLETO (PERGUNTAS & RESPOSTAS):*";
+  var closing = "⚡ *Próximo Passo:* Concluí o diagnóstico e desejo atendimento para prosseguir.";
+  var fActive = {"nome":true,"empresa":false,"whatsapp":true,"email":false,"localizacao":true,"segmento":false,"faturamento":false,"instagram":false,"site":false};
+
+  var msgParts = [];
+  if (header && header.trim()) {
+    msgParts.push(header.trim());
+    msgParts.push('━━━━━━━━━━━━━━━━━━━━');
+  }
+
+  if (includeLeadInfo) {
+    var leadLines = [];
+    if (fActive.nome && nome) leadLines.push('👤 *Nome:* ' + nome);
+    if (fActive.whatsapp && whatsapp) leadLines.push('📱 *WhatsApp:* ' + whatsapp);
+    if (fActive.email && email) leadLines.push('✉️ *E-mail:* ' + email);
+    if (fActive.localizacao && localizacao) leadLines.push('📍 *Localização (IBGE):* ' + localizacao);
+    if (fActive.empresa && empresa) leadLines.push('🏢 *Empresa:* ' + empresa);
+    if (fActive.segmento && segmento) leadLines.push('🏷️ *Segmento:* ' + segmento);
+    if (fActive.faturamento && faturamento) leadLines.push('💰 *Faturamento:* ' + faturamento);
+    if (fActive.instagram && instagram) leadLines.push('📸 *Instagram:* ' + instagram);
+    if (fActive.site && site) leadLines.push('🌐 *Site:* ' + site);
+    
+    if (info.campos_customizados && Array.isArray(info.campos_customizados) && info.campos_customizados.length > 0) {
+      leadLines.push('━━━━━━━━━━━━━━━━━━━━');
+      leadLines.push('📌 *DADOS COMPLEMENTARES:*');
+      info.campos_customizados.forEach(function(cf) {
+        if (cf.label && cf.valor) {
+          leadLines.push('🔸 *' + cf.label + ':* ' + cf.valor);
+        }
+      });
+    }
+    if (leadLines.length > 0) {
+      msgParts.push(leadLines.join('\n'));
+    }
+  }
+
+  if (includeScore) {
+    msgParts.push('━━━━━━━━━━━━━━━━━━━━');
+    msgParts.push('📊 *Score Final:* ' + totalScore + '/100 — ' + statusTexto);
+  }
+
+  if (includeQuestions) {
+    var respostas = customAnswers;
+    if (!respostas || !respostas.length) {
+      respostas = questions.map(function(q, i) {
+        var choice = userScores[i];
+        var chosenTxt = (choice && choice.txt) ? choice.txt : ((q.options && q.options[0]) ? q.options[0].txt : 'Confirmado');
+        return {
+          pilar: q.pilar || ('Pilar ' + (i + 1)),
+          pergunta: q.question || ('Pergunta ' + (i + 1)),
+          txt: chosenTxt
+        };
+      });
+    }
+    var blocoPerguntas = respostas.map(function(item, idx) {
+      return '🔹 *P' + (idx + 1) + ' [' + (item.pilar || 'Pilar') + ']:*\n❓ ' + item.pergunta + '\n👉 *R:* ' + item.txt;
+    }).join('\n\n');
+
+    msgParts.push('━━━━━━━━━━━━━━━━━━━━');
+    if (questionsTitle && questionsTitle.trim()) {
+      msgParts.push(questionsTitle.trim() + '\n');
+    }
+    msgParts.push(blocoPerguntas);
+  }
+
+  if (closing && closing.trim()) {
+    msgParts.push('━━━━━━━━━━━━━━━━━━━━');
+    msgParts.push(closing.trim());
+  }
+
+  return msgParts.join('\n');
+}
+
+// ==========================================
+// FUNÇÕES DE CONTROLE GLOBAL PARA O BUILDER
+// ==========================================
+window.renderResultScreen = function(score, customData) {
+  const totalScore = typeof score === 'number' ? score : 85;
+  const loading = document.getElementById('screen-loading');
+  if (loading) loading.style.display = 'none';
+  window.showScreen('screen-result');
+
+  // Disparo de Evento: resultado_gerado
+  var resEv = 'resultado_gerado';
+  dispatchTrackingEvent(resEv, {
+    score: totalScore,
+    qualificado: totalScore >= minScore
+  }, ['resultado_gerado', 'resultado gerado', 'Resultado_Gerado', 'quiz_result']);
+
+  const scoreEl = document.getElementById('score-value');
+  if (scoreEl) scoreEl.innerText = totalScore;
+
+  let tier = scoreTiers.low;
+  if (totalScore >= 85) {
+    tier = scoreTiers.elite;
+  } else if (totalScore >= minScore) {
+    tier = scoreTiers.high;
+  } else if (totalScore >= 40) {
+    tier = scoreTiers.mid;
+  } else {
+    tier = scoreTiers.low;
+  }
+
+  const resStatus = document.getElementById('result-status');
+  const resultBox = document.getElementById('result-card-box');
+  const resultTitle = document.getElementById('result-card-title');
+  const resultDesc = document.getElementById('result-card-desc');
+  const btnCta = document.getElementById('result-cta-btn');
+
+  if (resStatus) {
+    resStatus.innerHTML = tier.badge;
+    resStatus.style.color = tier.badgeColor || 'var(--plug-gold)';
+  }
+
+  if (resultBox) {
+    resultBox.style.background = tier.cardBg || 'rgba(255,255,255,0.03)';
+    resultBox.style.borderColor = tier.borderColor || 'rgba(255,255,255,0.1)';
+  }
+
+  if (resultTitle) resultTitle.innerText = tier.title;
+  if (resultDesc) resultDesc.innerText = tier.desc;
+
+  if (btnCta) {
+    btnCta.innerText = tier.btnText;
+    if (tier.action === 'whatsapp') {
+      btnCta.onclick = null;
+      var targetUrl = '';
+      
+      if (destConfig.type === 'custom_url' && destConfig.customUrl) {
+        targetUrl = destConfig.customUrl;
+        var pUtms = (customData && customData.leadInfo && customData.leadInfo.utms) ? customData.leadInfo.utms : {};
+        if (destConfig.forwardUtms && pUtms && Object.keys(pUtms).length) {
+          var sep = targetUrl.indexOf('?') >= 0 ? '&' : '?';
+          var queryParts = [];
+          for (var k in pUtms) {
+            if (pUtms[k]) queryParts.push(encodeURIComponent(k) + '=' + encodeURIComponent(pUtms[k]));
+          }
+          if (queryParts.length) targetUrl += sep + queryParts.join('&');
+        }
       } else {
-        raw = parts[1].split(' ')[0];
+        const leadMsg = (customData && customData.msg) ? customData.msg : buildWhatsAppDiagnosticMessage(totalScore, customData ? customData.leadInfo : null, customData ? customData.respostas : null);
+        targetUrl = 'https://api.whatsapp.com/send?phone=' + targetWhatsapp + '&text=' + encodeURIComponent(leadMsg);
+      }
+
+      btnCta.href = targetUrl;
+      btnCta.target = '_blank';
+
+      // Auto-abertura inteligente após 5 segundos na tela de resultado
+      if (destConfig.autoOpen && !window.__lstAutoOpened && totalScore >= minScore) {
+        window.__lstAutoOpened = true;
+        var autoTimerBadge = document.getElementById('auto-redirect-badge');
+        if (!autoTimerBadge) {
+          autoTimerBadge = document.createElement('div');
+          autoTimerBadge.id = 'auto-redirect-badge';
+          autoTimerBadge.className = 'text-center text-xs text-neutral-400 mt-2.5 flex items-center justify-center gap-1.5 animate-pulse';
+          if (btnCta.parentNode) btnCta.parentNode.appendChild(autoTimerBadge);
+        }
+        
+        var countLeft = destConfig.autoOpenDelay || 5;
+        autoTimerBadge.innerHTML = '<span>⏳</span> Abrindo atendimento automaticamente em <strong id="auto-sec-count" class="text-white font-bold">' + countLeft + 's</strong>...';
+        
+        var countdownInterval = setInterval(function() {
+          countLeft--;
+          var elCount = document.getElementById('auto-sec-count');
+          if (elCount) elCount.innerText = countLeft + 's';
+          if (countLeft <= 0) {
+            clearInterval(countdownInterval);
+            if (autoTimerBadge) {
+              autoTimerBadge.innerHTML = '<span>✅</span> Atendimento iniciado! Se a página não abriu, <a href="' + targetUrl + '" target="_blank" class="underline font-bold text-white hover:text-blue-400">clique aqui</a>.';
+              autoTimerBadge.classList.remove('animate-pulse');
+            }
+            try {
+              window.open(targetUrl, '_blank');
+            } catch(e) {
+              console.warn('Auto-open bloqueado pelo navegador:', e);
+            }
+          }
+        }, 1000);
+
+        btnCta.addEventListener('click', function() {
+          clearInterval(countdownInterval);
+          if (autoTimerBadge) autoTimerBadge.style.display = 'none';
+        });
+      }
+    } else {
+      btnCta.href = '#';
+      btnCta.removeAttribute('target');
+      btnCta.onclick = function(ev) {
+        if (ev) ev.preventDefault();
+        openDrawer();
+      };
+    }
+  }
+};
+
+window.showScreen = function(screenId) {
+  ['screen-intro', 'screen-quiz', 'screen-lead', 'screen-result'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.add('hidden');
+  });
+  const loading = document.getElementById('screen-loading');
+  if (loading) loading.style.display = 'none';
+
+  const target = document.getElementById(screenId);
+  if (target) {
+    target.classList.remove('hidden');
+    if (screenId === 'screen-loading') target.style.display = 'block';
+  }
+};
+
+window.goToQuestion = function(qIndex) {
+  if (qIndex >= 0 && qIndex < questions.length) {
+    currentStep = qIndex;
+    window.showScreen('screen-quiz');
+    renderQuestion();
+  }
+};
+
+window.scrollToSection = function(selector) {
+  const el = document.querySelector(selector);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+};
+
+function handleSelectOtherToggle(sel, boxId) {
+  var box = document.getElementById(boxId);
+  if (!box) return;
+  var opt = sel.options[sel.selectedIndex];
+  var isOther = opt && (opt.dataset.isOther === 'true' || (opt.value || '').trim().toLowerCase().startsWith('outro'));
+  box.style.display = isOther ? 'block' : 'none';
+  if (isOther) {
+    var inp = box.querySelector('input');
+    if (inp) {
+      setTimeout(function() { inp.focus(); }, 40);
+    }
+  }
+}
+
+function handleQuestionOtherInput(step, optIdx, val) {
+  if (userScores[step] && userScores[step].index === optIdx) {
+    userScores[step].customText = val;
+    var base = (questions[step].options[optIdx] && questions[step].options[optIdx].txt) ? questions[step].options[optIdx].txt : 'Outro';
+    userScores[step].txt = val.trim() ? (base + ': ' + val.trim()) : base;
+  }
+}
+
+// ==========================================
+// CENTRAL DE TRACKING & DISPARO DE EVENTOS (GTM, GA4, META, TIKTOK)
+// ==========================================
+function dispatchTrackingEvent(eventName, payload, altNames) {
+  try {
+    var utms = (typeof getUrlUtms === 'function') ? getUrlUtms() : {};
+    var baseData = Object.assign({
+      event: eventName,
+      event_name: eventName,
+      quiz_name: 'LST Qualifier',
+      utms: utms,
+      timestamp: new Date().toISOString()
+    }, payload || {});
+
+    // 1. Google Tag Manager (window.dataLayer)
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(baseData);
+
+    // Nomes alternativos para compatibilidade máxima com triggers no GTM (espaços, hífens, minúsculas)
+    if (Array.isArray(altNames)) {
+      altNames.forEach(function(alt) {
+        if (alt && alt !== eventName) {
+          var altData = Object.assign({}, baseData, { event: alt, event_name: alt });
+          window.dataLayer.push(altData);
+        }
+      });
+    }
+
+    // 2. Google Analytics 4 (gtag)
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, baseData);
+    }
+
+    // 3. Meta Pixel (Facebook / Instagram Ads)
+    if (typeof window.fbq === 'function') {
+      window.fbq('trackCustom', eventName, baseData);
+      if (eventName === 'cadastro' || eventName === 'lead_qualificado' || eventName === 'lead_qualificado') {
+        window.fbq('track', 'Lead', {
+          content_name: 'LST Qualifier',
+          value: (payload && payload.score) ? payload.score : 1,
+          currency: 'BRL'
+        });
       }
     }
-  }
 
-  var ytId = null;
-  if (raw.indexOf('shorts/') !== -1) {
-    ytId = raw.split('shorts/')[1].split(/[?&#/]/)[0];
-  } else if (raw.indexOf('watch?v=') !== -1) {
-    ytId = raw.split('watch?v=')[1].split(/[?&#/]/)[0];
-  } else if (raw.indexOf('youtu.be/') !== -1) {
-    ytId = raw.split('youtu.be/')[1].split(/[?&#/]/)[0];
-  } else if (raw.indexOf('embed/') !== -1) {
-    ytId = raw.split('embed/')[1].split(/[?&#/]/)[0];
-  } else if (raw.length === 11 && !raw.includes('/') && !raw.includes('.')) {
-    ytId = raw;
-  }
-
-  if (ytId && ytId.length >= 10) {
-    return '<iframe src="https://www.youtube-nocookie.com/embed/' + ytId + '?rel=0&modestbranding=1&playsinline=1&controls=1&enablejsapi=1" title="Vídeo Explicativo" class="w-full h-full min-h-[220px] sm:min-h-[260px] rounded-xl border-0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
-  }
-
-  if (raw.indexOf('vimeo.com/') !== -1) {
-    var vParts = raw.split('vimeo.com/')[1].split(/[?&#/]/);
-    var vId = vParts[vParts.length - 1] || vParts[0];
-    if (vId) {
-      return '<iframe src="https://player.vimeo.com/video/' + vId + '?playsinline=1" class="w-full h-full min-h-[220px] sm:min-h-[260px] rounded-xl border-0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+    // 4. TikTok Pixel
+    if (typeof window.ttq === 'object' && typeof window.ttq.track === 'function') {
+      if (eventName === 'quiz_start') {
+        window.ttq.track('ViewContent', { content_name: 'LST Qualifier' });
+      } else if (eventName === 'formulario_aberto') {
+        window.ttq.track('InitiateCheckout', { content_name: 'LST Qualifier' });
+      } else if (eventName === 'cadastro' || eventName === 'lead_qualificado') {
+        window.ttq.track('SubmitForm', { content_name: 'LST Qualifier', value: (payload && payload.score) ? payload.score : 0 });
+      }
     }
-  }
 
-  if (raw.indexOf('loom.com/') !== -1) {
-    var lParts = raw.split('/')[raw.split('/').length - 1].split(/[?&#]/)[0];
-    if (lParts) {
-      return '<iframe src="https://www.loom.com/embed/' + lParts + '" class="w-full h-full min-h-[220px] sm:min-h-[260px] rounded-xl border-0" frameborder="0" allow="fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
-    }
-  }
-
-  if (raw.indexOf('drive.google.com/file/d/') !== -1) {
-    var gId = raw.split('/file/d/')[1].split('/')[0];
-    if (gId) {
-      return '<iframe src="https://drive.google.com/file/d/' + gId + '/preview" class="w-full h-full min-h-[220px] sm:min-h-[260px] rounded-xl border-0" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
-    }
-  }
-
-  if (raw.endsWith('.mp4') || raw.indexOf('.mp4?') !== -1 || raw.indexOf('/video.mp4') !== -1 || raw.indexOf('data:video') === 0) {
-    return '<video src="' + raw + '" controls playsinline class="w-full h-full min-h-[220px] sm:min-h-[260px] rounded-xl object-cover"></video>';
-  }
-
-  if (raw.indexOf('http://') === 0 || raw.indexOf('https://') === 0) {
-    return '<iframe src="' + raw + '" class="w-full h-full min-h-[220px] sm:min-h-[260px] rounded-xl border-0" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
-  }
-
-  return '';
-}
-
-function generateEducationalContentForNiche(sch) {
-  if (!sch) sch = schema || {};
-  const title = (sch.title || '').toLowerCase();
-  const niche = (sch.niche || '').toLowerCase();
-  const comp = sch.companyName || (sch.title ? sch.title.split('—')[0].replace(/diagn[oó]sticos*(?:lst)?/gi, '').trim() : '') || 'Nossa Empresa';
-  const offerA = sch.routeA_name || (comp + ' VIP');
-  const offerB = sch.routeB_name || 'Atendimento de Cortesia';
-  const videoUrl = sch.videoEmbedUrl || '';
-
-  if (title.includes('alphaclinic') || title.includes('homem') || title.includes('porsch') || niche.includes('masculino')) {
-    return {
-      title: 'AlphaClinic — Conteúdo Educativo & Procedimento',
-      subtitle: 'Entenda o procedimento clínico confidencial antes de agendar sua avaliação.',
-      videoUrl: videoUrl,
-      videoTitle: 'Vídeo Explicativo do Procedimento Clínico — AlphaClinic',
-      blocks: [
-        { q: 'O que é o procedimento?', a: 'O procedimento com ácido hialurônico de alta densidade é minimamente invasivo, realizado em consultório médico com anestesia local, sem cortes e sem necessidade de repouso longo.' },
-        { q: 'Para quem é indicado?', a: 'Homens acima de 25 anos em boa saúde que buscam ganho de espessura e comprimento com resultado natural e imediato no mesmo dia.' },
-        { q: 'Como funciona o atendimento na prática?', a: '1. Avaliação médica presencial ou confidencial -> 2. Definição do protocolo anatômico ideal -> 3. Procedimento com liberação no mesmo dia.' },
-        { q: 'Por que o diagnóstico identificou necessidade de alinhamento prévio?', a: 'Nosso protocolo médico preza pela segurança e resultados realistas. Casos fora da faixa ou com dúvidas de agenda passam por orientação prévia com a equipe.' }
-      ]
-    };
-  }
-
-  return {
-    title: comp + ' — Conteúdo Explicativo & Guia Oficial',
-    subtitle: 'Tudo o que você precisa saber sobre nossas soluções antes de avançar.',
-    videoUrl: videoUrl,
-    videoTitle: 'Apresentação dos Serviços — ' + comp,
-    blocks: [
-      { q: 'Como funciona o atendimento na ' + comp + '?', a: 'Oferecemos um protocolo exclusivo focado em excelência técnica, personalização e acompanhamento direto com especialistas.' },
-      { q: 'Para quem é indicado o ' + offerA + '?', a: 'Clientes que buscam a solução mais completa, com máxima prioridade de atendimento e garantia de padrão premium.' },
-      { q: 'O que é a Rota B (' + offerB + ')?', a: 'Uma etapa de alinhamento e degustação estratégica para você entender os detalhes do serviço, tirar dúvidas e planejar seu investimento com tranquilidade.' },
-      { q: 'Como agendar ou falar com a equipe?', a: 'Você pode iniciar uma conversa direta no nosso canal oficial com as informações do seu diagnóstico já salvas.' }
-    ]
-  };
-}
-
-function openEducationalModal() {
-  renderEducationalModalContent();
-  openModal('modal-educational-drawer');
-}
-
-function renderEducationalModalContent() {
-  const eduData = generateEducationalContentForNiche(schema);
-  const titleEl = document.getElementById('edu-modal-title');
-  const subEl = document.getElementById('edu-modal-subtitle');
-  const videoCont = document.getElementById('edu-modal-video-container');
-  const faqCont = document.getElementById('edu-modal-faq-blocks');
-
-  if (titleEl) titleEl.textContent = eduData.title;
-  if (subEl) subEl.textContent = eduData.subtitle;
-
-  const rawUrl = (schema && schema.videoEmbedUrl) || (eduData && eduData.videoUrl) || '';
-  if (videoCont) {
-    const embedHtml = formatUniversalVideoEmbed(rawUrl);
-    if (embedHtml) {
-      videoCont.classList.remove('hidden');
-      videoCont.style.display = 'flex';
-      videoCont.innerHTML = embedHtml;
-    } else {
-      videoCont.classList.add('hidden');
-      videoCont.style.display = 'none';
-      videoCont.innerHTML = '';
-    }
-  }
-
-  if (faqCont) {
-    faqCont.innerHTML = (eduData.blocks || []).map((b, bIdx) => 
-      '<div class="p-3.5 bg-neutral-900 rounded-xl border border-neutral-800 space-y-1 text-left">' +
-        '<div class="font-bold text-cyan-400 text-[11px] flex items-center gap-1.5">' +
-          '<span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] flex items-center justify-center font-mono font-bold shrink-0">' + (bIdx + 1) + '</span>' +
-          '<span>' + escapeHTML(b.q) + '</span>' +
-        '</div>' +
-        '<p class="text-neutral-200 text-xs leading-relaxed pl-5.5">' + escapeHTML(b.a) + '</p>' +
-      '</div>'
-    ).join('');
+    console.log("📊 [Tracking LST v5.1.3] Evento disparado com sucesso:", eventName, baseData);
+  } catch(err) {
+    console.warn("Aviso no tracking do LST:", err);
   }
 }
 
 function startQuiz() {
-  currentStep = 0;
-  userAnswers = [];
-  pushLSTDataLayer('quiz_start');
-  document.getElementById('screen-intro').classList.add('hidden');
-  document.getElementById('screen-quiz').classList.remove('hidden');
-  renderStep();
+  currentStep = 0; userScores = [];
+  window.showScreen('screen-quiz');
+  renderQuestion();
+
+  // Disparo de Evento: quiz_start
+  var startEv = 'quiz_start';
+  dispatchTrackingEvent(startEv, { step: 1 }, ['quiz_start', 'quiz start', 'Quiz_Start', 'quiz-start']);
 }
 
-function renderStep() {
-  const q = schema.questions[currentStep];
-  const pct = Math.round(((currentStep + 1) / schema.questions.length) * 100);
-
-  if (currentStep > 0) {
-    const stepNum = currentStep + 1;
-    const stepTag = 'quiz_stp' + (stepNum < 10 ? '0' + stepNum : '' + stepNum);
-    pushLSTDataLayer(stepTag, { step: stepNum });
-  }
-
-  document.getElementById('pilar-name').textContent = 'Pilar: ' + (q.pillar || 'Geral');
-  document.getElementById('quiz-pct').textContent = pct + '%';
-  document.getElementById('quiz-bar').style.width = pct + '%';
-  document.getElementById('question-title').textContent = q.title;
-
-  const box = document.getElementById('options-box');
-  box.innerHTML = (q.options || []).map((opt, i) => {
-    return '<div onclick="selectOpt(' + i + ', ' + (opt.score || 0) + ', ' + (!!opt.disqualify) + ', ' + (opt.cap || 100) + ')" class="option-card p-4 sm:p-4.5 flex justify-between items-center text-sm sm:text-base font-medium">' +
-      '<span class="text-neutral-100 leading-snug">' + escapeHTML(opt.label || opt.text || opt.txt || '') + '</span>' +
-    '</div>';
-  }).join('');
-
-  document.getElementById('btn-back').style.visibility = currentStep === 0 ? 'hidden' : 'visible';
-  document.getElementById('btn-next').disabled = userAnswers[currentStep] === undefined;
-}
-
-function checkFatalDisqualification(answers) {
-  if (!answers || !schema || !schema.questions) return false;
-  for (let i = 0; i < answers.length; i++) {
-    const ans = answers[i];
-    if (!ans) continue;
-    const q = schema.questions[i];
-    if (!q || !q.options) continue;
-    const opt = q.options[ans.optIndex !== undefined ? ans.optIndex : ans.idx];
-    if (!opt) continue;
-    if (opt.hardDisqualify === true) return true;
-    if (opt.disqualify || (opt.score !== undefined && Number(opt.score) <= 2)) {
-      const lbl = String(opt.label || opt.text || opt.txt || '').toLowerCase();
-      if (lbl.includes('curiosidade') || lbl.includes('não estou em condições') || lbl.includes('sem condições') || lbl.includes('não pretendo investir')) {
-        return true;
-      }
-    }
-  }
-  return false;
-}
-
-function handleFatalDisqualification() {
-  const desqualUrl = schema.urlDesqualificado || 'https://alphaclinicc.com/descarte';
-  pushLSTDataLayer('descarte_curioso_early_exit');
-  const qBox = document.getElementById('screen-quiz');
-  if (qBox) {
-    qBox.innerHTML = 
-      '<div class="text-center py-10 space-y-4">' +
-        '<div class="w-16 h-16 rounded-2xl bg-rose-500/10 text-rose-400 flex items-center justify-center mx-auto text-3xl border border-rose-500/20">📍</div>' +
-        '<h3 class="text-base sm:text-lg font-bold text-white">Agradecemos o seu interesse!</h3>' +
-        '<p class="text-xs sm:text-sm text-neutral-300 max-w-xs mx-auto leading-relaxed">' +
-          'Identificamos que no momento seu perfil não atende aos critérios para o procedimento presencial. Redirecionando para a página informativa...' +
-        '</p>' +
-        '<div class="pt-2">' +
-          '<a href="' + desqualUrl + '" class="inline-block px-6 py-3.5 bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-xs sm:text-sm rounded-xl border border-neutral-700 transition">' +
-            'Acessar Página Informativa →' +
-          '</a>' +
-        '</div>' +
-      '</div>';
-  }
-  setTimeout(() => {
-    try {
-      window.location.href = desqualUrl;
-    } catch(e) {}
-  }, 2500);
-}
-
-function selectOpt(idx, score, disqualify, cap) {
-  userAnswers[currentStep] = { idx, score, disqualify, cap };
-  if (currentStep < schema.questions.length - 1) {
-    currentStep++;
-    renderStep();
-  } else {
-    if (checkFatalDisqualification(userAnswers)) {
-      handleFatalDisqualification();
-      return;
-    }
-    document.getElementById('screen-quiz').classList.add('hidden');
-    document.getElementById('screen-lead').classList.remove('hidden');
-    pushLSTDataLayer('formulario_aberto');
-  }
-}
-
-function prevStep() {
-  if (currentStep > 0) {
-    currentStep--;
-    renderStep();
-  }
-}
-
-function nextStep() {
-  if (currentStep < schema.questions.length - 1) {
-    currentStep++;
-    renderStep();
-  } else {
-    if (checkFatalDisqualification(userAnswers)) {
-      handleFatalDisqualification();
-      return;
-    }
-    document.getElementById('screen-quiz').classList.add('hidden');
-    document.getElementById('screen-lead').classList.remove('hidden');
-    pushLSTDataLayer('formulario_aberto');
-  }
-}
-
-function calculateQuizScore(schema, answers, leadContext = {}) {
-  const questions = schema.questions || [];
-  const pillars = schema.pillars || [];
-  const method = schema.scoreMethod || 'proportional';
-  const threshold = schema.qualificationThreshold !== undefined ? schema.qualificationThreshold : 65;
-  const configuredCap = schema.financialCap !== undefined ? schema.financialCap : 51.5;
-  const totalQuestions = questions.length || 1;
-  const ptsPerQuestion = 100 / totalQuestions; 
-
-  let calculatedTotal = 0;
-
-  if (method === 'weighted' && pillars.length > 0) {
-    let totalWeights = 0;
-    let weightedSum = 0;
-
-    pillars.forEach(p => {
-      const pWeight = p.weight !== undefined ? p.weight : (1 / pillars.length);
-      totalWeights += pWeight;
-
-      const pQuestions = questions.map((q, idx) => ({ q, idx })).filter(item => item.q.pillar === p.name || item.q.pillar === p.id);
-
-      if (pQuestions.length > 0) {
-        let pEarnedFraction = 0;
-        pQuestions.forEach(item => {
-          const ans = answers[item.idx];
-          let maxInQ = 0;
-          item.q.options.forEach(o => {
-            const s = typeof o.score === 'number' ? o.score : (o.score ? parseInt(o.score) : 0);
-            if (s > maxInQ) maxInQ = s;
-          });
-          if (maxInQ === 0) maxInQ = 100;
-
-          let earned = 0;
-          if (ans) {
-            const opt = item.q.options[ans.optIndex !== undefined ? ans.optIndex : ans.idx];
-            if (opt && !opt.disqualify) {
-              earned = typeof opt.score === 'number' ? opt.score : (opt.score ? parseInt(opt.score) : 0);
-            }
-          }
-          pEarnedFraction += (earned / maxInQ);
-        });
-        const pAvgFraction = pEarnedFraction / pQuestions.length;
-        weightedSum += (pAvgFraction * pWeight * 100);
-      }
-    });
-
-    calculatedTotal = totalWeights > 0 ? (weightedSum / totalWeights) : 0;
-  } else {
-    questions.forEach((q, idx) => {
-      let maxInQ = 0;
-      (q.options || []).forEach(o => {
-        const s = typeof o.score === 'number' ? o.score : (o.score ? parseInt(o.score) : 0);
-        if (s > maxInQ) maxInQ = s;
-      });
-      if (maxInQ === 0) maxInQ = 100;
-
-      const ans = answers[idx];
-      let earnedInQ = 0;
-      if (ans) {
-        const opt = q.options[ans.optIndex !== undefined ? ans.optIndex : ans.idx];
-        if (opt && !opt.disqualify) {
-          earnedInQ = typeof opt.score === 'number' ? opt.score : (opt.score ? parseInt(opt.score) : 0);
-        }
-      }
-
-      const qFraction = maxInQ > 0 ? (earnedInQ / maxInQ) : 0;
-      calculatedTotal += (qFraction * ptsPerQuestion);
-    });
-  }
-
-  let baseScore = Math.round(calculatedTotal * 10) / 10;
-  let minCap = 100;
-  let hasDisqualification = false;
-
-  answers.forEach((ans, idx) => {
-    const q = questions[idx];
-    if (q && ans) {
-      const opt = q.options[ans.optIndex !== undefined ? ans.optIndex : ans.idx];
-      if (opt) {
-        if (opt.cap && Number(opt.cap) < minCap) {
-          minCap = Number(opt.cap);
-        }
-        if (opt.disqualify) {
-          hasDisqualification = true;
-          if (minCap > configuredCap) minCap = configuredCap;
-        }
-      }
-    }
-  });
-
-  let finalScore = Math.min(baseScore, minCap);
-
-  // Trava e Calibração Geográfica (Cidade/UF - Campo IBGE)
-  const rawCity = String(leadContext.city || leadContext.location || '').trim();
-  const cityLower = rawCity.toLowerCase();
-  const isCuritiba = !rawCity || cityLower.includes('curitiba') || cityLower.includes('região metropolitana') || leadContext.isLocal === true;
-  
-  let geographicStatus = 'CURITIBA';
-  let classificationLabel = 'Candidato Recomendado (Curitiba)';
-
-  if (!isCuritiba && rawCity) {
-    // Lead fora de Curitiba -> Desqualificado para a Rota A Comercial de Curitiba (Banco Estratégico)
-    geographicStatus = 'OUTRA PRAÇA';
-    classificationLabel = 'Desqualificado (Outra Praça - ' + rawCity + ')';
-  }
-
-  if (isCuritiba) {
-    if (finalScore < 80 && !hasDisqualification) {
-      finalScore = Math.min(Math.round(finalScore * 1.25), 100);
-    }
-  }
-
-  if (leadContext.age === 'menor24' || leadContext.isUnderage) {
-    finalScore = Math.min(finalScore, 50);
-  }
-
-  finalScore = Math.max(0, Math.min(100, Math.round(finalScore)));
-  const isQualified = finalScore >= threshold && !hasDisqualification && isCuritiba;
-
-  if (isCuritiba) {
-    classificationLabel = isQualified 
-      ? 'Candidato Recomendado (Curitiba)' 
-      : 'Candidato Provável (Alinhamento Prévio)';
-  }
-
-  return {
-    baseScore,
-    finalScore,
-    minCap,
-    hasDisqualification,
-    threshold,
-    isQualified,
-    isCuritiba,
-    geographicStatus,
-    classificationLabel,
-    city: rawCity,
-    ptsPerQuestion
-  };
-}
-
-const IBGE_ESTADOS_BRASIL = [
-  { sigla: "AC", nome: "Acre" }, { sigla: "AL", nome: "Alagoas" }, { sigla: "AP", nome: "Amapá" },
-  { sigla: "AM", nome: "Amazonas" }, { sigla: "BA", nome: "Bahia" }, { sigla: "CE", nome: "Ceará" },
-  { sigla: "DF", nome: "Distrito Federal" }, { sigla: "ES", nome: "Espírito Santo" }, { sigla: "GO", nome: "Goiás" },
-  { sigla: "MA", nome: "Maranhão" }, { sigla: "MT", nome: "Mato Grosso" }, { sigla: "MS", nome: "Mato Grosso do Sul" },
-  { sigla: "MG", nome: "Minas Gerais" }, { sigla: "PA", nome: "Pará" }, { sigla: "PB", nome: "Paraíba" },
-  { sigla: "PR", nome: "Paraná" }, { sigla: "PE", nome: "Pernambuco" }, { sigla: "PI", nome: "Piauí" },
-  { sigla: "RJ", nome: "Rio de Janeiro" }, { sigla: "RN", nome: "Rio Grande do Norte" }, { sigla: "RS", nome: "Rio Grande do Sul" },
-  { sigla: "RO", nome: "Rondônia" }, { sigla: "RR", nome: "Roraima" }, { sigla: "SC", nome: "Santa Catarina" },
-  { sigla: "SP", nome: "São Paulo" }, { sigla: "SE", nome: "Sergipe" }, { sigla: "TO", nome: "Tocantins" }
-];
-
-const IBGE_CIDADES_PRINCIPAIS_POR_UF = {
-  PR: ['Curitiba', 'Londrina', 'Maringá', 'Ponta Grossa', 'Cascavel', 'São José dos Pinhais', 'Foz do Iguaçu', 'Colombo', 'Guarapuava', 'Paranaguá', 'Araucária', 'Toledo', 'Apucarana', 'Pinhais', 'Campo Largo', 'Arapongas', 'Almirante Tamandaré', 'Piraquara', 'Umuarama', 'Cambé', 'Fazenda Rio Grande', 'Sarandi', 'Outra cidade (PR)'],
-  SP: ['São Paulo', 'Campinas', 'Guarulhos', 'São Bernardo do Campo', 'Santo André', 'Osasco', 'São José dos Campos', 'Ribeirão Preto', 'Sorocaba', 'Santos', 'São José do Rio Preto', 'Mogi das Cruzes', 'Jundiaí', 'Piracicaba', 'Bauru', 'Barueri', 'Taubaté', 'Praia Grande', 'Franca', 'Outra cidade (SP)'],
-  SC: ['Florianópolis', 'Joinville', 'Blumenau', 'São José', 'Criciúma', 'Chapecó', 'Itajaí', 'Jaraguá do Sul', 'Palhoça', 'Lages', 'Balneário Camboriú', 'Brusque', 'Tubarão', 'São Bento do Sul', 'Caçador', 'Concórdia', 'Outra cidade (SC)'],
-  RS: ['Porto Alegre', 'Caxias do Sul', 'Canoas', 'Pelotas', 'Santa Maria', 'Gravataí', 'Viamão', 'Novo Hamburgo', 'São Leopoldo', 'Rio Grande', 'Alvorada', 'Passo Fundo', 'Sapucaia do Sul', 'Santa Cruz do Sul', 'Uruguaiana', 'Bento Gonçalves', 'Outra cidade (RS)'],
-  RJ: ['Rio de Janeiro', 'São Gonçalo', 'Duque de Caxias', 'Nova Iguaçu', 'Niterói', 'Belford Roxo', 'Campos dos Goytacazes', 'São João de Meriti', 'Petrópolis', 'Volta Redonda', 'Macaé', 'Magé', 'Itaboraí', 'Cabo Frio', 'Angra dos Reis', 'Nova Friburgo', 'Barra Mansa', 'Teresópolis', 'Mesquita', 'Outra cidade (RJ)'],
-  MG: ['Belo Horizonte', 'Uberlândia', 'Contagem', 'Juiz de Fora', 'Betim', 'Montes Claros', 'Ribeirão das Neves', 'Uberaba', 'Governador Valadares', 'Ipatinga', 'Sete Lagoas', 'Divinópolis', 'Santa Luzia', 'Ibirité', 'Poços de Caldas', 'Patos de Minas', 'Pouso Alegre', 'Teófilo Otoni', 'Outra cidade (MG)'],
-  DF: ['Brasília', 'Ceilândia', 'Taguatinga', 'Samambaia', 'Plano Piloto', 'Águas Claras', 'Guará', 'Gama', 'Sobradinho', 'Planaltina', 'Recanto das Emas', 'Santa Maria', 'Outra região'],
-  BA: ['Salvador', 'Feira de Santana', 'Vitória da Conquista', 'Camaçari', 'Juazeiro', 'Itabuna', 'Lauro de Freitas', 'Ilhéus', 'Jequié', 'Teixeira de Freitas', 'Barreiras', 'Alagoinhas', 'Porto Seguro', 'Simões Filho', 'Paulo Afonso', 'Eunápolis', 'Outra cidade (BA)'],
-  GO: ['Goiânia', 'Aparecida de Goiânia', 'Anápolis', 'Rio Verde', 'Luziânia', 'Águas Lindas de Goiás', 'Valparaíso de Goiás', 'Trindade', 'Formosa', 'Novo Gama', 'Itumbiara', 'Senador Canedo', 'Catalão', 'Jataí', 'Outra cidade (GO)'],
-  PE: ['Recife', 'Jaboatão dos Guararapes', 'Olinda', 'Caruaru', 'Petrolina', 'Paulista', 'Cabo de Santo Agostinho', 'Camaragibe', 'Garanhuns', 'Vitória de Santo Antão', 'Igarassu', 'São Lourenço da Mata', 'Abreu e Lima', 'Outra cidade (PE)'],
-  CE: ['Fortaleza', 'Caucaia', 'Juazeiro do Norte', 'Maracanaú', 'Sobral', 'Crato', 'Itapipoca', 'Maranguape', 'Iguatu', 'Quixadá', 'Pacatuba', 'Aquiraz', 'Russas', 'Canindé', 'Tianguá', 'Outra cidade (CE)'],
-  PA: ['Belém', 'Ananindeua', 'Santarém', 'Marabá', 'Parauapebas', 'Castanhal', 'Abaetetuba', 'Cametá', 'Marituba', 'São Félix do Xingu', 'Barcarena', 'Altamira', 'Tucuruí', 'Paragominas', 'Tailândia', 'Outra cidade (PA)'],
-  ES: ['Vitória', 'Vila Velha', 'Serra', 'Cariacica', 'Cachoeiro de Itapemirim', 'Linhares', 'São Mateus', 'Colatina', 'Guarapari', 'Aracruz', 'Viana', 'Nova Venécia', 'Barra de São Francisco', 'Santa Maria de Jetibá', 'Marataízes', 'Outra cidade (ES)'],
-  MT: ['Cuiabá', 'Várzea Grande', 'Rondonópolis', 'Sinop', 'Tangará da Serra', 'Sorriso', 'Lucas do Rio Verde', 'Primavera do Leste', 'Barra do Garças', 'Alta Floresta', 'Nova Mutum', 'Pontes e Lacerda', 'Campo Verde', 'Juína', 'Outra cidade (MT)'],
-  MS: ['Campo Grande', 'Dourados', 'Três Lagoas', 'Corumbá', 'Ponta Porã', 'Naviraí', 'Nova Andradina', 'Aquidauana', 'Sidrolândia', 'Paranaíba', 'Maracaju', 'Amambai', 'Coxim', 'Rio Brilhante', 'Outra cidade (MS)'],
-  AM: ['Manaus', 'Parintins', 'Itacoatiara', 'Manacapuru', 'Coari', 'Tabatinga', 'Maués', 'Tefé', 'Manicoré', 'Humaitá', 'Iranduba', 'São Gabriel da Cachoeira', 'Lábrea', 'Borba', 'Autazes', 'Outra cidade (AM)'],
-  RN: ['Natal', 'Mossoró', 'Parnamirim', 'São Gonçalo do Amarante', 'Macaíba', 'Ceará-Mirim', 'Caicó', 'Açu', 'Currais Novos', 'São José de Mipibu', 'Santa Cruz', 'Nova Cruz', 'Apodi', 'João Câmara', 'Canguaretama', 'Outra cidade (RN)'],
-  PB: ['João Pessoa', 'Campina Grande', 'Santa Rita', 'Patos', 'Bayeux', 'Sousa', 'Cajazeiras', 'Cabedelo', 'Guarabira', 'Mamanguape', 'Queimadas', 'São Bento', 'Monteiro', 'Esperança', 'Pombal', 'Outra cidade (PB)'],
-  AL: ['Maceió', 'Arapiraca', 'Rio Largo', 'Palmeira dos Índios', 'União dos Palmares', 'Penedo', 'São Miguel dos Campos', 'Campo Alegre', 'Coruripe', 'Marechal Deodoro', 'Delmiro Gouveia', 'Santana do Ipanema', 'Atalaia', 'Teotônio Vilela', 'Girau do Ponciano', 'Outra cidade (AL)'],
-  PI: ['Teresina', 'Parnaíba', 'Picos', 'Piripiri', 'Floriano', 'Barras', 'Campo Maior', 'União', 'Altos', 'Esperantina', 'José de Freitas', 'Pedro II', 'Oeiras', 'São Raimundo Nonato', 'Miguel Alves', 'Outra cidade (PI)'],
-  MA: ['São Luís', 'Imperatriz', 'São José de Ribamar', 'Timon', 'Caxias', 'Codó', 'Paço do Lumiar', 'Açailândia', 'Bacabal', 'Balsas', 'Santa Inês', 'Barra do Corda', 'Pinheiro', 'Chapadinha', 'Santa Luzia', 'Buriticupu', 'Grajaú', 'Outra cidade (MA)'],
-  SE: ['Aracaju', 'Nossa Senhora do Socorro', 'Lagarto', 'Itabaiana', 'São Cristóvão', 'Estância', 'Tobias Barreto', 'Simão Dias', 'Nossa Senhora da Glória', 'Poço Redondo', 'Itaporanga d’Ajuda', 'Capela', 'Itabaianinha', 'Propriá', 'Barra dos Coqueiros', 'Outra cidade (SE)'],
-  RO: ['Porto Velho', 'Ji-Paraná', 'Ariquemes', 'Vilhena', 'Cacoal', 'Rolim de Moura', 'Jaru', 'Guajará-Mirim', 'Machadinho d’Oeste', 'Buritis', 'Pimenta Bueno', 'Ouro Preto do Oeste', 'Espigão d’Oeste', 'Nova Mamoré', 'Candeias do Jamari', 'Outra cidade (RO)'],
-  TO: ['Palmas', 'Araguaína', 'Gurupi', 'Porto Nacional', 'Paraíso do Tocantins', 'Araguatins', 'Colinas do Tocantins', 'Guaraí', 'Tocantinópolis', 'Formoso do Araguaia', 'Dianópolis', 'Taguatinga', 'Miracema do Tocantins', 'Augustinópolis', 'Pedro Afonso', 'Outra cidade (TO)'],
-  AC: ['Rio Branco', 'Cruzeiro do Sul', 'Sena Madureira', 'Tarauacá', 'Feijó', 'Brasiléia', 'Senador Guiomard', 'Plácido de Castro', 'Xapuri', 'Mâncio Lima', 'Porto Acre', 'Marechal Thaumaturgo', 'Epitaciolândia', 'Acrelândia', 'Capixaba', 'Outra cidade (AC)'],
-  AP: ['Macapá', 'Santana', 'Laranjal do Jari', 'Oiapoque', 'Porto Grande', 'Mazagão', 'Tartarugalzinho', 'Pedra Branca do Amapari', 'Vitória do Jari', 'Calçoene', 'Amapá', 'Ferreira Gomes', 'Cutias', 'Itaubal', 'Pracuúba', 'Serra do Navio', 'Outra cidade (AP)'],
-  RR: ['Boa Vista', 'Rorainópolis', 'Caracaraí', 'Pacaraima', 'Cantá', 'Mucajaí', 'Alto Alegre', 'Bonfim']
-};
-
-var LISTA_GLOBAL_CIDADES_IBGE = [];
-(function inicializarCidadesExportadas() {
-  Object.keys(IBGE_CIDADES_PRINCIPAIS_POR_UF).forEach(function(uf) {
-    var estNome = IBGE_ESTADOS_BRASIL.find(function(e) { return e.sigla === uf; });
-    var nomeEst = estNome ? estNome.nome : uf;
-    IBGE_CIDADES_PRINCIPAIS_POR_UF[uf].forEach(function(cid) {
-      if (!cid.includes('Outra')) {
-        LISTA_GLOBAL_CIDADES_IBGE.push({
-          cidade: cid,
-          uf: uf,
-          estado: nomeEst,
-          label: cid + ' - ' + uf,
-          busca: (cid + ' ' + uf + ' ' + nomeEst).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
-        });
-      }
-    });
-  });
-
-  if (typeof fetch !== 'undefined') {
-    fetch('https://servicodados.ibge.gov.br/api/v1/localidades/municipios?orderBy=nome')
-      .then(function(r) { return r.json(); })
-      .then(function(municipios) {
-        if (municipios && municipios.length) {
-          var tempSet = new Set(LISTA_GLOBAL_CIDADES_IBGE.map(function(i) { return i.label; }));
-          municipios.forEach(function(m) {
-            var cid = m.nome;
-            var uf = (m.microrregiao && m.microrregiao.mesorregiao && m.microrregiao.mesorregiao.UF && m.microrregiao.mesorregiao.UF.sigla) || '';
-            var estNome = (m.microrregiao && m.microrregiao.mesorregiao && m.microrregiao.mesorregiao.UF && m.microrregiao.mesorregiao.UF.nome) || uf;
-            if (cid && uf) {
-              var label = cid + ' - ' + uf;
-              if (!tempSet.has(label)) {
-                tempSet.add(label);
-                LISTA_GLOBAL_CIDADES_IBGE.push({
-                  cidade: cid,
-                  uf: uf,
-                  estado: estNome,
-                  label: label,
-                  busca: (cid + ' ' + uf + ' ' + estNome).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
-                });
-              }
-            }
-          });
-        }
-      })
-      .catch(function() {});
-  }
-})();
-
-function buscarCidadesIBGE(query, limit) {
-  limit = limit || 8;
-  if (!query || !query.trim()) {
-    var topSuggestions = ['Curitiba - PR', 'São Paulo - SP', 'Florianópolis - SC', 'Porto Alegre - RS', 'Londrina - PR', 'Maringá - PR', 'Cascavel - PR', 'Joinville - SC'];
-    var popList = [];
-    for (var k = 0; k < topSuggestions.length; k++) {
-      var found = LISTA_GLOBAL_CIDADES_IBGE.find(function(it) { return it.label === topSuggestions[k]; });
-      if (found) popList.push(found);
-    }
-    return popList.slice(0, limit);
-  }
-
-  var cleanQ = query.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim();
-  var matched = [];
-  for (var i = 0; i < LISTA_GLOBAL_CIDADES_IBGE.length; i++) {
-    var item = LISTA_GLOBAL_CIDADES_IBGE[i];
-    if (item.busca.indexOf(cleanQ) === 0 || item.cidade.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").indexOf(cleanQ) === 0) {
-      matched.push(item);
-      if (matched.length >= limit) return matched;
-    }
-  }
-  for (var j = 0; j < LISTA_GLOBAL_CIDADES_IBGE.length; j++) {
-    var it = LISTA_GLOBAL_CIDADES_IBGE[j];
-    if (matched.indexOf(it) === -1 && it.busca.indexOf(cleanQ) !== -1) {
-      matched.push(it);
-      if (matched.length >= limit) return matched;
-    }
-  }
-  return matched;
-}
-
-function filtrarCidadesIBGE(query) {
-  var dropdown = document.getElementById('lead-ibge-dropdown');
-  if (!dropdown) return;
-  
-  var isSuggest = !query || !query.trim();
-  var matches = buscarCidadesIBGE(query, 8);
-  if (!matches.length) {
-    dropdown.innerHTML = '<div class="p-3 text-xs text-neutral-400 text-center">Nenhuma cidade encontrada na busca rápida.<br><span class="text-[10px] text-neutral-300">Você pode digitar sua cidade e UF livremente.</span></div>';
-    dropdown.classList.remove('hidden');
-    dropdown.style.display = 'block';
-    return;
-  }
-  
-  dropdown.innerHTML = '';
-  if (isSuggest) {
-    var header = document.createElement('div');
-    header.className = 'px-3 py-1.5 text-[10px] font-bold text-neutral-400 uppercase tracking-wider bg-neutral-900/80 border-b border-neutral-800';
-    header.textContent = '⚡ Cidades Mais Frequentes:';
-    dropdown.appendChild(header);
-  }
-  
-  matches.forEach(function(item) {
-    var row = document.createElement('div');
-    row.className = 'p-2.5 sm:p-3 hover:bg-neutral-800 active:bg-neutral-700 cursor-pointer flex items-center justify-between text-xs sm:text-sm text-white transition rounded-xl';
-    row.innerHTML = '<div class="flex items-center gap-2"><span class="text-cyan-400 font-bold">📍 ' + escapeHTML(item.label) + '</span></div><span class="text-[11px] text-neutral-400 font-mono">' + escapeHTML(item.estado) + '</span>';
-    row.onmousedown = function(e) { if (e && e.preventDefault) e.preventDefault(); selecionarCidadeIBGE(item.label); };
-    row.onclick = function() { selecionarCidadeIBGE(item.label); };
-    dropdown.appendChild(row);
-  });
-  
-  dropdown.classList.remove('hidden');
-  dropdown.style.display = 'block';
-}
-
-function selecionarCidadeIBGE(val) {
-  var inp = document.getElementById('lead-ibge-location');
-  if (inp) {
-    inp.value = val;
-  }
-  var dropdown = document.getElementById('lead-ibge-dropdown');
-  if (dropdown) {
-    dropdown.classList.add('hidden');
-    dropdown.style.display = 'none';
-  }
-}
-
-document.addEventListener('click', function(e) {
-  var wrap = document.getElementById('lead-ibge-dropdown');
-  var inp = document.getElementById('lead-ibge-location');
-  if (wrap && !wrap.contains(e.target) && e.target !== inp) {
-    wrap.classList.add('hidden');
-    wrap.style.display = 'none';
-  }
-});
-
-function checkAge(val) {
-  const aviso = document.getElementById('age-warning');
-  if (aviso) aviso.style.display = val === 'menor24' ? 'block' : 'none';
-}
-
-function checkLocation(val) {
-  const box = document.getElementById('box-travel') || document.getElementById('travel-box');
-  if (box) box.style.display = (val === 'Outro estado' || String(val).toLowerCase().includes('outro')) ? 'block' : 'none';
-}
-
-function handleSelectChange(fieldId, val) {
-  if (fieldId === 'age' || fieldId.includes('idade') || fieldId.includes('etaria')) {
-    checkAge(val);
-  }
-  if (fieldId === 'location' || fieldId.includes('cidade') || fieldId.includes('localizacao')) {
-    checkLocation(val);
-  }
-  const outroBox = document.getElementById('outro-box-' + fieldId);
-  if (outroBox) {
-    outroBox.classList.toggle('hidden', !String(val).toLowerCase().includes('outro'));
-    outroBox.style.display = String(val).toLowerCase().includes('outro') ? 'block' : 'none';
-  }
-}
-
-function autofill() {
-  try {
-    const saved = JSON.parse(localStorage.getItem('alpha_lead_last') || '{}');
-    if (saved.nome) document.getElementById('lead-name').value = saved.nome;
-    if (saved.whatsapp) document.getElementById('lead-phone').value = saved.whatsapp;
-    if (saved.email) document.getElementById('lead-email').value = saved.email;
-    if (saved.tipo) {
-      document.getElementById('lead-age').value = saved.tipo;
-      checkAge(saved.tipo);
-    }
-  } catch(e) {}
-}
-
-function clearSaved() {
-  localStorage.removeItem('alpha_lead_last');
-  const bar = document.getElementById('autofill-bar');
-  if (bar) bar.style.display = 'none';
-}
-
-function generateFinalResult(e) {
-  e.preventDefault();
-  const name = document.getElementById('lead-name') ? document.getElementById('lead-name').value.trim() : 'Lead';
-  const phone = document.getElementById('lead-phone') ? document.getElementById('lead-phone').value.trim() : '';
-  const email = document.getElementById('lead-email') ? document.getElementById('lead-email').value.trim() : '';
-  const ageEl = document.getElementById('lead-age');
-  const age = ageEl ? ageEl.value : '';
-  const locEl = document.getElementById('lead-location');
-  const location = locEl ? locEl.value : '';
-  const travelEl = document.getElementById('lead-travel');
-  const travel = travelEl && location === 'Outro estado' ? travelEl.value : '';
-
-  const ibgeLocEl = document.getElementById('lead-ibge-location');
-  const ibgeLoc = ibgeLocEl ? ibgeLocEl.value.trim() : '';
-  const ibgeEstEl = document.getElementById('lead-ibge-estado');
-  const ibgeCidEl = document.getElementById('lead-ibge-cidade');
-  const ibgeEst = ibgeEstEl ? ibgeEstEl.value : '';
-  const ibgeCid = ibgeCidEl ? ibgeCidEl.value : '';
-  const locDisplay = ibgeLoc || ((ibgeCid && ibgeEst) ? (ibgeCid + ' - ' + ibgeEst) : (location || 'Brasil'));
-
-  if (age === 'menor24') {
-    alert('O procedimento da AlphaClinic é indicado apenas para maiores de 25 anos.');
-    return;
-  }
-
-  // Salva no localStorage para autofill futuro
-  try {
-    localStorage.setItem('alpha_lead_last', JSON.stringify({ nome: name, whatsapp: phone, email: email, tipo: age, volume: locDisplay, viagem: travel }));
-  } catch(e) {}
-
-  document.getElementById('screen-lead').classList.add('hidden');
-  document.getElementById('screen-loading').classList.remove('hidden');
-
-  const scoreResult = calculateQuizScore(schema, userAnswers, { city: locDisplay });
-  let finalScore = scoreResult.finalScore;
-  let isQual = scoreResult.isQualified;
-  let classificationLabel = scoreResult.classificationLabel || (isQual ? 'Candidato Recomendado (Curitiba)' : (locDisplay.toLowerCase().includes('curitiba') ? 'Candidato Provável (Alinhamento Prévio)' : ('Desqualificado (Outra Praça - ' + locDisplay + ')')));
-
-  // 1. DISPARO DO EVENTO DE CADASTRO (100% dos leads que preenchem o formulário)
-  const isCadActive = schema.cadastroEventEnabled !== false;
-  const cadName = (schema.cadastroEventName || 'cadastro').trim();
-  if (isCadActive && cadName) {
-    pushLSTDataLayer(cadName, {
-      nome: name,
-      whatsapp: phone,
-      email: email,
-      cidade: locDisplay,
-      score: finalScore,
-      is_qualified: !!isQual
-    });
-    if (cadName === 'cadastro') {
-      pushLSTDataLayer('cadastro_generated', {
-        nome: name,
-        whatsapp: phone,
-        email: email,
-        cidade: locDisplay,
-        score: finalScore,
-        is_qualified: !!isQual
-      });
-    }
-  }
-
-  if (schema.sheetsUrl) {
-    const params = "?nome=" + encodeURIComponent(name) + 
-      "&whatsapp=" + encodeURIComponent(phone) + 
-      "&email=" + encodeURIComponent(email) + 
-      "&tipo=" + encodeURIComponent(age) + 
-      "&volume=" + encodeURIComponent(locDisplay) + 
-      "&score=" + encodeURIComponent(finalScore) + 
-      "&classificacao=" + encodeURIComponent(classificationLabel) + 
-      "&origem=" + encodeURIComponent(schema.title) + 
-      "&link=" + encodeURIComponent(window.location.href);
-    fetch(schema.sheetsUrl + params, { method: 'GET', mode: 'no-cors' }).catch(() => {});
-  }
-
-  // Fases de Loading Sequencial
-  setTimeout(() => {
-    const ph = document.getElementById('loading-phase-text');
-    const pb = document.getElementById('loading-progress-bar');
-    if (ph) ph.textContent = "Avaliando prontidão clínica e localização...";
-    if (pb) pb.style.width = "60%";
-  }, 650);
-
-  setTimeout(() => {
-    const ph = document.getElementById('loading-phase-text');
-    const pb = document.getElementById('loading-progress-bar');
-    if (ph) ph.textContent = "Calculando Índice de Candidatura...";
-    if (pb) pb.style.width = "85%";
-  }, 1300);
-
-  setTimeout(() => {
-    const ph = document.getElementById('loading-phase-text');
-    const pb = document.getElementById('loading-progress-bar');
-    if (ph) ph.textContent = "Gerando parecer oficial e plano...";
-    if (pb) pb.style.width = "100%";
-  }, 1800);
-
-  setTimeout(() => {
-    document.getElementById('screen-loading').classList.add('hidden');
-    document.getElementById('screen-result').classList.remove('hidden');
-
-    // 2. DISPARO DE RESULTADO GERADO
-    pushLSTDataLayer('resultado_gerado', {
-      score: finalScore,
-      isQualified: isQual,
-      isCuritiba: scoreResult.isCuritiba,
-      route: scoreResult.isCuritiba ? (isQual ? 'ROTA_A_QUALIFICADO' : 'ROTA_B_ALINHAMENTO') : 'DESCARTE_OUTRA_PRACA'
-    });
-
-    // 3. DISPARO DE LEAD QUALIFICADO (Apenas para leads aprovados/qualificados nos critérios)
-    const isQualEventActive = schema.qualificationEventEnabled !== false;
-    const qualEventName = (schema.qualificationEventName || 'lead_qualificado').trim();
-
-    if (isQual && isQualEventActive && qualEventName) {
-      pushLSTDataLayer(qualEventName, {
-        score: finalScore,
-        nome: name,
-        whatsapp: phone,
-        cidade: locDisplay,
-        route: 'ROTA_A_QUALIFICADO'
-      });
-      if (qualEventName === 'lead_qualificado') {
-        pushLSTDataLayer('lead_generated', {
-          score: finalScore,
-          nome: name,
-          whatsapp: phone,
-          cidade: locDisplay,
-          route: 'ROTA_A_QUALIFICADO'
-        });
-      }
-    }
-
-    const arc = document.getElementById('score-arc');
-    const num = document.getElementById('score-num');
-    const CIRC = 440;
-    const strokeColor = isQual ? '#00e676' : (finalScore >= 50 ? '#ff8800' : '#FF4060');
-    arc.setAttribute('stroke', strokeColor);
-    arc.style.strokeDashoffset = CIRC;
-    num.textContent = '0';
-    num.style.color = strokeColor;
-
-    // Animação progressiva com easeOut
-    const duration = 1800;
-    const start = performance.now();
-    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-    function step(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const e = easeOut(progress);
-      const currentVal = Math.floor(e * finalScore);
-      if (num) num.textContent = currentVal;
-      if (arc) arc.style.strokeDashoffset = CIRC - (CIRC * (e * (finalScore / 100)));
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        if (num) num.textContent = finalScore;
-        if (arc) arc.style.strokeDashoffset = CIRC - (CIRC * (finalScore / 100));
-      }
-    }
-    requestAnimationFrame(step);
-
-    const isCuritiba = scoreResult.isCuritiba;
-    const desqualUrl = schema.urlDesqualificado || 'https://alphaclinicc.com/descarte';
-
-    const statusEl = document.getElementById('result-status-badge');
-    if (isCuritiba && isQual) {
-      statusEl.className = 'p-3.5 rounded-xl text-center font-black uppercase text-xs sm:text-sm bg-emerald-500/15 text-emerald-400 border border-emerald-500/30';
-      statusEl.textContent = '⚡ PERFIL QUALIFICADO & APROVADO';
-    } else if (isCuritiba && !isQual) {
-      statusEl.className = 'p-3.5 rounded-xl text-center font-black uppercase text-xs sm:text-sm bg-amber-500/15 text-amber-300 border border-amber-500/30';
-      statusEl.textContent = '💡 NECESSITA ALINHAMENTO PRÉVIO & ORIENTAÇÃO';
-    } else {
-      statusEl.className = 'p-3.5 rounded-xl text-center font-black uppercase text-xs sm:text-sm bg-rose-500/15 text-rose-400 border border-rose-500/30';
-      statusEl.textContent = '📍 ATENDIMENTO EXCLUSIVO EM CURITIBA - PR';
-    }
-
-    const raioXBox = document.getElementById('raio-x-container');
-    if (raioXBox) {
-      raioXBox.innerHTML = userAnswers.map((ans, idx) => {
-        const q = schema.questions[idx];
-        if (!q) return '';
-        const opt = q.options[ans.optIndex !== undefined ? ans.optIndex : ans.idx] || q.options[0];
-        const isAttention = ans.disqualify || (ans.score !== undefined && ans.score < 10) || (opt && opt.disqualify);
-        const isExcellent = !isAttention && ((ans.score !== undefined && ans.score >= 80) || (opt && opt.score >= 80));
-        const pillarName = q.pillar || (schema.pillars && schema.pillars[idx % schema.pillars.length]?.name) || "Qualificação";
-
-        return '<div class="p-3.5 bg-neutral-950/80 rounded-xl border ' + (isAttention ? 'border-rose-500/30 bg-rose-950/10' : (isExcellent ? 'border-emerald-500/30 bg-emerald-950/10' : 'border-neutral-800')) + ' text-xs sm:text-sm space-y-2">' +
-          '<div class="flex items-center justify-between gap-2 border-b border-neutral-800 pb-1.5">' +
-            '<span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">' + escapeHTML(pillarName) + '</span>' +
-            '<span class="text-[10px] font-black uppercase px-2 py-0.5 rounded ' + (isAttention ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30' : (isExcellent ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30')) + '">' +
-              (isAttention ? '⛔ Desqualificador' : (isExcellent ? '✓ Alta Prontidão' : '⚡ Intermediário')) +
-            '</span>' +
-          '</div>' +
-          '<div class="space-y-1">' +
-            '<div class="text-xs sm:text-sm font-bold text-white leading-snug">📌 ' + escapeHTML(q.title) + '</div>' +
-            '<div class="text-xs sm:text-sm text-neutral-200 italic pt-0.5 leading-relaxed">👉 "' + escapeHTML(opt ? (opt.label || opt.txt || opt.text || '') : 'Sem resposta') + '"</div>' +
-          '</div>' +
+function renderQuestion() {
+  let q = questions[currentStep], pct = Math.round((currentStep + 1) / questions.length * 100);
+  document.getElementById('question-text').innerText = q.question;
+  document.getElementById('pilar-name').innerText = q.pilar;
+  document.getElementById('quiz-percent').innerText = pct + '%';
+  document.getElementById('quiz-progress-bar').style.width = pct + '%';
+  let container = document.getElementById('options-container');
+  container.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    let div = document.createElement('div');
+    div.className = 'option-card p-4 text-sm transition-all duration-200';
+    let isSelected = userScores[currentStep] && userScores[currentStep].index === i;
+    if (isSelected) div.classList.add('option-selected');
+
+    let isOtherOpt = opt.isOther === true || (opt.txt || '').trim().toLowerCase().startsWith('outro');
+
+    if (isSelected && isOtherOpt) {
+      let customVal = (userScores[currentStep] && userScores[currentStep].customText) ? userScores[currentStep].customText : '';
+      var safeTxt = (opt.txt || '').replace(/"/g, '&quot;');
+      var safeVal = customVal.replace(/"/g, '&quot;');
+      div.className = 'option-card option-selected p-4 text-sm transition-all duration-200';
+      div.style.flexDirection = 'column';
+      div.style.alignItems = 'stretch';
+      div.innerHTML = '<div class="w-full text-left font-semibold text-white mb-2.5" style="line-height:1.4;"><span>' + safeTxt + '</span></div>' +
+        '<div class="w-full" onclick="event.stopPropagation()">' +
+        '<input type="text" id="q-other-input-' + currentStep + '" class="w-full block px-3.5 py-2.5 rounded-xl bg-black/60 border border-blue-400/60 text-white placeholder:text-neutral-500 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 shadow-inner" style="font-size:clamp(12px, 3.4vw, 14px); width:100% !important; box-sizing:border-box !important;" placeholder="Digite sua resposta aqui..." value="' + safeVal + '" oninput="handleQuestionOtherInput(' + currentStep + ', ' + i + ', this.value)" onkeydown="if(event.keyCode===13){event.preventDefault();nextQuestion();}">' +
         '</div>';
-      }).join('');
+      div.onclick = function(e) {
+        if (e) e.stopPropagation();
+      };
+    } else {
+      div.innerText = opt.txt;
+      div.onclick = function() {
+        if (isOtherOpt) {
+          let prevCustom = (userScores[currentStep] && userScores[currentStep].index === i) ? userScores[currentStep].customText : '';
+          let finalTxt = prevCustom ? (opt.txt + ': ' + prevCustom) : opt.txt;
+          userScores[currentStep] = { index: i, score: opt.score, txt: finalTxt, baseTxt: opt.txt, isOther: true, customText: prevCustom || '', pilar: q.pilar, pergunta: q.question, isKnockout: !!opt.isKnockout };
+          renderQuestion();
+          setTimeout(function() {
+            let el = document.getElementById('q-other-input-' + currentStep);
+            if (el) { el.focus(); el.select(); }
+          }, 50);
+        } else {
+          userScores[currentStep] = { index: i, score: opt.score, txt: opt.txt, pilar: q.pilar, pergunta: q.question, isKnockout: !!opt.isKnockout };
+          renderQuestion();
+          setTimeout(nextQuestion, 300);
+        }
+      };
     }
+    container.appendChild(div);
+  });
+  document.getElementById('btn-prev').style.visibility = currentStep === 0 ? 'hidden' : 'visible';
+  document.getElementById('btn-next').disabled = false;
 
-    const ctaBox = document.getElementById('cta-box');
-
-    // 1. Coleta e formata todas as perguntas e respostas selecionadas (Raio-X)
-    let answersBreakdown = "";
-    userAnswers.forEach((ans, idx) => {
-      const q = schema.questions[idx];
-      if (q) {
-        const opt = q.options[ans.optIndex !== undefined ? ans.optIndex : ans.idx] || q.options[0];
-        const pilar = q.pillar ? ("[" + q.pillar + "] ") : "";
-        const optLabel = opt ? (opt.label || opt.txt || opt.text || "") : "Sem resposta";
-        answersBreakdown += "\n\n📌 *" + pilar + q.title + "*\n👉 _" + optLabel + "_";
+  let currentChoice = userScores[currentStep];
+  if (currentChoice && currentChoice.isOther) {
+    setTimeout(function() {
+      let el = document.getElementById('q-other-input-' + currentStep);
+      if (el && document.activeElement !== el) {
+        el.focus();
       }
-    });
-
-    // 2. Coleta e formata os dados de identificação e perfil do lead
-    const statusLabel = (isCuritiba && isQual) ? "⚡ PERFIL QUALIFICADO & APROVADO" : (isCuritiba ? "💡 ALINHAMENTO PRÉVIO NECESSÁRIO" : "📍 OUTRA PRAÇA - FORA DE CURITIBA");
-    const routeOffer = (isCuritiba && isQual) ? (schema.routeA_name || "Atendimento Prioritário VIP") : (isCuritiba ? (schema.routeB_name || "Protocolo de Alinhamento & Vídeo") : "Banco Estratégico (Outra Praça)");
-
-    let leadDataText = "👤 *Nome:* " + name + "\n📱 *WhatsApp:* " + phone;
-    if (email) leadDataText += "\n📧 *E-mail:* " + email;
-    if (locDisplay && locDisplay !== 'Brasil') leadDataText += "\n📍 *Localização:* " + locDisplay;
-    if (age && age !== 'menor24') leadDataText += "\n🎂 *Faixa Etária:* " + age;
-    if (travel) leadDataText += "\n✈️ *Deslocamento:* " + travel;
-
-    const fullWaMessage = "🚨 *NOVO LEAD QUALIFICADO LST*\n\n" +
-      leadDataText + "\n\n" +
-      "📊 *Score Oficial:* " + finalScore + "/100 (" + statusLabel + ")\n" +
-      "🎯 *Oferta Indicada:* " + routeOffer + "\n\n" +
-      "📝 *RAIO-X COMPLETO DAS PERGUNTAS & RESPOSTAS:*" +
-      answersBreakdown + "\n\n" +
-      "✦ _Diagnóstico: " + schema.title + "_";
-
-    const waMsg = encodeURIComponent(fullWaMessage);
-    
-    let qualUrl = schema.urlQualificado || ("https://api.whatsapp.com/send?phone=" + encodeURIComponent("5548999129069") + "&text=" + waMsg);
-    if (qualUrl.includes('tintim.link')) {
-      const sep = qualUrl.includes('?') ? '&' : '?';
-      qualUrl = qualUrl + sep + "message=" + waMsg;
-    } else if (qualUrl.includes('whatsapp') && !qualUrl.includes('text=')) {
-      const sep = qualUrl.includes('?') ? '&' : '?';
-      qualUrl = qualUrl + sep + "text=" + waMsg;
-    }
-
-    if (ctaBox) {
-      if (isCuritiba && isQual) {
-        // CASO 1: QUALIFICADO VIP (CURITIBA + SCORE >= 65) -> WHATSAPP TINTIM
-        ctaBox.className = "p-5 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 space-y-3 text-left";
-        ctaBox.innerHTML = 
-          '<h4 class="font-bold text-white text-sm sm:text-base">✦ Próximo Passo: ' + escapeHTML(routeOffer) + '</h4>' +
-          '<p class="text-xs sm:text-sm text-neutral-300">Seu perfil foi aprovado para o protocolo de atendimento prioritário em Curitiba.</p>' +
-          '<a href="' + qualUrl + '" target="_blank" onclick="pushLSTDataLayer(&apos;whatsapp_click&apos;)" class="block w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm uppercase tracking-wider rounded-xl transition text-center shadow-lg">' +
-            '💬 Falar com Especialista no WhatsApp →' +
-          '</a>';
-
-        // Auto-Redirect para WhatsApp Tintim
-        setTimeout(() => {
-          try {
-            window.location.href = qualUrl;
-          } catch(e) {}
-        }, 3400);
-
-      } else if (isCuritiba && !isQual) {
-        // CASO 2: CURITIBA, MAS NÃO QUALIFICOU NO QUIZ (SCORE < 65 OU DÚVIDAS) -> CONTEÚDO EDUCATIVO & VÍDEO (ROTA B)
-        ctaBox.className = "p-5 rounded-2xl bg-amber-950/20 border border-amber-500/30 space-y-3 text-left";
-        ctaBox.innerHTML = 
-          '<h4 class="font-bold text-white text-sm sm:text-base">💡 Parecer: ' + escapeHTML(routeOffer) + '</h4>' +
-          '<p class="text-xs sm:text-sm text-neutral-300">Identificamos a necessidade de alinhamento prévio ou esclarecimento de dúvidas antes do agendamento.</p>' +
-          '<button type="button" onclick="pushLSTDataLayer(&apos;video_modal_open&apos;); openEducationalModal();" class="block w-full py-4 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white font-black text-sm uppercase tracking-wider rounded-xl transition text-center shadow-lg cursor-pointer">' +
-            '💡 Assistir Vídeo Explicativo & Conteúdo Educativo →' +
-          '</button>' +
-          '<button type="button" onclick="resetQuiz()" class="block w-full py-3 bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white text-xs sm:text-sm font-semibold rounded-xl border border-neutral-700 text-center transition cursor-pointer">' +
-            '🔄 Refazer Diagnóstico' +
-          '</button>';
-
-      } else {
-        // CASO 3: FORA DE CURITIBA (OUTRA PRAÇA) -> PÁGINA DE DESCARTE / BANCO ESTRATÉGICO
-        ctaBox.className = "p-5 rounded-2xl bg-rose-950/20 border border-rose-500/30 space-y-3 text-left";
-        ctaBox.innerHTML = 
-          '<h4 class="font-bold text-white text-sm sm:text-base">📍 Atendimento Presencial Exclusivo em Curitiba - PR</h4>' +
-          '<p class="text-xs sm:text-sm text-neutral-300">Identificamos que sua localização atual é <strong>' + escapeHTML(locDisplay) + '</strong>. Nossos atendimentos e procedimentos ocorrem presencialmente na unidade de <strong>Curitiba - PR</strong>. Seu cadastro foi registrado para quando expandirmos para a sua região.</p>' +
-          '<a href="' + desqualUrl + '" class="block w-full py-4 bg-gradient-to-r from-neutral-800 to-neutral-700 hover:from-neutral-700 hover:to-neutral-600 text-white font-black text-sm uppercase tracking-wider rounded-xl transition text-center shadow-lg border border-neutral-600">' +
-            '🌐 Acessar Página Informativa da Clínica →' +
-          '</a>' +
-          '<button type="button" onclick="resetQuiz()" class="block w-full py-3 bg-neutral-900 hover:bg-neutral-800 text-neutral-400 hover:text-white text-xs sm:text-sm font-semibold rounded-xl border border-neutral-800 text-center transition cursor-pointer">' +
-            '🔄 Refazer com Outro Endereço' +
-          '</button>';
-
-        // Auto-Redirect para URL de descarte
-        setTimeout(() => {
-          try {
-            window.location.href = desqualUrl;
-          } catch(e) {}
-        }, 3500);
-      }
-    }
-  }, 1800);
+    }, 60);
+  }
 }
 
-function resetQuiz() {
-  document.getElementById('screen-result').classList.add('hidden');
+function nextQuestion() {
+  if (userScores[currentStep] === undefined && questions[currentStep] && questions[currentStep].options && questions[currentStep].options.length > 0) {
+    var defaultOpt = questions[currentStep].options[0];
+    userScores[currentStep] = { index: 0, score: defaultOpt.score, txt: defaultOpt.txt, pilar: questions[currentStep].pilar, pergunta: questions[currentStep].question, isKnockout: !!defaultOpt.isKnockout };
+  }
+  if (currentStep < questions.length - 1) { 
+    currentStep++; 
+    renderQuestion(); 
+  } else { 
+    window.showScreen('screen-lead'); 
+
+    // Disparo de Evento: formulario_aberto
+    var formEv = 'formulario_aberto';
+    dispatchTrackingEvent(formEv, { questions_count: questions.length }, ['formulario_aberto', 'formulario aberto', 'Formulario_Aberto', 'form_open']);
+  }
+}
+function prevQuestion() { 
+  if (currentStep > 0) { 
+    currentStep--; 
+    renderQuestion(); 
+  } 
+}
+
+function openDrawer() { document.getElementById('drawer-educativo').classList.add('open'); }
+function closeDrawer() { document.getElementById('drawer-educativo').classList.remove('open'); }
+
+function openPrivacyModal() { document.getElementById('modal-privacidade').classList.add('open'); }
+function closePrivacyModal() { document.getElementById('modal-privacidade').classList.remove('open'); }
+
+let hasSubmittedLead = false;
+function generateResult(e) {
+  if (e) e.preventDefault();
+  if (hasSubmittedLead) return; // Trava anti-duplicação
+  hasSubmittedLead = true;
+
+  let nome = (document.getElementById('input-nome')?.value || '').trim();
+  let empresa = (document.getElementById('input-empresa')?.value || '').trim();
+  let whatsapp = (document.getElementById('input-whatsapp')?.value || '').trim();
+  let email = (document.getElementById('input-email')?.value || '').trim();
+  let localizacao = (document.getElementById('input-localizacao')?.value || '').trim();
+  let instagram = (document.getElementById('input-instagram')?.value || '').trim();
+  let site = (document.getElementById('input-site')?.value || '').trim();
+  let tipoSelect = (document.getElementById('input-segmento')?.value || document.getElementById('input-tipo')?.value || '').trim();
+  let tipoOutroVal = (document.getElementById('input-segmento-outro')?.value || document.getElementById('input-tipo-outro')?.value || '').trim();
+  let tipo = tipoSelect;
+  let selSegCheck = document.getElementById('input-segmento');
+  let isSegOther = false;
+  if (selSegCheck && selSegCheck.selectedIndex >= 0) {
+    let sOpt = selSegCheck.options[selSegCheck.selectedIndex];
+    if (sOpt && (sOpt.dataset.isOther === 'true' || (sOpt.value || '').toLowerCase().startsWith('outro'))) {
+      isSegOther = true;
+    }
+  }
+  if ((isSegOther || tipoSelect.toLowerCase().startsWith('outro')) && tipoOutroVal) {
+    tipo = tipoSelect + ': ' + tipoOutroVal;
+  } else if (tipoSelect === 'Outro') {
+    tipo = tipoOutroVal || 'Outro';
+  }
+  let faturamento = (document.getElementById('input-faturamento')?.value || '').trim();
+
+  // Pontuação adicional & Knockouts oriundos do formulário (Segmento, Faturamento, Campos Customizados, IBGE)
+  let formExtraScore = 0;
+  let formKnockout = false;
+  let formKnockoutMsg = "";
+
+  let selSeg = document.getElementById('input-segmento');
+  if (selSeg && selSeg.selectedIndex >= 0) {
+    let optS = selSeg.options[selSeg.selectedIndex];
+    if (optS && optS.dataset) {
+      if (optS.dataset.score) formExtraScore += parseInt(optS.dataset.score) || 0;
+      if (optS.dataset.knockout === 'true') {
+        formKnockout = true;
+        formKnockoutMsg = 'Critério Eliminatório (Segmento): ' + (optS.value || 'Segmento não atendido');
+      }
+    }
+  }
+  let selFat = document.getElementById('input-faturamento');
+  if (selFat && selFat.selectedIndex >= 0) {
+    let optF = selFat.options[selFat.selectedIndex];
+    if (optF && optF.dataset) {
+      if (optF.dataset.score) formExtraScore += parseInt(optF.dataset.score) || 0;
+      if (optF.dataset.knockout === 'true') {
+        formKnockout = true;
+        formKnockoutMsg = 'Critério Eliminatório (Faturamento): ' + (optF.value || 'Faixa de faturamento insuficiente');
+      }
+    }
+  }
+
+  // Coleta de campos customizados adicionais (Topo e Final)
+  var customFieldsData = [];
+  var customInputs = document.querySelectorAll('.custom-lead-input, [id^="input-custom-"]');
+  customInputs.forEach(function(el) {
+    if (el.id && el.id.endsWith('-outro')) return; // Evita duplicar inputs secundários de 'Outro'
+    var val = (el.value || '').trim();
+    var lbl = el.dataset.customLabel || el.placeholder || 'Campo Adicional';
+    if (el.tagName === 'SELECT' && el.selectedIndex >= 0) {
+      var optC = el.options[el.selectedIndex];
+      if (optC && (optC.dataset.isOther === 'true' || (optC.value || '').toLowerCase().startsWith('outro'))) {
+        var outroInp = document.getElementById(el.id + '-outro');
+        if (outroInp && outroInp.value.trim()) {
+          val = optC.value + ': ' + outroInp.value.trim();
+        }
+      }
+      if (optC && optC.dataset) {
+        if (optC.dataset.score) {
+          formExtraScore += parseInt(optC.dataset.score) || 0;
+        }
+        if (optC.dataset.knockout === 'true') {
+          formKnockout = true;
+          formKnockoutMsg = 'Critério Eliminatório (' + lbl + '): ' + (optC.value || 'Opção eliminatória');
+        }
+      }
+    }
+    if (val) {
+      customFieldsData.push({ label: lbl, valor: val });
+    }
+  });
+
+  // Avaliação de Regras Geográficas & Knockout IBGE
+  let geoBonusScore = 0;
+  let geoKnockout = false;
+  let geoKnockoutMsg = "";
+
+  if (geoRule && geoRule.mode === 'whitelist' && geoRule.targetLocations && geoRule.targetLocations.length > 0) {
+    function normalizeCityMatch(str) {
+      return (str || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+    }
+    var leadCityNorm = normalizeCityMatch(localizacao);
+    var matchedGeo = null;
+
+    for (var gi = 0; gi < geoRule.targetLocations.length; gi++) {
+      var targetLoc = geoRule.targetLocations[gi];
+      var tName = typeof targetLoc === 'string' ? targetLoc : (targetLoc.name || '');
+      var tNorm = normalizeCityMatch(tName);
+      var tType = (typeof targetLoc === 'object' && targetLoc.type) ? targetLoc.type : (tName.length === 2 ? 'state' : 'city');
+
+      if (tType === 'state' || tNorm.length === 2) {
+        var uf = tNorm.replace(/[^a-z]/g, '');
+        if (leadCityNorm.endsWith('- ' + uf) || leadCityNorm.endsWith(' ' + uf) || leadCityNorm.includes('/' + uf) || leadCityNorm === uf) {
+          matchedGeo = targetLoc;
+          break;
+        }
+      } else {
+        if (leadCityNorm === tNorm || leadCityNorm.includes(tNorm) || tNorm.includes(leadCityNorm)) {
+          matchedGeo = targetLoc;
+          break;
+        }
+      }
+    }
+
+    if (matchedGeo) {
+      var geoPts = (typeof matchedGeo === 'object' && matchedGeo.score !== undefined) ? parseInt(matchedGeo.score) : (parseInt(geoRule.bonusScore) || 0);
+      geoBonusScore = geoPts;
+      formExtraScore += geoBonusScore;
+    } else if (geoRule.knockoutOutside) {
+      geoKnockout = true;
+      geoKnockoutMsg = (geoRule.knockoutMessage || 'Localização Não Atendida') + ': ' + (localizacao || 'Cidade não informada');
+    }
+  } else if (geoRule && geoRule.mode === 'blacklist' && geoRule.targetLocations && geoRule.targetLocations.length > 0) {
+    function normalizeCityMatch(str) {
+      return (str || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+    }
+    var leadCityNorm = normalizeCityMatch(localizacao);
+    var blockedGeo = null;
+
+    for (var gi = 0; gi < geoRule.targetLocations.length; gi++) {
+      var targetLoc = geoRule.targetLocations[gi];
+      var tName = typeof targetLoc === 'string' ? targetLoc : (targetLoc.name || '');
+      var tNorm = normalizeCityMatch(tName);
+      var tType = (typeof targetLoc === 'object' && targetLoc.type) ? targetLoc.type : (tName.length === 2 ? 'state' : 'city');
+
+      if (tType === 'state' || tNorm.length === 2) {
+        var uf = tNorm.replace(/[^a-z]/g, '');
+        if (leadCityNorm.endsWith('- ' + uf) || leadCityNorm.endsWith(' ' + uf) || leadCityNorm.includes('/' + uf) || leadCityNorm === uf) {
+          blockedGeo = targetLoc;
+          break;
+        }
+      } else {
+        if (leadCityNorm === tNorm || leadCityNorm.includes(tNorm) || tNorm.includes(leadCityNorm)) {
+          blockedGeo = targetLoc;
+          break;
+        }
+      }
+    }
+
+    if (blockedGeo) {
+      geoKnockout = true;
+      geoKnockoutMsg = (geoRule.knockoutMessage || 'Localização Bloqueada') + ': ' + (localizacao || 'Cidade bloqueada');
+    }
+  }
+
+  // Normaliza as respostas de todas as perguntas (garante que pilar, pergunta, texto e score estejam completos)
+  let respostasCompletas = questions.map(function(q, i) {
+    if (userScores[i] && userScores[i].txt) {
+      return {
+        pilar: q.pilar || ('Pilar ' + (i + 1)),
+        pergunta: q.question || ('Pergunta ' + (i + 1)),
+        txt: userScores[i].txt,
+        score: userScores[i].score !== undefined ? userScores[i].score : 0
+      };
+    }
+    return {
+      pilar: q.pilar || ('Pilar ' + (i + 1)),
+      pergunta: q.question || ('Pergunta ' + (i + 1)),
+      txt: (q.options && q.options[0]) ? q.options[0].txt : 'Não respondido',
+      score: (q.options && q.options[0]) ? q.options[0].score : 0
+    };
+  });
+
+  let rawScore = 0;
+  let maxPossible = 0;
+  let hasKnockout = formKnockout || geoKnockout;
+  let knockoutMotivo = formKnockoutMsg || geoKnockoutMsg || "";
+
+  questions.forEach(function(q, i) {
+    let weight = q.weight || 1.0;
+    let choice = userScores[i];
+    let optScore = (choice && choice.score !== undefined) ? choice.score : 0;
+    rawScore += optScore * weight;
+    
+    // Cálculo do máximo possível por pergunta ponderada
+    let maxOpt = 15;
+    if (q.options && q.options.length) {
+      maxOpt = Math.max.apply(null, q.options.map(function(o) { return o.score || 0; }).concat([15]));
+    }
+    maxPossible += maxOpt * weight;
+
+    if (choice && choice.isKnockout) {
+      hasKnockout = true;
+      knockoutMotivo = (q.pilar || 'Critério') + ': ' + choice.txt;
+    }
+  });
+
+  let calculatedScore = Math.min(Math.round((rawScore / (maxPossible || 1)) * 100) + formExtraScore, 100);
+  // Se houver Knockout, trava a pontuação no Tier Low (Score 30) para proteger o WhatsApp
+  let totalScore = hasKnockout ? Math.min(calculatedScore, 30) : calculatedScore;
+  let isQual = totalScore >= minScore && !hasKnockout;
+  
   document.getElementById('screen-lead').classList.add('hidden');
-  document.getElementById('screen-loading').classList.add('hidden');
-  document.getElementById('screen-quiz').classList.add('hidden');
-  document.getElementById('screen-intro').classList.remove('hidden');
-  currentStep = 0;
-  userAnswers = [];
+  document.getElementById('screen-loading').style.display = 'block';
+
+  // Captura de UTMs da URL
+  function getUrlUtms() {
+    try {
+      var p = new URLSearchParams(window.location.search);
+      return {
+        utm_source: p.get('utm_source') || '',
+        utm_medium: p.get('utm_medium') || '',
+        utm_campaign: p.get('utm_campaign') || '',
+        utm_content: p.get('utm_content') || '',
+        utm_term: p.get('utm_term') || ''
+      };
+    } catch(e) {
+      return {};
+    }
+  }
+  var pageUtms = getUrlUtms();
+
+  // Disparo de Eventos de Conversão (GTM, GA4, Meta, TikTok)
+  try {
+    // 1. Evento de Cadastro Concluído (Formulário Enviado)
+    var cadEv = 'cadastro';
+    dispatchTrackingEvent(cadEv, {
+      score: totalScore,
+      qualificado: isQual,
+      status_qualificacao: hasKnockout ? 'DESQUALIFICADO_KNOCKOUT' : (isQual ? 'QUALIFICADO' : 'DESQUALIFICADO'),
+      segmento: tipo,
+      faturamento: faturamento,
+      cidade: localizacao
+    }, ['cadastro', 'lead', 'Cadastro', 'generate_lead']);
+
+    // 2. Evento Específico de Qualificação / Desqualificação
+    var evName = isQual ? 'lead_qualificado' : 'descarte_curioso_early_exit';
+    var qualAlts = isQual 
+      ? ['lead_qualificado', 'lead qualificado', 'Lead_Qualificado_LST', 'LeadQualificado']
+      : ['lead_desqualificado', 'lead desqualificado', 'Lead_Desqualificado_LST', 'LeadDesqualificado'];
+
+    dispatchTrackingEvent(evName, {
+      score: totalScore,
+      qualificado: isQual,
+      hasKnockout: hasKnockout,
+      motivoKnockout: knockoutMotivo || null,
+      segmento: tipo,
+      faturamento: faturamento
+    }, qualAlts);
+  } catch(e) {
+    console.warn("Erro ao disparar eventos de conversão:", e);
+  }
+
+  // Disparo Paralelo Multi-Planilhas / Multi-Webhooks em background
+  if (Array.isArray(webhookEndpoints) && webhookEndpoints.length > 0) {
+    const payload = JSON.stringify({
+      nome: nome,
+      empresa: empresa,
+      whatsapp: whatsapp,
+      email: email,
+      localizacao: localizacao,
+      geo_bonus_score: geoBonusScore,
+      segmento: tipo,
+      faturamento: faturamento,
+      instagram: instagram,
+      site: site,
+      campos_customizados: customFieldsData,
+      score: totalScore,
+      pontos_extras_form: formExtraScore,
+      status_qualificacao: hasKnockout ? 'DESQUALIFICADO_KNOCKOUT' : (isQual ? 'QUALIFICADO' : 'DESQUALIFICADO'),
+      knockout_motivo: knockoutMotivo || null,
+      utms: pageUtms,
+      respostas: respostasCompletas,
+      timestamp: new Date().toISOString()
+    });
+
+    webhookEndpoints.forEach(function(endpoint) {
+      if (!endpoint || typeof endpoint !== 'string' || !endpoint.trim()) return;
+      var cleanEndpoint = endpoint.trim();
+      try {
+        if (cleanEndpoint.includes('script.google.com')) {
+          // Envio para Google Apps Script via text/plain sem preflight CORS
+          fetch(cleanEndpoint, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: payload
+          }).catch(function() {});
+        } else {
+          // Webhooks padrão (n8n, Make, Zapier, Webhooks REST)
+          fetch(cleanEndpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: payload
+          }).catch(function() {});
+        }
+      } catch(err) {
+        console.warn("Erro no disparo do webhook para " + cleanEndpoint + ":", err);
+      }
+    });
+  }
+
+  setTimeout(function() {
+    var leadInfo = {
+      nome: nome,
+      empresa: empresa,
+      whatsapp: whatsapp,
+      email: email,
+      localizacao: localizacao,
+      geo_bonus_score: geoBonusScore,
+      segmento: tipo,
+      faturamento: faturamento,
+      instagram: instagram,
+      site: site,
+      campos_customizados: customFieldsData,
+      utms: pageUtms
+    };
+    var msg = buildWhatsAppDiagnosticMessage(totalScore, leadInfo, respostasCompletas);
+    window.renderResultScreen(totalScore, { msg: msg, leadInfo: leadInfo, respostas: respostasCompletas });
+  }, 900);
 }
 </script>
 </body>
-</html>
+</html><script async src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="5cc79dd9-23a0-46cc-b183-fc0ac6da7e33" data-app-host="app.netlify.com"></script>
