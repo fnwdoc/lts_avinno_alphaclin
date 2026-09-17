@@ -1,5 +1,5 @@
 
-<!-- © Alpha Clinic LST Qualifier v5.5 — Qualificador Inteligente LST (FNW Avinno Ecosystem) -->
+<!-- © LST Qualifier — Qualificador Inteligente LST (FNW Ecosystem) -->
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -524,13 +524,13 @@ input:focus, select:focus {
         Perfil Não Elegível para este Atendimento
       </h2>
       <p class="subtext-body text-xs leading-relaxed max-w-md mx-auto" id="early-ko-message">
-        Agradecemos pelo seu tempo! Identificamos que seu perfil no momento possui demandas mais alinhadas às iniciativas e espaços comunitários da praça do evento.
+        Agradecemos pelo seu tempo! Identificamos que seu perfil no momento não é elegível. Obrigado!
       </p>
     </div>
 
     <div class="pt-3 max-w-md mx-auto w-full space-y-3">
-      <a id="early-ko-cta-btn" href="https://cbpcml.org.br/praca" target="_blank" rel="noopener noreferrer" class="btn-action flex items-center justify-center w-full py-4 rounded-xl font-black text-xs uppercase tracking-wider text-center cursor-pointer transition shadow-lg">
-        Acessar a Praça do Evento ›
+      <a id="early-ko-cta-btn" href="https://alphaclinicc.com/descarte" target="_blank" rel="noopener noreferrer" class="btn-action flex items-center justify-center w-full py-4 rounded-xl font-black text-xs uppercase tracking-wider text-center cursor-pointer transition shadow-lg">
+        Saiba Mais
       </a>
       <button type="button" onclick="window.location.reload()" class="text-[11px] font-bold underline hover:opacity-80 transition cursor-pointer" style="color:var(--plug-text-sub); background:none; border:none;">
         Reiniciar questionário
@@ -670,6 +670,25 @@ input:focus, select:focus {
 
 <script>
 const questions = [
+  {
+    "pilar": "KNOCKOUT",
+    "question": "Você  mora em Curitiba atualmente?",
+    "options": [
+      {
+        "txt": "Sim, moro em Curitiba",
+        "score": 0,
+        "isKnockout": false,
+        "isOther": false
+      },
+      {
+        "txt": "Não, não moro",
+        "score": 8,
+        "isKnockout": true,
+        "isOther": false
+      }
+    ],
+    "weight": 2
+  },
   {
     "pilar": "Autopercepção",
     "question": "Como você se sente em relação ao tamanho do seu \"Amigão\"?",
@@ -840,12 +859,12 @@ const destConfig = {
   forwardUtms: true
 };
 const earlyKnockoutConfig = {
-  enabled: false,
-  maxQuestionIndex: 3,
-  redirectUrl: "https://cbpcml.org.br/praca",
-  buttonText: "Acessar a Praça do Evento ›",
+  enabled: true,
+  maxQuestionIndex: 1,
+  redirectUrl: "https://alphaclinicc.com/descarte",
+  buttonText: "Saiba Mais",
   title: "Perfil Não Elegível para este Atendimento",
-  message: "Agradecemos pelo seu tempo! Identificamos que seu perfil no momento possui demandas mais alinhadas às iniciativas e espaços comunitários da praça do evento.",
+  message: "Agradecemos pelo seu tempo! Identificamos que seu perfil no momento não é elegível. Obrigado!",
   icon: "🏛️"
 };
 
