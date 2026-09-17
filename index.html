@@ -1,14 +1,9 @@
 
-<!-- © LST Qualifier — Qualificador Inteligente LST (FNW Ecosystem) -->
+<!-- © Alpha Clinic LST Qualifier v5.5 — Qualificador Inteligente LST (FNW Avinno Ecosystem) -->
 <!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<!-- This site is hosted on Netlify. Anyone can build and deploy a site
-     like this one for free: https://netlify.new/?utm_campaign=ai-legible&utm_source=comment&utm_medium=referral&utm_id=5cc79dd9-23a0-46cc-b183-fc0ac6da7e33
-     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
-<meta name="hosting-provider" content="Netlify">
-<meta name="netlify-deploy" content="https://netlify.new/?utm_campaign=ai-legible&amp;utm_source=meta&amp;utm_medium=referral&amp;utm_id=5cc79dd9-23a0-46cc-b183-fc0ac6da7e33">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
 <meta name="theme-color" content="#000000">
 <meta name="mobile-web-app-capable" content="yes">
@@ -406,7 +401,7 @@ input:focus, select:focus {
       
     <div class="bullet-card flex items-center gap-3.5 p-3.5 rounded-2xl">
       <span style="flex-shrink:0;font-size:1.25em">🔒</span>
-      <span style="font-weight:600">100% sigiloso</span>
+      <span style="font-weight:600">Sigilo  100%</span>
     </div>
   
     <div class="bullet-card flex items-center gap-3.5 p-3.5 rounded-2xl">
@@ -513,6 +508,33 @@ input:focus, select:focus {
       <h4 class="font-black text-base" id="result-card-title" style="color:var(--plug-text-main)">Diagnóstico Comercial</h4>
       <p class="text-xs leading-relaxed" id="result-card-desc" style="color:var(--plug-text-sub)">Avaliando os pilares do seu negócio...</p>
       <a class="btn-action flex items-center justify-center w-full py-4 rounded-xl font-black text-xs uppercase tracking-wider text-center cursor-pointer transition shadow-lg mt-3" id="result-cta-btn" href="#">CONTINUAR ›</a>
+    </div>
+  </div>
+
+  <!-- TELA DE ROTA DE DESQUALIFICAÇÃO ANTECIPADA (P1 a P3) -->
+  <div class="hidden screen-container text-center space-y-4" id="screen-early-knockout">
+    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto text-3xl mb-1 shadow-sm" style="background:rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); color:#ef4444;">
+      <span id="early-ko-icon">🏛️</span>
+    </div>
+    <div>
+      <span class="text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full inline-block mb-2" style="color:var(--plug-gold); background:rgba(var(--theme-c1-rgb, 59, 130, 246), 0.12); border: 1px solid rgba(var(--theme-c1-rgb, 59, 130, 246), 0.25);">
+        Encerramento Educado
+      </span>
+      <h2 class="text-xl font-black tracking-tight mb-2" id="early-ko-title" style="color:var(--plug-text-main);">
+        Perfil Não Elegível para este Atendimento
+      </h2>
+      <p class="subtext-body text-xs leading-relaxed max-w-md mx-auto" id="early-ko-message">
+        Agradecemos pelo seu tempo! Identificamos que seu perfil no momento possui demandas mais alinhadas às iniciativas e espaços comunitários da praça do evento.
+      </p>
+    </div>
+
+    <div class="pt-3 max-w-md mx-auto w-full space-y-3">
+      <a id="early-ko-cta-btn" href="https://cbpcml.org.br/praca" target="_blank" rel="noopener noreferrer" class="btn-action flex items-center justify-center w-full py-4 rounded-xl font-black text-xs uppercase tracking-wider text-center cursor-pointer transition shadow-lg">
+        Acessar a Praça do Evento ›
+      </a>
+      <button type="button" onclick="window.location.reload()" class="text-[11px] font-bold underline hover:opacity-80 transition cursor-pointer" style="color:var(--plug-text-sub); background:none; border:none;">
+        Reiniciar questionário
+      </button>
     </div>
   </div>
 </div>
@@ -811,11 +833,20 @@ const webhookEndpoints = ["https://script.google.com/macros/s/AKfycbxcXEnGOkdDxA
 const webhookEndpoint = webhookEndpoints[0] || "";
 const scoreTiers = {"low":{"min":0,"max":39,"badge":"� FORA DE CRITÉRIO / OUTRA PRAÇA","badgeColor":"#94a3b8","cardBg":"rgba(148, 163, 184, 0.05)","borderColor":"rgba(148, 163, 184, 0.2)","title":"Critérios de Elegibilidade","desc":"Identificamos que no momento seu perfil não atende aos critérios prévios para agendamento direto na unidade de Curitiba.","btnText":"� VER DIRETRIZES & ORIENTAÇÕES ›","action":"drawer"},"mid":{"min":40,"max":64,"badge":"� NECESSITA ALINHAMENTO PRÉVIO","badgeColor":"#f59e0b","cardBg":"rgba(245, 158, 11, 0.06)","borderColor":"rgba(245, 158, 11, 0.25)","title":"Protocolo de Orientação & Conteúdo Educativo","desc":"Seu perfil possui interesse, porém indicamos o esclarecimento prévio de dúvidas e alinhamento do protocolo clínico antes da consulta presencial.","btnText":"� ASSISTIR VÍDEO EXPLICATIVO & ORIENTAÇÕES ›","action":"drawer"},"high":{"min":65,"max":84,"badge":"⚡ CANDIDATO RECOMENDADO (CURITIBA)","badgeColor":"#00c853","cardBg":"rgba(0, 200, 83, 0.08)","borderColor":"rgba(0, 200, 83, 0.3)","title":"Qualificação Clínica Aprovada","desc":"Parabéns! Suas respostas atendem aos parâmetros de elegibilidade do Método Porsch. Sua vaga de atendimento exclusivo em Curitiba foi liberada.","btnText":"� FALAR COM ESPECIALISTA NO WHATSAPP ›","action":"whatsapp"},"elite":{"min":85,"max":100,"badge":"� CANDIDATO VIP & ALTA PRIORIDADE","badgeColor":"#10b981","cardBg":"rgba(16, 185, 129, 0.08)","borderColor":"rgba(16, 185, 129, 0.35)","title":"Atendimento Prioritário VIP Liberado","desc":"Perfil de máxima prontidão e compatibilidade total com o protocolo da AlphaClinic. Seu contato foi encaminhado com prioridade máxima na agenda da clínica.","btnText":"� INICIAR ATENDIMENTO VIP NO WHATSAPP ›","action":"whatsapp"}};
 const destConfig = {
-  type: "whatsapp",
-  customUrl: "",
+  type: "custom_url",
+  customUrl: "https://tintim.link/whatsapp/50204acc-acf9-4b1e-91be-0fb68b4d4f67/05b14e0e-0419-469b-8c15-3a11c745bd3d",
   autoOpen: true,
-  autoOpenDelay: 5,
+  autoOpenDelay: 2,
   forwardUtms: true
+};
+const earlyKnockoutConfig = {
+  enabled: false,
+  maxQuestionIndex: 3,
+  redirectUrl: "https://cbpcml.org.br/praca",
+  buttonText: "Acessar a Praça do Evento ›",
+  title: "Perfil Não Elegível para este Atendimento",
+  message: "Agradecemos pelo seu tempo! Identificamos que seu perfil no momento possui demandas mais alinhadas às iniciativas e espaços comunitários da praça do evento.",
+  icon: "🏛️"
 };
 
 let currentStep = 0, userScores = [];
@@ -1091,7 +1122,7 @@ window.renderResultScreen = function(score, customData) {
 };
 
 window.showScreen = function(screenId) {
-  ['screen-intro', 'screen-quiz', 'screen-lead', 'screen-result'].forEach(id => {
+  ['screen-intro', 'screen-quiz', 'screen-lead', 'screen-result', 'screen-early-knockout'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.add('hidden');
   });
@@ -1196,7 +1227,7 @@ function dispatchTrackingEvent(eventName, payload, altNames) {
       }
     }
 
-    console.log("📊 [Tracking LST v5.1.3] Evento disparado com sucesso:", eventName, baseData);
+    console.log("📊 [Tracking LST v5.2] Evento disparado com sucesso:", eventName, baseData);
   } catch(err) {
     console.warn("Aviso no tracking do LST:", err);
   }
@@ -1282,6 +1313,14 @@ function nextQuestion() {
     var defaultOpt = questions[currentStep].options[0];
     userScores[currentStep] = { index: 0, score: defaultOpt.score, txt: defaultOpt.txt, pilar: questions[currentStep].pilar, pergunta: questions[currentStep].question, isKnockout: !!defaultOpt.isKnockout };
   }
+
+  // Verificação de Rota de Desqualificação Antecipada (P1 a P3)
+  var currentChoice = userScores[currentStep];
+  if (earlyKnockoutConfig && earlyKnockoutConfig.enabled && currentChoice && currentChoice.isKnockout && currentStep < earlyKnockoutConfig.maxQuestionIndex) {
+    showEarlyKnockoutScreen(currentChoice);
+    return;
+  }
+
   if (currentStep < questions.length - 1) { 
     currentStep++; 
     renderQuestion(); 
@@ -1293,6 +1332,65 @@ function nextQuestion() {
     dispatchTrackingEvent(formEv, { questions_count: questions.length }, ['formulario_aberto', 'formulario aberto', 'Formulario_Aberto', 'form_open']);
   }
 }
+
+function showEarlyKnockoutScreen(choice) {
+  window.showScreen('screen-early-knockout');
+
+  // Ajusta parâmetros de URL caso destConfig.forwardUtms seja true
+  var earlyBtn = document.getElementById('early-ko-cta-btn');
+  if (earlyBtn && destConfig && destConfig.forwardUtms && window.location.search) {
+    try {
+      var href = earlyBtn.getAttribute('href');
+      if (href && href !== '#' && !href.startsWith('javascript:')) {
+        var u = new URL(href, window.location.href);
+        var curParams = new URLSearchParams(window.location.search);
+        curParams.forEach(function(v, k) {
+          if (!u.searchParams.has(k)) u.searchParams.set(k, v);
+        });
+        earlyBtn.setAttribute('href', u.toString());
+      }
+    } catch(e) {}
+  }
+
+  // Disparo de Evento: desqualificacao_antecipada
+  try {
+    var koEv = 'desqualificacao_antecipada';
+    dispatchTrackingEvent(koEv, {
+      etapa: currentStep + 1,
+      pilar: (choice && choice.pilar) || 'Desqualificação Antecipada',
+      motivo: (choice && choice.txt) || 'Critério Eliminatório Antecipado',
+      score: 0,
+      qualificado: false,
+      status_qualificacao: 'DESQUALIFICADO_ANTECIPADO'
+    }, ['desqualificacao_antecipada', 'early_knockout', 'lead_desqualificado_antecipado']);
+  } catch(e) {
+    console.warn("Erro ao disparar evento de desqualificação antecipada:", e);
+  }
+
+  // Notifica webhook se configurado
+  if (Array.isArray(webhookEndpoints) && webhookEndpoints.length > 0) {
+    try {
+      var payload = JSON.stringify({
+        status_qualificacao: 'DESQUALIFICADO_ANTECIPADO',
+        etapa_eliminatoria: currentStep + 1,
+        pilar_eliminatorio: (choice && choice.pilar) || '',
+        motivo_eliminatorio: (choice && choice.txt) || '',
+        utms: typeof getUrlUtms === 'function' ? getUrlUtms() : {},
+        timestamp: new Date().toISOString()
+      });
+      webhookEndpoints.forEach(function(endpoint) {
+        if (!endpoint || typeof endpoint !== 'string' || !endpoint.trim()) return;
+        var cleanEndpoint = endpoint.trim();
+        if (cleanEndpoint.includes('script.google.com')) {
+          fetch(cleanEndpoint, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: payload }).catch(function(){});
+        } else {
+          fetch(cleanEndpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload }).catch(function(){});
+        }
+      });
+    } catch(e) {}
+  }
+}
+window.showEarlyKnockoutScreen = showEarlyKnockoutScreen;
 function prevQuestion() { 
   if (currentStep > 0) { 
     currentStep--; 
@@ -1636,4 +1734,4 @@ function generateResult(e) {
 }
 </script>
 </body>
-</html><script async src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="5cc79dd9-23a0-46cc-b183-fc0ac6da7e33" data-app-host="app.netlify.com"></script>
+</html>
